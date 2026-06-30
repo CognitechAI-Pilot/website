@@ -21,6 +21,7 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
         alert("Thank you! Your enquiry has been sent.");
         e.target.reset();
     } else {
+        console.log("Failed to send enquiry. Response:", response);
         alert("Failed to send enquiry.");
     }
 });
