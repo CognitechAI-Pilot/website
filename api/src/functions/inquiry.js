@@ -80,7 +80,7 @@ ${message}
           status: 500,
           jsonBody: {
             success: false,
-            message: "Failed to send email.",
+            message: "Failed to send email. ERROR: " + error,
           },
         };
       }
