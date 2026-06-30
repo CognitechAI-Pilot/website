@@ -1,0 +1,13 @@
+{
+  "routes": [
+    {
+      "route": "api/inquiry",
+      "methods": [
+        "post"
+      ],
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  ]
+}
