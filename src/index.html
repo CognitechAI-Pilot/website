@@ -311,15 +311,14 @@
                             <img src="dinesh.jpg" alt="Dinesh" class="w-30 h-30 rounded-full border-2 border-white object-cover object-center flex-shrink-0 bg-gray-300 antialiased shadow-md">
                             <div>
                                 <h4 class="text-lg font-bold text-white">Dinesh</h4>
-                                <p class="text-sm text-agentic font-medium tracking-wide mt-1">Principal AI Solution Orchestrator</p>
+                                <h4 class="text-sm text-agentic font-medium tracking-wide mt-1">Principal AI Solution Orchestrator</h4>
                             </div>
                         </div>
                         <!-- AI Solution Architect -->
                         <div class="flex items-center space-x-5 pb-5 border-b border-gray-800/60">
-                            <div class="w-30 h-30 bg-slate-800 rounded-full flex items-center justify-center flex-shrink-0 text-gray-400 border-2 border-gray-700 shadow-inner">
-                                <i class="fas fa-diagram-project text-3xl"></i>
-                            </div>
+                              <img src="malintha_original.jpg" alt="Malintha" class="w-30 h-30 rounded-full border-2 border-white object-cover object-center flex-shrink-0 bg-gray-300 antialiased shadow-md" onerror="this.src='malintha_original.jpg'">
                             <div>
+                                <h4 class="text-lg font-bold text-gray-300">Malintha</h4>
                                 <h4 class="text-lg font-bold text-gray-300">Lead AI Systems Architect</h4>
                                 <p class="text-sm text-gray-400 mt-1">Enterprise Systems Integration & Technical Discovery</p>
                             </div>
@@ -329,7 +328,7 @@
                             <img src="Chamodya.png" alt="Chamodya" class="w-30 h-30 rounded-full border-2 border-white object-cover object-center flex-shrink-0 bg-gray-300 antialiased shadow-md" onerror="this.src='Chamodya.jpg'">
                             <div>
                                 <h4 class="text-lg font-bold text-gray-300">Chamodya</h4>
-                                <p class="text-sm text-gray-400 mt-1">LLM Engineering Specialist</p>
+                                <h4 class="text-sm text-gray-400 mt-1">LLM Engineering Specialist</h4>
                                 <p class="text-xs text-gray-500 mt-0.5">Contextual Ingestion, Fine-Tuning & Vector Architectures</p>
                             </div>
                         </div>
@@ -378,24 +377,24 @@
                 <p class="text-gray-400 text-sm">Let’s discuss aligning and anchoring custom AI systems into your organization's operational model.</p>
             </div>
             
-            <form class="space-y-5" onsubmit="event.preventDefault(); alert('Thank you! Your enquiry has been sent to Cognitech.');">
+            <form class="space-y-5" id="contactForm">
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Full Name</label>
-                    <input type="text" required class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm transition">
+                    <input type="text" id="name" required class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm transition">
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Email Address</label>
-                        <input type="email" required class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm transition">
+                        <input type="email" id="email" required class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm transition">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Organization</label>
-                        <input type="text" required class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm transition">
+                        <input type="text" id="organization" required class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm transition">
                     </div>
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Project Scope / Inquiry Interest</label>
-                    <select class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm bg-white text-gray-300 transition">
+                    <select id="scope" class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm bg-white text-gray-300 transition">
                         <option class="bg-card-dark">AI Operational Strategy & Scoping</option>
                         <option class="bg-card-dark">Knowledge Agent Integration</option>
                         <option class="bg-card-dark">Custom / Localized LLM Fine-Tuning</option>
@@ -404,7 +403,7 @@
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Message</label>
-                    <textarea rows="4" required placeholder="Tell us about your current technology stack and AI objectives..." class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm transition"></textarea>
+                    <textarea id="message" rows="4" required placeholder="Tell us about your current technology stack and AI objectives..." class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm transition"></textarea>
                 </div>
                 <div class="pt-2">
                     <button type="submit" class="w-full bg-agentic text-white font-semibold py-3 rounded-lg hover:bg-blue-600 transition shadow-md text-sm">
@@ -421,6 +420,6 @@
             <p>&copy; 2026 Cognitech Limited. All rights reserved. Wellington, New Zealand.</p>
         </div>
     </footer>
-
+<script src="contact.js"></script>
 </body>
 </html>
