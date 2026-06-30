@@ -17,8 +17,8 @@ app.http("inquiry", {
           "X-Postmark-Server-Token": process.env.X_POSTMARK_SERVER_TOKEN,
         },
         body: JSON.stringify({
-          From: "website@yourdomain.com", // Must be a verified sender in Postmark
-          To: "sales@yourdomain.com", // Change to your inbox
+          From: process.env.FROM_EMAIL, // Must be a verified sender in Postmark
+          To: process.env.TO_EMAIL, // Change to your inbox
           ReplyTo: email,
           Subject: `Website Inquiry - ${scope}`,
           Tag: "Website",
@@ -50,14 +50,14 @@ app.http("inquiry", {
                         <p>${message.replace(/\n/g, "<br>")}</p>
                     `,
 
-          TextBody: `
-Name: ${name}
-Email: ${email}
-Organization: ${organization}
-Scope: ${scope}
+            TextBody: `
+                Name: ${name}
+                Email: ${email}
+                Organization: ${organization}
+                Scope: ${scope}
 
-Message:
-${message}
+                Message:
+                ${message}
                     `,
 
           Metadata: {
