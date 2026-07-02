@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognitech Limited - Enterprise AI Operations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'agentic': '#3B82F6',
+                        'deep-blue': '#1E3A8A',
+                        'charcoal': '#1F2937',
+                        'dark-bg': '#0F172A',
+                        'card-dark': '#1E293B'
+                    },
+                    spacing: {
+                        '30': '7.5rem'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-200 min-h-screen">
+
+    <!-- Navigation Header -->
+    <nav class="bg-card-dark border-b border-gray-800 sticky top-0 z-50 backdrop-blur-lg bg-opacity-90">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-agentic rounded-lg flex items-center justify-center">
+                        <i class="fas fa-brain text-white text-sm"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white tracking-tight">Cognitech</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
+                    <a href="#about" class="nav-link hover:text-agentic transition">About</a>
+                    <a href="#approach" class="nav-link hover:text-agentic transition">Our Approach</a>
+                    <a href="#services" class="nav-link hover:text-agentic transition">Capabilities</a>
+                    <a href="#showcase" class="nav-link hover:text-agentic transition">Digital Worker</a>
+                    <a href="#team" class="nav-link hover:text-agentic transition">Our Team Model</a>
+                    <a href="#contact" class="bg-agentic text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition shadow-sm text-sm">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="py-24 border-b border-gray-800 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <span class="text-xs font-bold uppercase tracking-widest text-agentic bg-blue-950/50 border border-blue-900 px-3 py-1 rounded-full">Enterprise AI & Solution Architecture</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mt-5 mb-6 tracking-tight leading-tight">
+                Scaling Enterprise Intelligence.<br><span class="gradient-text">Safely. Securely. Incrementally.</span>
+            </h1>
+            <p class="text-base md:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                Cognitech bridges the gap between high-level business strategy and world-class AI execution. We design context-aware digital capabilities integrated directly into your operating model.
+            </p>
+            <div class="mt-8 flex justify-center space-x-4">
+                <a href="#approach" class="bg-agentic text-white px-6 py-3 rounded-xl hover:bg-blue-600 font-medium shadow transition">See Our Approach</a>
+                <a href="#contact" class="bg-card-dark text-gray-300 border border-gray-700 px-6 py-3 rounded-xl hover:bg-gray-700 font-medium transition">Book a Discovery Consultation</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 max-w-7xl mx-auto px-6">
+        <div class="bg-card-dark rounded-2xl border border-gray-800 p-8 md:p-12 shadow-xl flex flex-col lg:flex-row gap-8 items-stretch">
+            <div class="lg:w-2/3 space-y-6 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-3">Enterprise AI Adoption</h2>
+                    <p class="text-gray-400 leading-relaxed text-sm md:text-base mb-3">
+                        Large-scale AI adoption fails when organizations treat LLMs as standalone chat boxes rather than architecture-integrated team members. At Cognitech, we solve this by designing custom, context-aware digital solutions that integrate seamlessly into an organization's operating model—safely, securely, and incrementally.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+                        We work closely with leadership teams to systematically de-risk the transition, shifting human personnel from tedious manual data processing and into high-value oversight, evaluation, and strategic governance roles.
+                    </p>
+                </div>
+                
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-3">Economical AI Execution</h2>
+                    <p class="text-gray-400 leading-relaxed text-sm md:text-base mb-3">
+                        Modern enterprises face serious challenges with rising token consumption, surging system demand, and expensive public frontier model inference costs. Cognitech resolves these friction points by architecting efficient, layered pipelines and purpose-built local models. We focus on right-sizing systems to ensure your operational frameworks remain safe, highly secure, and structurally economical.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+                        We achieve this by customizing high-performing open-source foundations using Parameter-Efficient Fine-Tuning (PEFT) and Low-Rank Adaptation (LoRA). By optimizing smaller, highly targeted open-weights models for narrow operational tasks, we eliminate dependency on expensive public cloud APIs, minimize latency, and drastically reduce long-term infrastructure spend.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="lg:w-1/3 bg-dark-bg border border-gray-800 rounded-xl p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-white text-lg mb-4 flex items-center">
+                        <i class="fas fa-shield-halved text-agentic mr-2.5"></i> Our Edge
+                    </h3>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-agentic mt-1 mr-3 text-xs flex-shrink-0"></i> 
+                            <span><strong>Strict Data Sovereignty:</strong> Live business data remains securely ring-fenced within local cloud environments.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-agentic mt-1 mr-3 text-xs flex-shrink-0"></i> 
+                            <span><strong>Explicit Boundaries:</strong> System routing built tightly around exact legal and policy source files.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-agentic mt-1 mr-3 text-xs flex-shrink-0"></i> 
+                            <span><strong>Human-in-the-Loop:</strong> Built-in structural checkpoints for absolute manual sign-off.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-agentic mt-1 mr-3 text-xs flex-shrink-0"></i> 
+                            <span><strong>Cost-Optimized Compute:</strong> Targeted model quantization and local execution layouts engineered to eliminate escalating frontier api overheads.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Approach Section -->
+    <section id="approach" class="py-16 max-w-7xl mx-auto px-6 border-t border-gray-800">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-agentic bg-blue-950/50 border border-blue-900 px-3 py-1 rounded-full">Methodology</span>
+            <h2 class="text-3xl font-bold text-white mt-4 mb-3">Our Approach</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">A disciplined, end-to-end framework designed to integrate enterprise AI directly into your business DNA.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 relative">
+            <!-- Phase 1: Strategy & Readiness -->
+            <div class="bg-card-dark border border-gray-800 rounded-xl p-8 relative flex flex-col justify-between">
+                <div>
+                    <div class="text-xs font-bold text-agentic uppercase tracking-wider mb-2">Phase 01</div>
+                    <h3 class="text-xl font-bold text-white mb-4">AI Strategy & Readiness</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4">
+                        We bring architectural clarity before you commit capital. Utilizing our proprietary AI Adoption Framework, we conduct deep-dive discovery audits to map your unstructured data pools, evaluate technical readiness, and isolate high-value use cases aligned with your operational logic.
+                    </p>
+                </div>
+                <div class="text-xs text-gray-500 font-medium pt-4 border-t border-gray-800/50 flex items-center gap-2">
+                    <i class="fas fa-compass text-agentic"></i> Discovery & Risk Profiling
+                </div>
+            </div>
+
+            <!-- Phase 2: Design, Build & Deploy -->
+            <div class="bg-card-dark border border-gray-800 rounded-xl p-8 relative flex flex-col justify-between">
+                <div>
+                    <div class="text-xs font-bold text-agentic uppercase tracking-wider mb-2">Phase 02</div>
+                    <h3 class="text-xl font-bold text-white mb-4">AI Design, Build & Deploy</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4">
+                        Where architectural blueprints meet global engineering muscle. We map your target data planes and engineer custom, context-aware digital pipelines tailored to your legacy infrastructure. Development is scaled rapidly via our elite technical execution pods.
+                    </p>
+                </div>
+                <div class="text-xs text-gray-500 font-medium pt-4 border-t border-gray-800/50 flex items-center gap-2">
+                    <i class="fas fa-cubes text-agentic"></i> Engineering & Core Integration
+                </div>
+            </div>
+
+            <!-- Phase 3: Enablement & Support -->
+            <div class="bg-card-dark border border-gray-800 rounded-xl p-8 relative flex flex-col justify-between">
+                <div>
+                    <div class="text-xs font-bold text-agentic uppercase tracking-wider mb-2">Phase 03</div>
+                    <h3 class="text-xl font-bold text-white mb-4">AI Enablement & Support</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4">
+                        Ensuring long-term operational autonomy. We build secure human-in-the-loop checkpoints, handle structured capability transfer to your internal teams, and provide ongoing solution governance to ensure systems conform strictly to compliance baselines.
+                    </p>
+                </div>
+                <div class="text-xs text-gray-500 font-medium pt-4 border-t border-gray-800/50 flex items-center gap-2">
+                    <i class="fas fa-shield-halved text-agentic"></i> Governance & Continuous Tuning
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section id="services" class="bg-card-dark py-16 border-y border-gray-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-3">Capabilities & Technical Solutions</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">We architect and deliver production-grade AI capabilities engineered for enterprise reality.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Localized LLMs -->
+                <div class="border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition bg-dark-bg">
+                    <div class="w-10 h-10 bg-blue-950 border border-blue-900 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-server text-agentic"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Localized LLM Development</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Fine-tuning, optimizing, and containerizing foundational models to run entirely within your secure, private cloud tenant to lower latency and safeguard data.</p>
+                </div>
+                <!-- Knowledge Agents -->
+                <div class="border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition bg-dark-bg">
+                    <div class="w-10 h-10 bg-blue-950 border border-blue-900 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-database text-agentic"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Knowledge Agents</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Structuring fragmented, unstructured repositories (legacy docs, codebases, registries) into a secure, easily answerable organizational knowledge plane.</p>
+                </div>
+                <!-- Customer Assistants -->
+                <div class="border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition bg-dark-bg">
+                    <div class="w-10 h-10 bg-blue-950 border border-blue-900 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-comments text-agentic"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Operations Assistants</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Conversational digital assistants capable of managing complex intake workflows at scale with robust human-in-the-loop exception handling.</p>
+                </div>
+                <!-- Agentic Systems -->
+                <div class="border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition bg-dark-bg">
+                    <div class="w-10 h-10 bg-blue-950 border border-blue-900 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-network-wired text-agentic"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Agentic Systems</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Designing multi-step, goal-oriented AI configurations capable of running safe, predictable, and deterministic pipelines across your software stacks.</p>
+                </div>
+                <!-- Bespoke Builds -->
+                <div class="border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition bg-dark-bg">
+                    <div class="w-10 h-10 bg-blue-950 border border-blue-900 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-gears text-agentic"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Bespoke Enterprise Builds</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Custom document intelligence, legacy logic recovery, data classification, and predictive models tailored to specialized corporate workflows.</p>
+                </div>
+                <!-- Technical Architecture Hub -->
+                <div class="border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition bg-dark-bg">
+                    <div class="w-10 h-10 bg-blue-950 border border-blue-900 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-compass text-agentic"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Architectural Engineering</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Aligning digital workers with background databases, designing hybrid retrieval pipelines, and building enterprise semantic routing infrastructure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Worker Showcase Section -->
+    <section id="showcase" class="py-16 max-w-7xl mx-auto px-6 border-b border-gray-800">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-agentic bg-blue-950/50 border border-blue-900 px-3 py-1 rounded-full">Digital Worker Prototype</span>
+            <h2 class="text-3xl font-bold text-white mt-4 mb-3">Intelligent Systems Architecture</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">See how custom operational frameworks deploy predictably within highly regulated enterprise environments.</p>
+        </div>
+
+        <div class="bg-card-dark border border-gray-800 rounded-2xl p-8 md:p-12 flex flex-col lg:flex-row gap-10 items-center shadow-2xl relative overflow-hidden">
+            <div class="lg:w-3/5 space-y-6">
+                <div class="flex items-center space-x-3 text-sm font-semibold text-agentic uppercase tracking-wider">
+                    <i class="fas fa-sliders text-base"></i>
+                    <span>Proof of Concept Spotlight: The BA-Agent Framework</span>
+                </div>
+                <h3 class="text-2xl md:text-3xl font-bold text-white leading-tight">
+                    Optimizing Delivery Frameworks for Logistics Infrastructure
+                </h3>
+                <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+                    Cognitech has engineered a specialized, context-aware hybrid architecture for a Business Analyst AI Agent, currently operating as a high-value Proof of Concept (PoC) scoped for a major enterprise leader in the logistics industry. The system connects with layered source frameworks and operational documentation, simplifying the logic of large code repositories and identifying complex technical dependencies.
+                </p>
+                <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+                    Crucially, the architecture places the human specialist securely in control. The BA agent explicitly validates the generated User Stories and operational BA documentation directly with the human Business Analyst first. Only after manual confirmation by the analyst does the agent automatically push and publish the structured records into respective external tracking software like Jira and Confluence.
+                </p>
+                <p class="text-gray-300 font-medium text-sm md:text-base flex items-center gap-2">
+                    <i class="fas fa-arrow-trend-up text-agentic"></i> This model is engineered to complement internal structures—systematically scaling team capability and transforming regular technical analysis into rapid execution.
+                </p>
+            </div>
+            
+            <!-- Technical Architecture Blueprint Card -->
+            <div class="lg:w-2/5 w-full bg-dark-bg border border-gray-800 rounded-xl p-6 relative">
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 flex items-center justify-between">
+                    <span>Integration Plane</span>
+                    <span class="h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
+                </h4>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-3 bg-card-dark/40 border border-gray-800 rounded-lg">
+                        <span class="text-sm font-medium text-gray-300"><i class="fas fa-robot text-agentic mr-2"></i> Agentic AI Layer</span>
+                        <span class="text-xs font-bold text-gray-500 bg-gray-900 px-2 py-0.5 rounded">PoC Engine</span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-blue-950/20 border border-blue-900/40 rounded-lg">
+                        <span class="text-sm font-medium text-white"><i class="fas fa-user-check text-agentic mr-2"></i> Human BA Verification</span>
+                        <span class="text-xs font-bold text-agentic bg-blue-950 border border-blue-900 px-2 py-0.5 rounded">Review Gate</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-3 bg-card-dark/40 border border-gray-800 rounded-lg text-center">
+                            <i class="fab fa-jira text-xl text-blue-400 mb-1"></i>
+                            <div class="text-xs font-bold text-gray-300">Jira Automation</div>
+                        </div>
+                        <div class="p-3 bg-card-dark/40 border border-gray-800 rounded-lg text-center">
+                            <i class="fab fa-confluence text-xl text-blue-400 mb-1"></i>
+                            <div class="text-xs font-bold text-gray-300">Confluence Docs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team & Operating Model Section -->
+    <section id="team" class="py-16 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-white mb-3">Our Hybrid Operating Model</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">We combine local strategic leadership with global engineering scale to deliver elite AI solutions economically.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-stretch">
+            <!-- Onshore Design & Orchestration Team -->
+            <div class="bg-card-dark border border-gray-800 rounded-xl p-6 shadow-md flex flex-col justify-between">
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-1 flex items-center">
+                        <i class="fas fa-map-marker-alt text-agentic mr-2"></i> Onshore AI Solution Design & Orchestration
+                    </h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-wider mb-6">New Zealand Core Architecture Team</p>
+                    
+                    <div class="space-y-6">
+                        <!-- Dinesh -->
+                        <div class="flex items-center space-x-5 pb-5 border-b border-gray-800/60">
+                            <img src="dinesh.jpg" alt="Dinesh" class="w-30 h-30 rounded-full border-2 border-white object-cover object-center flex-shrink-0 bg-gray-300 antialiased shadow-md">
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Dinesh</h4>
+                                <h4 class="text-sm text-agentic font-medium tracking-wide mt-1">Principal AI Solution Orchestrator</h4>
+                            </div>
+                        </div>
+                        <!-- AI Solution Architect -->
+                        <div class="flex items-center space-x-5 pb-5 border-b border-gray-800/60">
+                              <img src="malintha_original.jpg" alt="Malintha" class="w-30 h-30 rounded-full border-2 border-white object-cover object-center flex-shrink-0 bg-gray-300 antialiased shadow-md" onerror="this.src='malintha_original.jpg'">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-300">Malintha</h4>
+                                <h4 class="text-lg font-bold text-gray-300">Lead AI Systems Architect</h4>
+                                <p class="text-sm text-gray-400 mt-1">Enterprise Systems Integration & Technical Discovery</p>
+                            </div>
+                        </div>
+                        <!-- Chamodya -->
+                        <div class="flex items-center space-x-5">
+                            <img src="Chamodya.png" alt="Chamodya" class="w-30 h-30 rounded-full border-2 border-white object-cover object-center flex-shrink-0 bg-gray-300 antialiased shadow-md" onerror="this.src='Chamodya.jpg'">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-300">Chamodya</h4>
+                                <h4 class="text-sm text-gray-400 mt-1">LLM Engineering Specialist</h4>
+                                <p class="text-xs text-gray-500 mt-0.5">Contextual Ingestion, Fine-Tuning & Vector Architectures</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delivery Pods Info Card (Optimized layout balancing with items-stretch) -->
+            <div class="bg-deep-blue border border-blue-900 text-white rounded-xl p-6 shadow-md flex flex-col justify-between h-full">
+                <div class="space-y-5">
+                    <div>
+                        <h3 class="text-lg font-bold mb-1 flex items-center text-white">
+                            <i class="fas fa-bolt mr-2 text-yellow-400"></i> Elite Delivery Pods
+                        </h3>
+                        <p class="text-xs text-blue-200 uppercase tracking-wider">Sri Lanka Technical Execution Hub</p>
+                    </div>
+                    
+                    <p class="text-sm text-blue-100 leading-relaxed">
+                        Backed by specialized engineering hubs in Sri Lanka. Our overseas squads deliver rapid, cost-efficient pipeline development, database integration, and AI modeling under strict New Zealand onshore management and architectural governance.
+                    </p>
+
+                    <!-- Clean technical list block filling visual real estate smoothly -->
+                    <div class="pt-2">
+                        <h4 class="text-xs font-bold text-blue-200 uppercase tracking-widest mb-3">Core Execution Focus</h4>
+                        <ul class="space-y-2.5 text-xs text-blue-100/90">
+                            <li class="flex items-center gap-2.5"><i class="fas fa-layer-group text-blue-300 text-[10px]"></i> Data Ingestion & Enterprise Vectorization</li>
+                            <li class="flex items-center gap-2.5"><i class="fas fa-microchip text-blue-300 text-[10px]"></i> Model Quantization & Local Deployment</li>
+                            <li class="flex items-center gap-2.5"><i class="fas fa-link text-blue-300 text-[10px]"></i> Secure API Middleware & Pipeline Integration</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-8 pt-4 border-t border-blue-800 flex flex-wrap gap-2 justify-between items-center text-xs text-blue-200">
+                    <span class="bg-blue-950/40 border border-blue-800/60 px-3 py-1.5 rounded-lg font-medium">Local Governance & Accountability</span>
+                    <span class="bg-blue-950/40 border border-blue-800/60 px-3 py-1.5 rounded-lg font-medium">Global Scaling Speed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="bg-card-dark py-16 border-t border-gray-800">
+        <div class="max-w-xl mx-auto px-6">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-white mb-2">Initiate Discovery</h2>
+                <p class="text-gray-400 text-sm">Let’s discuss aligning and anchoring custom AI systems into your organization's operational model.</p>
+            </div>
+            
+            <form class="space-y-5" id="contactForm">
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Full Name</label>
+                    <input type="text" id="name" required class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm transition">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Email Address</label>
+                        <input type="email" id="email" required class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Organization</label>
+                        <input type="text" id="organization" required class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Project Scope / Inquiry Interest</label>
+                    <select id="scope" class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm bg-white text-gray-300 transition">
+                        <option class="bg-card-dark">AI Operational Strategy & Scoping</option>
+                        <option class="bg-card-dark">Knowledge Agent Integration</option>
+                        <option class="bg-card-dark">Custom / Localized LLM Fine-Tuning</option>
+                        <option class="bg-card-dark">General Transformation Enquiry</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Message</label>
+                    <textarea id="message" rows="4" required placeholder="Tell us about your current technology stack and AI objectives..." class="w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm transition"></textarea>
+                </div>
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-agentic text-white font-semibold py-3 rounded-lg hover:bg-blue-600 transition shadow-md text-sm">
+                        Submit Inquiry
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-bg border-t border-gray-800 py-8 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-6">
+            <p>&copy; 2026 Cognitech Limited. All rights reserved. Wellington, New Zealand.</p>
+        </div>
+    </footer>
+<script src="contact.js"></script>
+</body>
+</html>
