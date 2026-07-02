@@ -41,6 +41,9 @@
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
+                    <button id="menuToggle" class="md:hidden text-gray-400 hover:text-white focus:outline-none mr-1" aria-label="Toggle menu">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
                     <div class="w-8 h-8 bg-agentic rounded-lg flex items-center justify-center">
                         <i class="fas fa-brain text-white text-sm"></i>
                     </div>
@@ -55,8 +58,28 @@
                     <a href="#contact" class="bg-agentic text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition shadow-sm text-sm">Get in Touch</a>
                 </div>
             </div>
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-3 pb-2 border-t border-gray-800 space-y-1">
+                <a href="#about" class="block px-2 py-2.5 text-sm text-gray-400 hover:text-agentic transition">About</a>
+                <a href="#approach" class="block px-2 py-2.5 text-sm text-gray-400 hover:text-agentic transition">Our Approach</a>
+                <a href="#services" class="block px-2 py-2.5 text-sm text-gray-400 hover:text-agentic transition">Capabilities</a>
+                <a href="#showcase" class="block px-2 py-2.5 text-sm text-gray-400 hover:text-agentic transition">Digital Co-Worker</a>
+                <a href="#team" class="block px-2 py-2.5 text-sm text-gray-400 hover:text-agentic transition">Our Team Model</a>
+                <a href="#contact" class="block mx-2 mt-2 bg-agentic text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition text-sm text-center">Get in Touch</a>
+            </div>
         </div>
     </nav>
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobileMenu a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+    </script>
 
     <header class="py-24 border-b border-gray-800 relative overflow-hidden">
         <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
