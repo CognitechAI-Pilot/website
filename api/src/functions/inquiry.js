@@ -9,21 +9,20 @@ app.http("inquiry", {
       const { name, email, organization, scope, message } =
         await request.json();
 
-      const response = await fetch("https://api.postmarkapp.com/email", {
+      const response = await fetch("https://send.api.mailtrap.io/api/send", {
         method: "POST",
         headers: {
-          Accept: "application/json",
+          "Authorization": `Bearer ${process.env.MAILTRAP_API_TOKEN}`,
           "Content-Type": "application/json",
-          "X-Postmark-Server-Token": process.env.X_POSTMARK_SERVER_TOKEN,
         },
         body: JSON.stringify({
-          From: process.env.FROM_EMAIL, // Must be a verified sender in Postmark
-          To: process.env.TO_EMAIL, // Change to your inbox
-          ReplyTo: email,
-          Subject: `Website Inquiry - ${scope}`,
-          Tag: "Website",
+          from: { email: process.env.FROM_EMAIL },
+          to: [{ email: process.env.TO_EMAIL }],
+          reply_to: { email: email },
+          subject: `Website Inquiry - ${scope}`,
+          category: "Website",
 
-          HtmlBody: `
+          html: `
                         <h2>New Website Inquiry</h2>
 
                         <table cellpadding="6">
@@ -50,7 +49,7 @@ app.http("inquiry", {
                         <p>${message.replace(/\n/g, "<br>")}</p>
                     `,
 
-            TextBody: `
+          text: `
                 Name: ${name}
                 Email: ${email}
                 Organization: ${organization}
@@ -59,15 +58,6 @@ app.http("inquiry", {
                 Message:
                 ${message}
                     `,
-
-          Metadata: {
-            Source: "Website",
-            Organization: organization,
-          },
-
-          TrackOpens: true,
-          TrackLinks: "HtmlOnly",
-          MessageStream: "outbound",
         }),
       });
 
