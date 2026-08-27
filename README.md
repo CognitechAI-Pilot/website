@@ -1,22 +1,23 @@
 # Cognitech Limited — Website
 
 Marketing site for Cognitech Limited, built with React + Vite + Tailwind CSS and
-deployed to Azure Static Web Apps (with an Azure Functions API for the inquiry form).
+deployed to Vercel, with a serverless function backing the inquiry form.
 
 ## Getting started
 
 ```bash
 npm install
-npm run dev      # dev server on http://localhost:5173
+npm run dev      # Vite dev server on http://localhost:5173 (UI only)
 npm run build    # production build into dist/
 npm run preview  # serve the production build locally
 ```
 
-The dev server proxies `/api/*` to `http://localhost:7071`, so run the Functions
-host alongside it if you need the inquiry endpoint:
+`npm run dev` does not serve `/api`. To run the site and the inquiry function
+together, use the Vercel CLI:
 
 ```bash
-cd api && npm install && npm start
+npm i -g vercel
+vercel dev       # app + /api/inquiry on http://localhost:3000
 ```
 
 ## Layout
@@ -30,17 +31,28 @@ src/
   index.css           Tailwind layers + the gradient-text helper
   data/site.js        Page copy (nav links, capabilities, team, etc.)
   components/         One component per page section
-api/                  Azure Functions API (POST /api/inquiry -> Mailtrap)
+api/
+  inquiry.js          Vercel function: POST /api/inquiry -> Mailtrap
 ```
 
 ## Contact section
 
-The inquiry form is currently disabled and replaced by a mailto link, matching the
-previous site. Set `SHOW_INQUIRY_FORM = true` in `src/components/Contact.jsx` to
-re-enable the form; it posts to `/api/inquiry`, which needs `MAILTRAP_API_TOKEN`,
-`FROM_EMAIL` and `TO_EMAIL` configured in the Static Web App settings.
+The inquiry form is currently disabled and replaced by a mailto link. Set
+`SHOW_INQUIRY_FORM = true` in `src/components/Contact.jsx` to re-enable it.
+
+`api/inquiry.js` needs these environment variables set in the Vercel project
+(Settings → Environment Variables), for every environment you want the form to
+work in:
+
+| Variable | Purpose |
+| --- | --- |
+| `MAILTRAP_API_TOKEN` | Mailtrap sending API token |
+| `FROM_EMAIL` | Sender address (must be a verified Mailtrap domain) |
+| `TO_EMAIL` | Where inquiries are delivered |
 
 ## Deployment
 
-`.github/workflows/azure-static-web-apps-yellow-plant-0c9afbf10.yml` builds from the
-repository root (`app_location: "/"`) and publishes `dist` on every push to `main`.
+Vercel builds this repo directly from Git — no workflow file and no `vercel.json`
+are needed. Vercel auto-detects the Vite preset, runs `npm run build`, and serves
+`dist`, with everything in `api/` deployed as serverless functions. Pushes to
+`main` go to production; pull requests get preview deployments.

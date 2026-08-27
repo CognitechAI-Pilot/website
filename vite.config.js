@@ -1,12 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+// `vercel dev` serves the Vite app and the /api functions together on one
+// origin, so no dev-server proxy is needed.
 export default defineConfig({
-  plugins: [react()],
-  server: {
-    proxy: {
-      // Forward API calls to the local Azure Functions host during `npm run dev`.
-      '/api': 'http://localhost:7071'
-    }
-  }
+  plugins: [react()]
 })
