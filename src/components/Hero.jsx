@@ -6,7 +6,7 @@ export default function Hero() {
           Enterprise AI Delivery
         </span>
         <h1 className="text-4xl md:text-5xl font-extrabold text-white mt-5 mb-6 tracking-tight leading-none">
-          <span className="gradient-text">Scaling Enterprise-Grade AI.</span>
+          <span className="gradient-text">Scaling Digital Co-Workers for Enterprise</span>
         </h1>
         <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-medium">
           We build context-aware, secure, and right-sized AI systems that integrate directly into your existing
