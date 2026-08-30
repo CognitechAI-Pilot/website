@@ -36,28 +36,6 @@ export const pricingPurpose = {
   retainer: 'Digital Co-Worker Support Retainer'
 }
 
-export const teamMembers = [
-  {
-    name: 'Dinesh',
-    image: '/dinesh.jpg',
-    role: 'Principal Business Analyst & AI Solutions Orchestrator',
-    detail: 'Enterprise AI strategy, delivery orchestration and governance',
-    highlighted: true
-  },
-  {
-    name: 'Malintha',
-    image: '/malintha_original.jpg',
-    role: 'Lead AI Systems Architect',
-    detail: 'Enterprise systems integration & technical discovery'
-  },
-  {
-    name: 'Chamodya',
-    image: '/Chamodya.jpg',
-    role: 'LLM Engineering Specialist',
-    detail: 'Contextual ingestion, fine-tuning & vector architectures'
-  }
-]
-
 // Roadmap outcome cards, per role. Lifted from the v2 render logic.
 export const roadmapOutcomes = {
   policy: [
