@@ -1,27 +1,21 @@
-import { useState } from 'react'
-import { scopeOptions, contactEmail } from '../data/site'
+import { useEffect, useState } from 'react'
+import { enquiryPurposes, contactEmail } from '../data/site'
 
-// The inquiry form is currently disabled on the live site (it was commented out
-// in the original markup); visitors are pointed at a mailto link instead. Flip
-// this to `true` to bring the form — and the /api/inquiry backend — back online.
-const SHOW_INQUIRY_FORM = false
+const EMPTY = { name: '', jobTitle: '', email: '', purpose: enquiryPurposes[0], message: '' }
 
-const EMPTY_FORM = {
-  name: '',
-  email: '',
-  organization: '',
-  scope: scopeOptions[0],
-  message: ''
-}
-
-export default function Contact() {
-  const [form, setForm] = useState(EMPTY_FORM)
+export default function Contact({ purpose }) {
+  const [form, setForm] = useState(EMPTY)
   const [status, setStatus] = useState(null)
   const [submitting, setSubmitting] = useState(false)
 
+  // A pricing CTA can preselect the enquiry purpose.
+  useEffect(() => {
+    if (purpose) setForm((current) => ({ ...current, purpose }))
+  }, [purpose])
+
   const handleChange = (event) => {
-    const { id, value } = event.target
-    setForm((current) => ({ ...current, [id]: value }))
+    const { name, value } = event.target
+    setForm((current) => ({ ...current, [name]: value }))
   }
 
   const handleSubmit = async (event) => {
@@ -37,128 +31,92 @@ export default function Contact() {
       })
 
       if (response.ok) {
-        setStatus({ ok: true, message: 'Thank you! Your enquiry has been sent.' })
-        setForm(EMPTY_FORM)
+        setStatus({ ok: true, message: 'Thank you — your enquiry has been sent. We usually reply within one business day.' })
+        setForm({ ...EMPTY, purpose: form.purpose })
       } else {
-        setStatus({ ok: false, message: 'Failed to send enquiry. Please try again or email us directly.' })
+        setStatus({ ok: false, message: `Sorry, we could not send that. Please email ${contactEmail} directly.` })
       }
-    } catch (error) {
-      setStatus({ ok: false, message: 'Failed to send enquiry. Please try again or email us directly.' })
+    } catch {
+      setStatus({ ok: false, message: `Sorry, we could not send that. Please email ${contactEmail} directly.` })
     } finally {
       setSubmitting(false)
     }
   }
 
-  const inputClass =
-    'w-full bg-dark-bg text-white border border-gray-700 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-agentic text-sm transition'
-  const labelClass = 'block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1'
+  const field =
+    'w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition'
+  const label = 'block text-xs font-mono font-bold text-slate-300 uppercase tracking-wider mb-2'
 
   return (
-    <section id="contact" className="bg-card-dark py-16 border-t border-gray-800">
-      <div className="max-w-xl mx-auto px-6">
-        {SHOW_INQUIRY_FORM ? (
-          <>
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-white mb-2">Initiate Discovery</h2>
-              <p className="text-gray-400 text-sm">
-                Let&rsquo;s discuss aligning and anchoring custom AI systems into your organization&apos;s operational
-                model.
-              </p>
+    <footer id="contact" className="py-20 bg-slate-950 border-t border-slate-800">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-10">
+          <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono font-bold uppercase tracking-widest">
+            DIRECT ENGAGEMENT
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mt-3 mb-2">Consult Cognitech Engineers</h2>
+          <p className="text-xs sm:text-sm text-slate-400">
+            Submit an enquiry to explore deploying custom Digital Co-Workers, sovereign onshore architecture, or
+            scheduling an executive briefing.
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="glow-card p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label className={label} htmlFor="name">Full Name *</label>
+              <input type="text" id="name" name="name" required autoComplete="name" placeholder="Jane Doe" value={form.name} onChange={handleChange} className={field} />
             </div>
-
-            <form className="space-y-5" onSubmit={handleSubmit}>
-              <div>
-                <label className={labelClass} htmlFor="name">
-                  Full Name
-                </label>
-                <input type="text" id="name" required value={form.name} onChange={handleChange} className={inputClass} />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className={labelClass} htmlFor="email">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    value={form.email}
-                    onChange={handleChange}
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <label className={labelClass} htmlFor="organization">
-                    Organization
-                  </label>
-                  <input
-                    type="text"
-                    id="organization"
-                    required
-                    value={form.organization}
-                    onChange={handleChange}
-                    className={inputClass}
-                  />
-                </div>
-              </div>
-              <div>
-                <label className={labelClass} htmlFor="scope">
-                  Project Scope / Inquiry Interest
-                </label>
-                <select id="scope" value={form.scope} onChange={handleChange} className={inputClass}>
-                  {scopeOptions.map((option) => (
-                    <option key={option} className="bg-card-dark">
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className={labelClass} htmlFor="message">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows="4"
-                  required
-                  placeholder="Tell us about your current technology stack and AI objectives..."
-                  value={form.message}
-                  onChange={handleChange}
-                  className={inputClass}
-                ></textarea>
-              </div>
-
-              {status && (
-                <p
-                  role="status"
-                  className={`text-sm ${status.ok ? 'text-agentic' : 'text-red-400'}`}
-                >
-                  {status.message}
-                </p>
-              )}
-
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="w-full bg-agentic text-white font-semibold py-3 rounded-lg hover:bg-blue-600 transition shadow-md text-sm disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {submitting ? 'Sending...' : 'Submit Inquiry'}
-                </button>
-              </div>
-            </form>
-          </>
-        ) : (
-          <div className="pt-2">
-            <a
-              href={`mailto:${contactEmail}`}
-              className="block w-full bg-agentic text-white font-semibold py-3 rounded-lg hover:bg-blue-600 transition shadow-md text-sm text-center"
-            >
-              Get in touch
-            </a>
+            <div>
+              <label className={label} htmlFor="jobTitle">Job Title / Role *</label>
+              <input type="text" id="jobTitle" name="jobTitle" required autoComplete="organization-title" placeholder="Head of Delivery / Lead Architect" value={form.jobTitle} onChange={handleChange} className={field} />
+            </div>
           </div>
-        )}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label className={label} htmlFor="email">Business Email *</label>
+              <input type="email" id="email" name="email" required autoComplete="email" placeholder="jane@enterprise.co.nz" value={form.email} onChange={handleChange} className={field} />
+            </div>
+            <div>
+              <label className={label} htmlFor="purpose">Consultation Purpose *</label>
+              <select id="purpose" name="purpose" value={form.purpose} onChange={handleChange} className={field}>
+                {enquiryPurposes.map((option) => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label className={label} htmlFor="message">Project Context &amp; Objectives *</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Outline your current squad structure, key workflow bottlenecks, or sovereignty requirements..." value={form.message} onChange={handleChange} className={field}></textarea>
+          </div>
+
+          {status && (
+            <p role="status" aria-live="polite" className={`text-xs ${status.ok ? 'text-emerald-400' : 'text-red-400'}`}>
+              {status.message}
+            </p>
+          )}
+
+          <button
+            type="submit"
+            disabled={submitting}
+            className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-all shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            <i className={`fa-solid ${submitting ? 'fa-circle-notch fa-spin' : 'fa-paper-plane'}`}></i>
+            <span>{submitting ? 'Sending…' : 'Submit Enquiry to Cognitech'}</span>
+          </button>
+
+          <p className="text-center text-[11px] text-slate-500">
+            Enquiries are delivered to the Cognitech team under strict enterprise confidentiality.
+          </p>
+        </form>
+
+        <div className="mt-12 text-center text-xs text-slate-500">
+          <p>&copy; 2026 Cognitech Limited. Governed Digital Co-Workers for Enterprise Productivity.</p>
+        </div>
       </div>
-    </section>
+    </footer>
   )
 }

@@ -1,7 +1,7 @@
 # Cognitech Limited — Website
 
 Marketing site for Cognitech Limited, built with React + Vite + Tailwind CSS and
-deployed to Vercel, with a serverless function backing the inquiry form.
+deployed to Vercel, with a serverless function backing the enquiry form.
 
 ## Getting started
 
@@ -12,7 +12,7 @@ npm run build    # production build into dist/
 npm run preview  # serve the production build locally
 ```
 
-`npm run dev` does not serve `/api`. To run the site and the inquiry function
+`npm run dev` does not serve `/api`. To run the site and the enquiry function
 together, use the Vercel CLI:
 
 ```bash
@@ -23,36 +23,59 @@ vercel dev       # app + /api/inquiry on http://localhost:3000
 ## Layout
 
 ```
-index.html            Vite entry point
-public/               Static assets served from the site root (team photos)
+index.html              Vite entry point, SEO + Open Graph tags
+public/                 Static assets served from the site root
 src/
-  main.jsx            React bootstrap (Font Awesome + Tailwind imports)
-  App.jsx             Page composition
-  index.css           Tailwind layers + the gradient-text helper
-  data/site.js        Page copy (nav links, capabilities, team, etc.)
-  components/         One component per page section
+  main.jsx              React bootstrap (Font Awesome + Tailwind imports)
+  App.jsx               Page composition and cross-section state
+  index.css             Tailwind layers, glow-card/tab styles, motion prefs
+  data/
+    site.js             Nav, enquiry purposes, pricing CTA mapping
+    team.js             Team member bios and photos
+    coworker.js         Stage/role/blueprint/persona content
+  components/           One component per page section
 api/
-  inquiry.js          Vercel function: POST /api/inquiry -> Mailtrap
+  inquiry.js            Vercel function: POST /api/inquiry -> Mailtrap
 ```
 
-## Contact section
+### About `src/data/coworker.js`
 
-The inquiry form is currently disabled and replaced by a mailto link. Set
-`SHOW_INQUIRY_FORM = true` in `src/components/Contact.jsx` to re-enable it.
+The architecture blueprints, role case studies and persona panels are large
+blocks of static, author-authored markup. They are stored as HTML strings and
+rendered with `dangerouslySetInnerHTML`. No user input reaches them. Editing the
+copy means editing that file.
+
+## Enquiry form
 
 `api/inquiry.js` needs these environment variables set in the Vercel project
-(Settings → Environment Variables), for every environment you want the form to
-work in:
+(Settings → Environment Variables) for every environment the form should work in:
 
 | Variable | Purpose |
 | --- | --- |
 | `MAILTRAP_API_TOKEN` | Mailtrap sending API token |
 | `FROM_EMAIL` | Sender address (must be a verified Mailtrap domain) |
-| `TO_EMAIL` | Where inquiries are delivered |
+| `TO_EMAIL` | Where enquiries are delivered |
+
+The pricing CTAs preselect the enquiry purpose. The values live in
+`pricingPurpose` in `src/data/site.js` and must stay within `enquiryPurposes` in
+the same file — that is what keeps them from drifting apart.
+
+## Outstanding before launch
+
+- **Hero image.** `src/components/Hero.jsx` still hot-links a stock photo from
+  Unsplash. Replace it with a self-hosted, licensed image in `public/`.
+- **Open Graph image.** `index.html` references `/og-cover.jpg`, which does not
+  exist yet. Add a 1200×630 image, or link previews will fall back to a bare link.
+- **ROI substantiation.** The note at the end of `src/components/Roi.jsx`
+  contains `[ANALYST_COST]` and `[HOURS_SAVED]` placeholders. Fill these in with
+  the real modelling inputs before the ROI section goes live.
+- **Video hosting.** `public/nz-post-ba-coworker-demo.mp4` is 16 MB and is
+  committed to the repository. Consider a video host or Vercel Blob if more
+  demos are added.
 
 ## Deployment
 
 Vercel builds this repo directly from Git — no workflow file and no `vercel.json`
-are needed. Vercel auto-detects the Vite preset, runs `npm run build`, and serves
-`dist`, with everything in `api/` deployed as serverless functions. Pushes to
-`main` go to production; pull requests get preview deployments.
+needed. Vercel auto-detects the Vite preset, runs `npm run build`, serves `dist`,
+and deploys everything in `api/` as serverless functions. Pushes to `main` go to
+production; pull requests get preview deployments.

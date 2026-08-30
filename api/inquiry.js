@@ -2,7 +2,7 @@
 // Sends website inquiries through the Mailtrap sending API.
 // Requires MAILTRAP_API_TOKEN, FROM_EMAIL and TO_EMAIL environment variables.
 
-const REQUIRED_FIELDS = ['name', 'email', 'organization', 'scope', 'message']
+const REQUIRED_FIELDS = ['name', 'jobTitle', 'email', 'purpose', 'message']
 
 function escapeHtml(value) {
   return String(value ?? '')
@@ -29,7 +29,7 @@ export default async function handler(request, response) {
     })
   }
 
-  const { name, email, organization, scope, message } = body
+  const { name, jobTitle, email, purpose, message } = body
 
   try {
     const mailtrapResponse = await fetch('https://send.api.mailtrap.io/api/send', {
@@ -42,7 +42,7 @@ export default async function handler(request, response) {
         from: { email: process.env.FROM_EMAIL },
         to: [{ email: process.env.TO_EMAIL }],
         reply_to: { email },
-        subject: `Website Inquiry - ${String(scope).replace(/[\r\n]+/g, ' ')}`,
+        subject: `Website Inquiry - ${String(purpose).replace(/[\r\n]+/g, ' ')}`,
         category: 'Website',
 
         html: `
@@ -58,12 +58,12 @@ export default async function handler(request, response) {
                                 <td>${escapeHtml(email)}</td>
                             </tr>
                             <tr>
-                                <td><strong>Organization</strong></td>
-                                <td>${escapeHtml(organization)}</td>
+                                <td><strong>Job title</strong></td>
+                                <td>${escapeHtml(jobTitle)}</td>
                             </tr>
                             <tr>
-                                <td><strong>Scope</strong></td>
-                                <td>${escapeHtml(scope)}</td>
+                                <td><strong>Purpose</strong></td>
+                                <td>${escapeHtml(purpose)}</td>
                             </tr>
                         </table>
 
@@ -75,8 +75,8 @@ export default async function handler(request, response) {
         text: `
                 Name: ${name}
                 Email: ${email}
-                Organization: ${organization}
-                Scope: ${scope}
+                Job title: ${jobTitle}
+                Purpose: ${purpose}
 
                 Message:
                 ${message}

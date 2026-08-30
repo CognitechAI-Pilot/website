@@ -4,14 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        'agentic': '#3B82F6',
-        'deep-blue': '#1E3A8A',
-        'charcoal': '#1F2937',
-        'dark-bg': '#0F172A',
-        'card-dark': '#1E293B'
+        'ink': '#121B2B'
       },
-      spacing: {
-        '30': '7.5rem'
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Urbanist', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
       }
     }
   },

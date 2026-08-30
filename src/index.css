@@ -5,14 +5,67 @@
 @layer base {
   body {
     font-family: 'Inter', sans-serif;
+    background-color: #121B2B;
+    color: #94A3B8;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Urbanist', sans-serif;
+  }
+
+  /* Anchor targets sit below the fixed 80px navbar. */
+  section[id],
+  footer[id] {
+    scroll-margin-top: 5rem;
   }
 }
 
 @layer components {
-  .gradient-text {
-    background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .glow-card {
+    background: linear-gradient(135deg, rgba(22, 33, 53, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
+
+  .glow-card-active {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, rgba(18, 27, 43, 0.9) 100%);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+  }
+
+  .tab-btn-active {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(30, 58, 138, 0.4) 100%);
+    border-color: #3b82f6;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.25);
+  }
+
+  .customer-tab-active {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.5) 0%, rgba(15, 23, 42, 0.9) 100%);
+    border-color: #3b82f6;
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.25);
+  }
+
+  .fade-in {
+    animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .active-pulse {
+    animation: pulse-border 2s infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: rgba(59, 130, 246, 0.3); }
+  50% { border-color: rgba(59, 130, 246, 0.7); }
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-in, .active-pulse { animation: none; }
 }

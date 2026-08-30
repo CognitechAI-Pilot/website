@@ -1,119 +1,78 @@
+export const contactEmail = 'dinesh@cognitech.co.nz'
+
 export const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#approach', label: 'Our Approach' },
-  { href: '#services', label: 'Capabilities' },
-  { href: '#showcase', label: 'Digital Co-Worker' },
-  { href: '#team', label: 'Our Team Model' }
+  { href: '#about', label: 'About Us' },
+  {
+    label: 'Digital Co-Worker',
+    children: [
+      { href: '#delivery-coworker', label: 'Technology Delivery Lifecycle Co-Worker' },
+      { href: '#framework', label: 'AI Strategy & Creation Framework' },
+      { href: '#customers', label: 'Digital Co-Workers in Action' },
+      { href: '#roi', label: 'Return On Investment (ROI)' }
+    ]
+  },
+  { href: '#pricing', label: 'Pricing' },
+  { href: '#team', label: 'Meet the Team' }
 ]
 
-export const edgePoints = [
-  {
-    title: 'Strict Data Sovereignty:',
-    body: 'Business data remains securely ring-fenced within local cloud environments.'
-  },
-  {
-    title: 'Explicit Boundaries:',
-    body: 'System routing built tightly around exact legal and policy source repositories.'
-  },
-  {
-    title: 'Human-in-the-Loop:',
-    body: 'Built-in structural checkpoints for absolute manual control and sign-off.'
-  },
-  {
-    title: 'Cost-Optimized Compute:',
-    body: 'Targeted model quantization engineered to eliminate escalating API runtime overheads.'
-  }
+// Values MUST match the <option> values in Contact.jsx — the pricing CTAs
+// preselect the enquiry purpose by value.
+export const enquiryPurposes = [
+  'Technology BA Digital Co-Worker Pilot',
+  'Executive / Personal Assistant Co-Worker',
+  'Sovereign Onshore Architecture Consultation',
+  'AI Strategy Readiness & PoC',
+  'Digital Co-Worker Support Retainer',
+  'Policy or Operations Co-Worker Roadmap',
+  'General Executive Inquiry'
 ]
 
-export const phases = [
-  {
-    phase: 'Phase 01',
-    title: 'AI Strategy & Readiness',
-    body: 'We bring architectural clarity before you commit capital. Utilizing our proprietary AI Adoption Framework, we conduct deep-dive discovery audits to map your unstructured data pools, evaluate technical readiness, and isolate high-value use cases aligned with your operational logic.',
-    icon: 'fa-compass',
-    footer: 'Discovery & Risk Profiling'
-  },
-  {
-    phase: 'Phase 02',
-    title: 'AI Design, Build & Deploy',
-    body: 'Where architectural blueprints meet global engineering muscle. We map your target data planes and engineer custom, context-aware digital pipelines tailored to your legacy infrastructure. Development is scaled rapidly via our elite technical execution pods.',
-    icon: 'fa-cubes',
-    footer: 'Engineering & Core Integration'
-  },
-  {
-    phase: 'Phase 03',
-    title: 'AI Enablement & Support',
-    body: 'Ensuring long-term operational autonomy. We build secure human-in-the-loop checkpoints, handle structured capability transfer to your internal teams, and provide ongoing solution governance to ensure systems conform strictly to compliance baselines.',
-    icon: 'fa-shield-halved',
-    footer: 'Governance & Continuous Tuning'
-  }
-]
-
-export const capabilities = [
-  {
-    icon: 'fa-compass',
-    title: 'AI Strategy & Roadmap',
-    body: 'Translating organizational policy and responsible AI principles into structured strategic frameworks and executable technology roadmaps.'
-  },
-  {
-    icon: 'fa-server',
-    title: 'Localized LLM Development',
-    body: 'Fine-tuning, optimizing, and containerizing foundational models to run entirely within your secure, private cloud tenant to lower latency and safeguard data.'
-  },
-  {
-    icon: 'fa-database',
-    title: 'Knowledge Agents',
-    body: 'Structuring fragmented, unstructured repositories (legacy docs, codebases, registries) into a secure, easily answerable organizational knowledge plane.'
-  },
-  {
-    icon: 'fa-user-gear',
-    title: 'Digital Co-Workers',
-    body: 'Context-aware execution units built to automate complex intake and documentation workflows alongside your specialists with mandatory human-in-the-loop verification.'
-  },
-  {
-    icon: 'fa-network-wired',
-    title: 'Agentic Systems',
-    body: 'Designing multi-step, goal-oriented AI configurations capable of running safe, predictable, and deterministic pipelines across your software stacks.'
-  },
-  {
-    icon: 'fa-flask',
-    title: 'Innovation & Accelerator Lab',
-    body: 'Evaluating and trialing emerging AI capabilities to rapidly de-risk and accelerate technology adoption across complex enterprise use cases.'
-  }
-]
+// Each pricing CTA preselects one of the purposes above. Keeping the values in
+// one place is what stops them drifting apart — in the static site two of the
+// three CTAs passed strings with no matching option, which blanked the select.
+export const pricingPurpose = {
+  poc: 'AI Strategy Readiness & PoC',
+  sovereign: 'Sovereign Onshore Architecture Consultation',
+  retainer: 'Digital Co-Worker Support Retainer'
+}
 
 export const teamMembers = [
   {
     name: 'Dinesh',
     image: '/dinesh.jpg',
     role: 'Principal Business Analyst & AI Solutions Orchestrator',
+    detail: 'Enterprise AI strategy, delivery orchestration and governance',
     highlighted: true
   },
   {
     name: 'Malintha',
     image: '/malintha_original.jpg',
     role: 'Lead AI Systems Architect',
-    detail: 'Enterprise Systems Integration & Technical Discovery'
+    detail: 'Enterprise systems integration & technical discovery'
   },
   {
     name: 'Chamodya',
     image: '/Chamodya.jpg',
     role: 'LLM Engineering Specialist',
-    detail: 'Contextual Ingestion, Fine-Tuning & Vector Architectures'
+    detail: 'Contextual ingestion, fine-tuning & vector architectures'
   }
 ]
 
-export const executionFocus = [
-  { icon: 'fa-layer-group', label: 'Data Ingestion & Enterprise Vectorization' },
-  { icon: 'fa-microchip', label: 'Model Quantization & Local Deployment' },
-  { icon: 'fa-link', label: 'Secure API Middleware & Pipeline Integration' }
-]
-
-export const scopeOptions = [
-  'AI Operational Strategy & Scoping',
-  'Knowledge Agent Integration',
-  'Custom / Localized LLM Fine-Tuning',
-  'General Transformation Enquiry'
-]
-
-export const contactEmail = 'dinesh@cognitech.co.nz'
+// Roadmap outcome cards, per role. Lifted from the v2 render logic.
+export const roadmapOutcomes = {
+  policy: [
+    { title: 'Policy Traceability', text: 'Targeted reduction in legislative and regulatory compliance review cycles.', icon: 'fa-magnifying-glass' },
+    { title: 'Sovereign Air-Gap', text: 'Onshore processing across local cloud providers guaranteeing total data sovereignty.', icon: 'fa-lock' },
+    { title: 'Automated Compliance Auditability', text: 'Execution trace logging for board and audit committee oversight.', icon: 'fa-file-contract' }
+  ],
+  operations: [
+    { title: 'Inquiry Automation', text: 'Automates routine vendor and back-office shared services queries.', icon: 'fa-comments' },
+    { title: 'Enterprise System Integration', text: 'Safely executes approved actions across core enterprise CRM, ERP, and HRIS platforms.', icon: 'fa-diagram-project' },
+    { title: 'Zero Data Leakage', text: 'Zero-trust IAM bounds ensure strict role-based data permissions.', icon: 'fa-shield-cat' }
+  ],
+  executive: [
+    { title: 'Contextual Cross-Squad Synthesis', text: 'Summarizes multi-squad velocity, blocker logs, and release readiness into board briefs.', icon: 'fa-chart-pie' },
+    { title: 'Zero Data Retention (ZDR)', text: 'Complete tenant isolation ensures confidential executive decisions never train external models.', icon: 'fa-user-shield' },
+    { title: 'Authenticated Workflow Approvals', text: 'Reviews and signs off Jira epics and procurement items with human-in-the-loop security.', icon: 'fa-signature' }
+  ]
+}
