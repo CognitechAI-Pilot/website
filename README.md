@@ -56,6 +56,26 @@ copy means editing that file.
 | `FROM_EMAIL` | Sender address (must be a verified Mailtrap domain) |
 | `TO_EMAIL` | Where enquiries are delivered |
 
+### Abuse controls
+
+`api/inquiry.js` layers cheap filters before it will send anything:
+
+| Control | Behaviour |
+| --- | --- |
+| Honeypot (`company` field) | Hidden from people; if filled, the API answers 200 without sending, so bots record success and move on |
+| Minimum fill time | Submissions faster than 3s are rejected |
+| Field length caps | name 100, jobTitle 120, email 254, purpose 120, message 4000 |
+| Email format | Rejected before any upstream call |
+| Per-IP rate limit | 3 per 10 minutes, then HTTP 429 with `Retry-After` |
+
+The rate limit counter lives in the function instance's memory. Vercel can run
+several instances and cold starts reset them, so it throttles a single noisy
+source rather than guaranteeing a global cap. For a hard limit, add a **Vercel
+Firewall** rate-limiting rule on `/api/inquiry` (Project → Firewall) — it runs
+at the edge, before the function is invoked, so it also saves the invocation
+cost. For a challenge-based defence, Cloudflare Turnstile is the usual next
+step.
+
 The pricing CTAs preselect the enquiry purpose. The values live in
 `pricingPurpose` in `src/data/site.js` and must stay within `enquiryPurposes` in
 the same file — that is what keeps them from drifting apart.
