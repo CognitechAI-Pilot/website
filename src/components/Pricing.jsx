@@ -116,11 +116,12 @@ export default function Pricing({ onSelectPurpose }) {
 
             <div className="mb-6">
               <span className="text-4xl font-black text-white">$500</span>
-              <span className="text-xs font-mono text-slate-500 block mt-1">Starting base support plan / month</span>
+              <span className="text-xs font-mono text-slate-500 block mt-1">Base squad support plan (up to 10 active users) / month</span>
             </div>
 
             <ul className="space-y-3 text-xs text-slate-300 border-t border-slate-800 pt-6">
               {[
+                'Covers 1 dedicated delivery squad (up to 10 users)',
                 'Base operational monitoring & incident triage',
                 'Continuous model tuning & prompt optimization',
                 'Ongoing security & compliance boundary audits',
@@ -132,6 +133,14 @@ export default function Pricing({ onSelectPurpose }) {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-6 pt-4 border-t border-slate-800/80">
+              <p className="text-[11px] text-slate-500 italic leading-snug">
+                * Retainer covers ongoing engineering and governance for up to 10 active squad users (multi-squad
+                deployments custom scoped). Direct tenant licensing, cloud compute, and token usage are billed at cost
+                directly to the client&rsquo;s cloud subscription.
+              </p>
+            </div>
           </div>
 
           <a

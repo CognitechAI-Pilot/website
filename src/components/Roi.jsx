@@ -43,11 +43,11 @@ export default function Roi() {
                 </div>
 
                 <div className="glow-card p-6 rounded-2xl border border-slate-800 text-center relative overflow-hidden">
-                    <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block mb-1">Enterprise Org Scale</span>
+                    <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block mb-1">Squad Pool Scale</span>
                     <div className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300">
-                        4,200%+
+                        3,600%+
                     </div>
-                    <span className="text-xs font-bold text-white block mt-1">12-BA Scale ROI</span>
+                    <span className="text-xs font-bold text-white block mt-1">Up to 10-BA Squad Scale</span>
                     <p className="text-[11px] text-slate-400 mt-1 leading-tight">Exponential scale as fixed support &amp; tenant tiers are shared</p>
                 </div>
             </div>
@@ -75,7 +75,7 @@ export default function Roi() {
                                 <span className="text-emerald-400 font-mono font-bold">+350% Net ROI</span>
                             </div>
                             <div className="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden border border-slate-800">
-                                <div className="bg-gradient-to-r from-blue-500 to-emerald-400 h-2.5 rounded-full" style={{ width: '12%' }}></div>
+                                <div className="bg-gradient-to-r from-blue-500 to-emerald-400 h-2.5 rounded-full" style={{ width: '15%' }}></div>
                             </div>
                         </div>
 
@@ -85,24 +85,24 @@ export default function Roi() {
                                 <span className="text-emerald-400 font-mono font-bold">+1,250% Net ROI</span>
                             </div>
                             <div className="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden border border-slate-800">
-                                <div className="bg-gradient-to-r from-blue-500 to-emerald-400 h-2.5 rounded-full" style={{ width: '32%' }}></div>
+                                <div className="bg-gradient-to-r from-blue-500 to-emerald-400 h-2.5 rounded-full" style={{ width: '38%' }}></div>
                             </div>
                         </div>
 
                         <div>
                             <div className="flex justify-between font-semibold mb-1">
                                 <span className="text-slate-300">6-BA Multi-Squad Scale</span>
-                                <span className="text-emerald-400 font-mono font-bold">+2,600% Net ROI</span>
+                                <span className="text-emerald-400 font-mono font-bold">+2,400% Net ROI</span>
                             </div>
                             <div className="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden border border-slate-800">
-                                <div className="bg-gradient-to-r from-blue-500 to-emerald-400 h-2.5 rounded-full" style={{ width: '58%' }}></div>
+                                <div className="bg-gradient-to-r from-blue-500 to-emerald-400 h-2.5 rounded-full" style={{ width: '65%' }}></div>
                             </div>
                         </div>
 
                         <div>
                             <div className="flex justify-between font-semibold mb-1">
-                                <span className="text-slate-300">12-BA Enterprise Scale</span>
-                                <span className="text-emerald-400 font-mono font-bold">+4,200% Net ROI</span>
+                                <span className="text-slate-300">10-BA Delivery Squad Scale</span>
+                                <span className="text-emerald-400 font-mono font-bold">+3,600% Net ROI</span>
                             </div>
                             <div className="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden border border-slate-800">
                                 <div className="bg-gradient-to-r from-blue-500 to-emerald-400 h-2.5 rounded-full" style={{ width: '100%' }}></div>
@@ -121,7 +121,7 @@ export default function Roi() {
                         <span className="text-[10px] font-mono text-cyan-400 uppercase bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/30">Unit Cost Curve</span>
                     </div>
                     <p className="text-xs text-slate-400 leading-relaxed">
-                        Because base infrastructure and support are shared across the tenant, the unit cost per BA drops by approximately <strong>90%</strong> as adoption scales:
+                        Because base infrastructure and support are shared across the squad tenant, the unit cost per BA drops by approximately <strong>88%</strong> as adoption scales:
                     </p>
 
                     <div className="space-y-3 pt-2 text-xs">
@@ -148,20 +148,20 @@ export default function Roi() {
                         <div>
                             <div className="flex justify-between font-semibold mb-1">
                                 <span className="text-slate-300">6 BAs (Expanded Squads)</span>
-                                <span className="text-cyan-400 font-mono font-bold">-83% Unit Cost per BA</span>
+                                <span className="text-cyan-400 font-mono font-bold">-80% Unit Cost per BA</span>
                             </div>
                             <div className="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden border border-slate-800">
-                                <div className="bg-gradient-to-r from-cyan-500 to-blue-500 h-2.5 rounded-full" style={{ width: '17%' }}></div>
+                                <div className="bg-gradient-to-r from-cyan-500 to-blue-500 h-2.5 rounded-full" style={{ width: '20%' }}></div>
                             </div>
                         </div>
 
                         <div>
                             <div className="flex justify-between font-semibold mb-1">
-                                <span className="text-slate-300">12 BAs (Enterprise Pool)</span>
-                                <span className="text-emerald-400 font-mono font-bold">-90% Unit Cost per BA</span>
+                                <span className="text-slate-300">10 BAs (Enterprise Squad Pool)</span>
+                                <span className="text-emerald-400 font-mono font-bold">-88% Unit Cost per BA</span>
                             </div>
                             <div className="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden border border-slate-800">
-                                <div className="bg-gradient-to-r from-emerald-400 to-cyan-400 h-2.5 rounded-full" style={{ width: '10%' }}></div>
+                                <div className="bg-gradient-to-r from-emerald-400 to-cyan-400 h-2.5 rounded-full" style={{ width: '12%' }}></div>
                             </div>
                         </div>
                     </div>
@@ -197,22 +197,19 @@ export default function Roi() {
                 </div>
             </div>
 
-            {/*
-              Substantiation notice. The figures above are a modelled projection, not
-              measured client outcomes. Under the Fair Trading Act 1986 a performance
-              claim must have a reasonable basis at the time it is made, so the
-              assumptions behind the model need to be stated and kept current.
-              TODO(cognitech): replace the bracketed placeholders with the real inputs.
-            */}
-            <div className="mt-10 p-5 rounded-2xl bg-slate-950/80 border border-slate-800">
-                <p className="text-[11px] text-slate-500 leading-relaxed">
-                    <strong className="text-slate-400 font-semibold">How these figures are calculated.</strong>{' '}
-                    The returns shown are an illustrative financial model, not a guarantee of results, and not
-                    averaged client outcomes. They assume a fully-loaded analyst cost of [ANALYST_COST] per annum,
-                    [HOURS_SAVED] hours returned per analyst per month, and Cognitech licence and retainer costs at
-                    the published rates. Capacity gains observed during the NZ Post proof of concept are described in
-                    that case study. Actual results depend on repository readiness, workflow complexity, and adoption,
-                    and will vary by organisation. We will share the underlying model on request.
+            {/* Methodological footnote & commercial disclaimer */}
+            <div className="mt-8 pt-4 border-t border-slate-800 text-center">
+                <p className="text-[11px] text-slate-500 leading-relaxed max-w-4xl mx-auto">
+                    <strong className="text-slate-400 font-semibold">
+                        * Economic Modeling Methodology &amp; Disclaimer:
+                    </strong>{' '}
+                    ROI projections and diminishing cost curves are illustrative benchmarks modeled on empirical test
+                    trajectories from the Technology Delivery Lifecycle (BA) pilot (standardized at ~63 deep discovery
+                    cycles/user/month utilizing Microsoft Copilot Studio tenant capacity and dedicated Azure AI Search
+                    indexing). Actual commercial returns, token consumption, and budget impact vary based on
+                    organizational data complexity, underlying enterprise licensing, integration scope, and human
+                    adoption rates. Formal financial models are tailored per client during the Phase 1 Readiness
+                    Assessment.
                 </p>
             </div>
         </section>

@@ -68,19 +68,19 @@ export const p2StageData = {
 export const roleData = {
     delivery: {
         isRoadmap: false,
-        isNZPost: true,
+        hasVideo: true,
         label: "Blueprint Scope: Universal Horizontal Deployment (Deploys across tech squads in ALL enterprise sectors)",
-        subHeader: "UNIVERSAL HORIZONTAL PROOF OF CONCEPT • PARCELS & LOGISTICS EXAMPLE",
-        title: "NZ Post Proof of Concept: Business Analyst Digital Co-Worker",
+        subHeader: "UNIVERSAL HORIZONTAL PROOF OF CONCEPT • NATIONAL LOGISTICS & POSTAL CASE STUDY",
+        title: "Enterprise Proof of Concept: Business Analyst Digital Co-Worker",
         badge: "Proof of Concept",
         badgeClass: "bg-blue-500/10 border-blue-500/30 text-blue-300",
-        challenge: "Navigating dense, multi-layered legacy operational documents and mapping complex requirements created significant administrative bottlenecks for Business Analysts at NZ Post. Manual data discovery delayed project kickoff times and increased the risk of missed dependencies.",
+        challenge: "Navigating dense, multi-layered legacy operational documents and mapping complex requirements created significant administrative bottlenecks for Business Analysts at a leading national postal and logistics enterprise. Manual data discovery delayed project kickoff times and increased the risk of missed dependencies.",
         solution: "Cognitech deployed a specialized Business Analyst Digital Co-Worker to ingest, structure, and query expansive knowledge repositories in real-time—accelerating user story creation while keeping human analysts in complete control.",
         img: "",
         tag: "Universal Technology & Delivery Blueprint",
         badgeBar: `
             <span class="px-3 py-1 rounded-full bg-blue-600/20 border border-blue-500/40 text-blue-300 font-semibold flex items-center gap-1.5 shadow-sm">
-                <i class="fa-solid fa-truck-fast text-[10px]"></i> Parcels &amp; Logistics (NZ Post Proof of Concept)
+                <i class="fa-solid fa-truck-fast text-[10px]"></i> Logistics &amp; Supply Chain (Enterprise PoC)
             </span>
             <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-400 flex items-center gap-1.5">
                 <i class="fa-solid fa-landmark text-[10px]"></i> Public Sector &amp; Govt
@@ -122,7 +122,7 @@ export const roleData = {
     },
     policy: {
         isRoadmap: true,
-        isNZPost: false,
+        hasVideo: false,
         label: "Blueprint Scope: Primary Vertical Focus (Public Sector, Central Govt & Regulated Compliance)",
         subHeader: "PRODUCT ROADMAP • PUBLIC SECTOR & REGULATED COMPLIANCE BLUEPRINT",
         title: "Public Sector: Policy, Governance & Regulatory Co-Worker",
@@ -148,7 +148,7 @@ export const roleData = {
     },
     operations: {
         isRoadmap: true,
-        isNZPost: false,
+        hasVideo: false,
         label: "Blueprint Scope: Primary Vertical Focus (Retail, Supply Chain, Logistics & Shared Services)",
         subHeader: "PRODUCT ROADMAP • RETAIL & SUPPLY CHAIN SHARED SERVICES BLUEPRINT",
         title: "Retail & Supply Chain: Operations & Shared Services Co-Worker",
@@ -174,7 +174,7 @@ export const roleData = {
     },
     executive: {
         isRoadmap: true,
-        isNZPost: false,
+        hasVideo: false,
         label: "Blueprint Scope: Single-User & Executive Multiplier (Executives, Founders, Directors & SME Owners)",
         subHeader: "PRODUCT ROADMAP • EXECUTIVE & FOUNDER PERSONAL ASSISTANT BLUEPRINT",
         title: "Executive & Founder: Personal Assistant Digital Co-Worker",

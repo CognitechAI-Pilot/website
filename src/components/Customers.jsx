@@ -141,14 +141,14 @@ export default function Customers({ activeRole, onSelectRole }) {
           {/* Media frame */}
           <div className="lg:col-span-5 rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 p-2 shadow-2xl">
             <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center">
-              {data.isNZPost ? (
+              {data.hasVideo ? (
                 <video
                   controls
                   preload="none"
                   className="w-full h-full object-cover"
-                  aria-label="NZ Post Business Analyst Digital Co-Worker proof of concept demonstration"
+                  aria-label="Business Analyst Digital Co-Worker proof of concept demonstration"
                 >
-                  <source src="/nz-post-ba-coworker-demo.mp4" type="video/mp4" />
+                  <source src="/enterprise-ba-coworker-demo.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               ) : (
@@ -214,8 +214,8 @@ export default function Customers({ activeRole, onSelectRole }) {
 
           {!data.isRoadmap && (
             <p className="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-500 leading-relaxed">
-              Benchmarks measured during the NZ Post proof of concept and published with their permission. Results
-              reflect that engagement&rsquo;s repositories and workflows; outcomes vary by organisation.
+              Benchmarks measured during the Business Analyst proof of concept described above. Results reflect that
+              engagement&rsquo;s repositories and workflows; outcomes vary by organisation.
             </p>
           )}
         </div>

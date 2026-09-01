@@ -138,7 +138,7 @@ export default function DeliveryCoWorker({ onViewProofPoint }) {
                               <h3 className="text-xl font-bold text-white">How This Co-Worker Empowers Every Persona in Delivery</h3>
                           </div>
                           <a href="#customers" onClick={() => onViewProofPoint('delivery')} className="px-4 py-2 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/40 text-blue-300 text-xs font-bold transition-all inline-flex items-center gap-2">
-                              <span>View Live NZ Post Proof Point</span>
+                              <span>View Live Enterprise Proof Point</span>
                               <i className="fa-solid fa-arrow-right text-[10px]"></i>
                           </a>
                       </div>

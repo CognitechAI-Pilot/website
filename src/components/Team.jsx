@@ -18,28 +18,27 @@ export default function Team() {
           <span className="text-xs text-slate-500 font-mono block mt-1">NEW ZEALAND CORE ARCHITECTURE TEAM</span>
         </div>
 
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {teamMembers.map((member) => (
             <div
               key={member.name}
-              className="flex flex-col sm:flex-row items-center sm:items-start gap-6 p-4 rounded-2xl bg-slate-950/60 border border-slate-800"
+              className="flex items-center gap-5 p-5 rounded-2xl bg-slate-950/60 border border-slate-800"
             >
               <div
-                className={`w-32 h-32 rounded-full overflow-hidden border-2 flex items-center justify-center font-black text-3xl flex-shrink-0 shadow-xl ${member.ring}`}
+                className={`w-20 h-20 rounded-full overflow-hidden border-2 flex items-center justify-center font-black text-2xl flex-shrink-0 shadow-lg ${member.ring}`}
               >
                 <img
                   src={member.image}
                   alt={`${member.name}, ${member.role}`}
-                  width="128"
-                  height="128"
+                  width="80"
+                  height="80"
                   loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="text-center sm:text-left pt-2">
-                <h3 className="text-xl sm:text-2xl font-black text-white">{member.name}</h3>
-                <span className={`text-xs font-bold font-mono block mb-2 ${member.roleColor}`}>{member.role}</span>
-                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{member.bio}</p>
+              <div>
+                <h3 className="text-lg font-black text-white">{member.name}</h3>
+                <span className={`text-xs font-bold font-mono block mt-1 ${member.roleColor}`}>{member.role}</span>
               </div>
             </div>
           ))}

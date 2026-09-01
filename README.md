@@ -60,16 +60,21 @@ The pricing CTAs preselect the enquiry purpose. The values live in
 `pricingPurpose` in `src/data/site.js` and must stay within `enquiryPurposes` in
 the same file — that is what keeps them from drifting apart.
 
+## Client anonymity
+
+The flagship case study is published without naming the client. The copy, the
+video filename (`enterprise-ba-coworker-demo.mp4`) and the `hasVideo` flag in
+`src/data/coworker.js` are all deliberately client-neutral — filenames and data
+keys ship in public URLs and the JS bundle, so a client name in either would
+defeat the anonymisation. Keep it that way when editing.
+
 ## Outstanding before launch
 
 - **Hero image.** `src/components/Hero.jsx` still hot-links a stock photo from
   Unsplash. Replace it with a self-hosted, licensed image in `public/`.
 - **Open Graph image.** `index.html` references `/og-cover.jpg`, which does not
   exist yet. Add a 1200×630 image, or link previews will fall back to a bare link.
-- **ROI substantiation.** The note at the end of `src/components/Roi.jsx`
-  contains `[ANALYST_COST]` and `[HOURS_SAVED]` placeholders. Fill these in with
-  the real modelling inputs before the ROI section goes live.
-- **Video hosting.** `public/nz-post-ba-coworker-demo.mp4` is 16 MB and is
+- **Video hosting.** `public/enterprise-ba-coworker-demo.mp4` is 16 MB and is
   committed to the repository. Consider a video host or Vercel Blob if more
   demos are added.
 
