@@ -3,7 +3,7 @@
 export const teamMembers = [
   {
     name: 'Dinesh',
-    role: 'Co-Founder & Chief AI Officer',
+    role: 'CEO',
     image: '/dinesh.jpg',
     ring: 'border-blue-500/40 bg-blue-600/20 text-blue-400 shadow-blue-500/10',
     roleColor: 'text-blue-400'
