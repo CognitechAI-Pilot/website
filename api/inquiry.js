@@ -145,7 +145,7 @@ export default async function handler(request, response) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: { email: process.env.FROM_EMAIL, name: 'Cognitech Website' },
+        from: { email: process.env.FROM_EMAIL, name: 'Cognitech AI Website' },
         to: [{ email: process.env.TO_EMAIL }],
         reply_to: { email },
         subject: `Website Inquiry - ${String(purpose).replace(/[\r\n]+/g, ' ')}`,
