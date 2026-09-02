@@ -40,7 +40,10 @@ export default function Navbar() {
     <nav ref={navRef} className="fixed top-0 left-0 w-full z-50 bg-[#121B2B]/95 backdrop-blur-md border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <a href="#hero" onClick={closeAll} className="flex items-center gap-3">
-          <span className="text-white font-extrabold text-2xl tracking-tight leading-none">Cognitech</span>
+          {/* Steps down below 360px so the longer wordmark cannot wrap into the CTA. */}
+          <span className="text-white font-extrabold text-2xl max-[359px]:text-xl tracking-tight leading-none whitespace-nowrap">
+            Cognitech AI
+          </span>
         </a>
 
         {/* Desktop navigation */}
