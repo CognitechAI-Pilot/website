@@ -74,7 +74,7 @@ export default function Contact({ purpose }) {
           <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono font-bold uppercase tracking-widest">
             DIRECT ENGAGEMENT
           </span>
-          <h2 className="text-3xl sm:text-4xl font-black text-white mt-3 mb-2">Consult Cognitech Engineers</h2>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mt-3 mb-2">Consult Cognitech AI Engineers</h2>
           <p className="text-xs sm:text-sm text-slate-400">
             Submit an enquiry to explore deploying custom Digital Co-Workers, sovereign onshore architecture, or
             scheduling an executive briefing.
@@ -144,11 +144,11 @@ export default function Contact({ purpose }) {
             className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-all shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             <i className={`fa-solid ${submitting ? 'fa-circle-notch fa-spin' : 'fa-paper-plane'}`}></i>
-            <span>{submitting ? 'Sending…' : 'Submit Enquiry to Cognitech'}</span>
+            <span>{submitting ? 'Sending…' : 'Submit Enquiry to Cognitech AI'}</span>
           </button>
 
           <p className="text-center text-[11px] text-slate-500">
-            Enquiries are delivered to the Cognitech team under strict enterprise confidentiality.
+            Enquiries are delivered to the Cognitech AI team under strict enterprise confidentiality.
           </p>
         </form>
 

@@ -31,7 +31,7 @@ export const p2StageData = {
         num: "STAGE 03 OF 05 (IMPLEMENTATION)",
         title: "Stage 03: Capability Composition & Engine Wiring",
         question: "What cognitive engines and persistent memory systems are needed for this role?",
-        desc: "Wires together Cognitech's IP building blocks: AST parsers, dynamic GraphRAG knowledge graphs, persistent declarative memory stores, and agentskills.io procedural engines.",
+        desc: "Wires together Cognitech AI's IP building blocks: AST parsers, dynamic GraphRAG knowledge graphs, persistent declarative memory stores, and agentskills.io procedural engines.",
         proof: "Combined AST Code Parsers, GraphRAG properties, and Persistent Declarative Memory with Jira MCP gateways to draft stories in seconds.",
         pillars: [
             { title: "Hybrid Memory & Context Engines", text: "AST Code Parsers, Dynamic GraphRAG, Persistent Declarative Memory, and SQLite FTS5 episodic recall." },
@@ -75,7 +75,7 @@ export const roleData = {
         badge: "Proof of Concept",
         badgeClass: "bg-blue-500/10 border-blue-500/30 text-blue-300",
         challenge: "Navigating dense, multi-layered legacy operational documents and mapping complex requirements created significant administrative bottlenecks for Business Analysts at a leading national postal and logistics enterprise. Manual data discovery delayed project kickoff times and increased the risk of missed dependencies.",
-        solution: "Cognitech deployed a specialized Business Analyst Digital Co-Worker to ingest, structure, and query expansive knowledge repositories in real-time—accelerating user story creation while keeping human analysts in complete control.",
+        solution: "Cognitech AI deployed a specialized Business Analyst Digital Co-Worker to ingest, structure, and query expansive knowledge repositories in real-time—accelerating user story creation while keeping human analysts in complete control.",
         img: "",
         tag: "Universal Technology & Delivery Blueprint",
         badgeBar: `
