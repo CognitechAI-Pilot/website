@@ -1,6 +1,6 @@
-# Cognitech AI Limited — Website
+# Cognitech Limited — Website
 
-Marketing site for Cognitech AI Limited, built with React + Vite + Tailwind CSS and
+Marketing site for Cognitech Limited, built with React + Vite + Tailwind CSS and
 deployed to Vercel, with a serverless function backing the enquiry form.
 
 ## Getting started

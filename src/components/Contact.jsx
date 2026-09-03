@@ -153,7 +153,7 @@ export default function Contact({ purpose }) {
         </form>
 
         <div className="mt-12 text-center text-xs text-slate-500">
-          <p>&copy; 2026 Cognitech AI Limited. Governed Digital Co-Workers for Enterprise Productivity.</p>
+          <p>&copy; 2026 Cognitech Limited. Governed Digital Co-Workers for Enterprise Productivity.</p>
         </div>
       </div>
     </footer>
