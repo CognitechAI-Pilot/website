@@ -45,6 +45,13 @@
     box-shadow: 0 0 25px rgba(59, 130, 246, 0.25);
   }
 
+  /* Radial wash behind the architecture blueprint canvas. Tailwind v3 cannot
+     express a radial gradient without an arbitrary-value string long enough to
+     be unreadable inline, so it lives here with the other component classes. */
+  .blueprint-canvas {
+    background: radial-gradient(circle at 50% 0%, rgba(30, 58, 138, 0.15) 0%, rgba(12, 19, 34, 0.95) 75%);
+  }
+
   .fade-in {
     animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
