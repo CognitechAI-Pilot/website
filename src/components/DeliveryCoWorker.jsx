@@ -1,52 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
-import { stackBlueprints, personaData } from '../data/coworker'
-
-const STACKS = [
-  { key: 'ms', label: 'Azure / M365', icon: 'fa-brands fa-microsoft' },
-  { key: 'aws', label: 'AWS Bedrock', icon: 'fa-brands fa-aws' },
-  { key: 'gcp', label: 'Google Cloud', icon: 'fa-brands fa-google' },
-  { key: 'sovereign', label: 'Sovereign Onshore', icon: 'fa-solid fa-shield-halved' }
-]
-
-const PERSONAS = [
-  { key: 'ba', label: 'Technology BA' },
-  { key: 'qa', label: 'QA Engineer' },
-  { key: 'sme', label: 'Developer / SME' }
-]
+import { useState } from 'react'
+import ArchitectureBlueprint from './ArchitectureBlueprint'
 
 export default function DeliveryCoWorker({ onViewProofPoint }) {
   const [tab, setTab] = useState('capabilities')
-  const [stack, setStack] = useState('sovereign')
-  const [persona, setPersona] = useState('ba')
-  const gridRef = useRef(null)
-
-  // The blueprint markup carries the persona panel inside it, so the panel is
-  // patched after each blueprint render. Queries are scoped to the container.
-  useEffect(() => {
-    const root = gridRef.current
-    if (!root) return
-
-    const data = personaData[persona]
-    if (!data) return
-
-    const title = root.querySelector('#arch-persona-title')
-    if (title) title.textContent = data.title
-
-    const list = root.querySelector('#arch-persona-bullets')
-    if (list) {
-      list.textContent = ''
-      for (const bullet of data.bullets) {
-        const li = document.createElement('li')
-        li.className = 'flex items-start gap-2'
-        const icon = document.createElement('i')
-        icon.className = 'fa-solid fa-arrow-right text-purple-400 mt-0.5'
-        const span = document.createElement('span')
-        span.textContent = bullet
-        li.append(icon, span)
-        list.appendChild(li)
-      }
-    }
-  }, [stack, persona])
 
   const tabClass = (key) =>
     `px-4 sm:px-6 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 border border-transparent ${
@@ -91,7 +47,7 @@ export default function DeliveryCoWorker({ onViewProofPoint }) {
             className={tabClass('architecture')}
           >
             <i className="fa-solid fa-layer-group"></i>
-            <span>Stack-Agnostic Architecture Blueprint</span>
+            <span>Enterprise AI Architecture Blueprint</span>
           </button>
         </div>
       </div>
@@ -173,79 +129,27 @@ export default function DeliveryCoWorker({ onViewProofPoint }) {
           role="tabpanel"
           id="panel-architecture"
           aria-labelledby="tab-architecture"
-          className="fade-in bg-slate-950 p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-2xl"
+          className="fade-in bg-slate-950 p-4 sm:p-8 rounded-3xl border border-slate-800 shadow-2xl"
         >
-          <div className="text-center max-w-2xl mx-auto mb-8">
-            <span className="text-[10px] font-mono text-blue-400 font-bold uppercase tracking-widest block mb-1">
-              DECOUPLED SYSTEM BLUEPRINT
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-black text-white">Stack-Agnostic Architecture Blueprint</h3>
-            <p className="text-xs text-slate-400 mt-1">
-              Toggle infrastructure stacks and digital co-worker personas to inspect universal agentic design
-              patterns across public cloud and onshore open source.
+          <div className="text-center max-w-3xl mx-auto mb-8 space-y-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Enterprise Reference Architecture</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-black text-white">
+              Governed Enterprise AI Architecture Blueprint
+            </h3>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              A universal reference blueprint illustrating how Cognitech AI&rsquo;s Digital Co-Worker engine
+              integrates with existing enterprise identity, data systems, and interchangeable cloud or onshore
+              infrastructure.
             </p>
           </div>
 
-          <div className="glow-card p-4 rounded-2xl mb-8 border border-slate-800 flex flex-col lg:flex-row justify-between gap-6 items-center">
-            <div className="w-full lg:w-auto">
-              <span className="text-[10px] font-mono font-bold uppercase text-slate-400 tracking-wider block mb-2">
-                1. Select Enterprise Infrastructure Stack:
-              </span>
-              <div className="grid grid-cols-2 sm:flex gap-2">
-                {STACKS.map((item) => (
-                  <button
-                    key={item.key}
-                    type="button"
-                    onClick={() => setStack(item.key)}
-                    aria-pressed={stack === item.key}
-                    className={`px-4 py-2 text-xs font-bold rounded-xl transition-all border ${
-                      stack === item.key
-                        ? 'bg-blue-600 text-white border-blue-500'
-                        : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-white'
-                    }`}
-                  >
-                    <i className={`${item.icon} mr-1.5`}></i> {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="w-full lg:w-auto lg:border-l lg:border-slate-800 lg:pl-6">
-              <span className="text-[10px] font-mono font-bold uppercase text-slate-400 tracking-wider block mb-2">
-                2. Select Digital Co-Worker Persona:
-              </span>
-              <div className="flex gap-2 bg-slate-950 p-1 rounded-xl border border-slate-800">
-                {PERSONAS.map((item) => (
-                  <button
-                    key={item.key}
-                    type="button"
-                    onClick={() => setPersona(item.key)}
-                    aria-pressed={persona === item.key}
-                    className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all border ${
-                      persona === item.key
-                        ? 'bg-indigo-600/30 text-indigo-300 border-indigo-500/30'
-                        : 'text-slate-400 hover:text-white border-transparent'
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/*
-            Blueprint markup is static, author-authored HTML held in the content
-            module — no user input reaches it.
-          */}
-          <div
-            key={stack}
-            ref={gridRef}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative fade-in"
-            dangerouslySetInnerHTML={{ __html: stackBlueprints[stack] }}
-          />
+          <ArchitectureBlueprint />
         </div>
       )}
+
     </section>
   )
 }
