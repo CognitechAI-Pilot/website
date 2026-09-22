@@ -69,7 +69,8 @@ export default function Pricing({ onSelectPurpose }) {
           <div>
             <h3 className="text-xl font-bold text-white mb-2">Self-Improving Enterprise Digital Co-Worker</h3>
             <p className="text-xs text-slate-300 leading-relaxed mb-6">
-              Persistent, cross-session aware autonomous digital co-worker engineered for full production deployment.
+              Enterprise-grade continuously learning Digital Co-Workers deployed directly into your secure cloud
+              infrastructure, designed to scale alongside your most critical workflows.
             </p>
 
             <ul className="space-y-3 text-xs text-slate-200 border-t border-slate-800 pt-6">
@@ -107,11 +108,13 @@ export default function Pricing({ onSelectPurpose }) {
             </p>
 
             <div className="mb-6">
-              <span className="text-2xl sm:text-3xl font-black text-white block leading-tight">
-                From $500 &ndash; $2,500/mo
-              </span>
-              <span className="text-xs font-mono text-slate-500 block mt-1">
-                Tiered (SME) to Custom Enterprise
+              {/* The {' '} around the divider are load-bearing: without them JSX
+                  strips the whitespace and "$2,500/mo|Enterprise:" becomes one
+                  unbreakable word, which forces the three-up grid open at 768px. */}
+              <span className="text-lg sm:text-xl font-black text-white block leading-snug">
+                SME: $500 &ndash; $2,500/mo{' '}
+                <span className="text-slate-600">|</span>{' '}
+                Enterprise: Custom Scope
               </span>
             </div>
 
