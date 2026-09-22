@@ -79,7 +79,7 @@ export default function Pricing({ onSelectPurpose }) {
                 'Secure system guardrails and supervisory monitoring',
                 'Learns and persists enterprise context',
                 'Multi-agent collaboration',
-                'Zero-trust security and role bounds',
+                'Zero-trust architecture with role-based access',
                 'Enterprise Connectors'
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
