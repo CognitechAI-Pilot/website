@@ -67,27 +67,20 @@ export default function Pricing({ onSelectPurpose }) {
           </span>
 
           <div>
-            <h3 className="text-xl font-bold text-white mb-2">Sovereign, Self-Improving Digital Co-Worker</h3>
+            <h3 className="text-xl font-bold text-white mb-2">Self-Improving Enterprise Digital Co-Worker</h3>
             <p className="text-xs text-slate-300 leading-relaxed mb-6">
-              Persistent, cross-session aware autonomous digital co-worker engineered for full production deployment.
+              Enterprise-grade continuously learning Digital Co-Workers deployed directly into your secure cloud
+              infrastructure, designed to scale alongside your most critical workflows.
             </p>
-
-            <div className="mb-6">
-              <span className="text-2xl sm:text-3xl font-black text-blue-300 block leading-tight">
-                Statement of Work (SoW)
-              </span>
-              <span className="text-xs font-mono text-slate-400 block mt-1">
-                Custom scoped per enterprise role and requirements
-              </span>
-            </div>
 
             <ul className="space-y-3 text-xs text-slate-200 border-t border-slate-800 pt-6">
               {[
-                '100% Onshore Sovereign AI Infrastructure (data remains in New Zealand)',
-                'Cross-Session Institutional Memory (Retains Enterprise Context Across Teams)',
-                'High-Speed Historical Search & Recall (SQLite FTS5 Log Querying)',
-                'Self-Improving Operational Capabilities (Auto-Synthesizes Standardized Workflows)',
-                'Zero-Trust Sandboxed Execution & Continuous Model Fine-Tuning'
+                'Digital Co-Worker operates within the client’s cloud tenant',
+                'Secure system guardrails and supervisory monitoring',
+                'Learns and persists enterprise context',
+                'Multi-agent collaboration',
+                'Zero-trust security and role bounds',
+                'Enterprise Connectors'
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
                   <i className="fa-solid fa-check text-blue-400 mt-0.5"></i>
@@ -102,33 +95,39 @@ export default function Pricing({ onSelectPurpose }) {
             onClick={() => onSelectPurpose(pricingPurpose.sovereign)}
             className={`${tierCta} bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/30`}
           >
-            Inquire for Statement of Work
+            Request Architecture Review
           </a>
         </div>
 
         {/* Tier 3 */}
         <div className="glow-card p-8 rounded-3xl border border-slate-800 flex flex-col justify-between hover:border-blue-500/40 transition-all">
           <div>
-            <h3 className="text-xl font-bold text-white mb-2">Digital Co-Worker Support Retainer</h3>
+            <h3 className="text-xl font-bold text-white mb-2">Digital Co-Worker Support and Governance</h3>
             <p className="text-xs text-slate-400 leading-relaxed mb-6">
-              Continuous engineering maintenance, model fine-tuning, and long-term capability transfer.
+              Continuous improvement, Digital Co-Worker fine tuning, monitoring and reporting.
             </p>
 
             <div className="mb-6">
-              <span className="text-4xl font-black text-white">$500</span>
-              <span className="text-xs font-mono text-slate-500 block mt-1">Base squad support plan (up to 10 active users) / month</span>
+              {/* The {' '} around the divider are load-bearing: without them JSX
+                  strips the whitespace and "$2,500/mo|Enterprise:" becomes one
+                  unbreakable word, which forces the three-up grid open at 768px. */}
+              <span className="text-lg sm:text-xl font-black text-white block leading-snug">
+                SME: $500 &ndash; $2,500/mo{' '}
+                <span className="text-slate-600">|</span>{' '}
+                Enterprise: Custom Scope
+              </span>
             </div>
 
             <ul className="space-y-3 text-xs text-slate-300 border-t border-slate-800 pt-6">
               {[
-                'Covers 1 dedicated delivery squad (up to 10 users)',
+                'Scaling by the number of active Digital Co-Workers',
                 'Base operational monitoring & incident triage',
-                'Continuous model tuning & prompt optimization',
+                'Flexible AI Inference: Bring-Your-Own-Key or Sovereign Models',
                 'Ongoing security & compliance boundary audits',
-                'Dedicated delivery capacity & capability handover'
+                'Dedicated delivery capacity'
               ].map((item) => (
-                <li key={item} className="flex items-center gap-2.5">
-                  <i className="fa-solid fa-check text-blue-400"></i>
+                <li key={item} className="flex items-start gap-2.5">
+                  <i className="fa-solid fa-check text-blue-400 mt-0.5"></i>
                   <span>{item}</span>
                 </li>
               ))}
@@ -136,9 +135,9 @@ export default function Pricing({ onSelectPurpose }) {
 
             <div className="mt-6 pt-4 border-t border-slate-800/80">
               <p className="text-[11px] text-slate-500 italic leading-snug">
-                * Retainer covers ongoing engineering and governance for up to 10 active squad users (multi-squad
-                deployments custom scoped). Direct tenant licensing, cloud compute, and token usage are billed at cost
-                directly to the client&rsquo;s cloud subscription.
+                * Operational managed services scale by the number of active agents and deployment complexity.
+                Cloud compute, direct tenant licensing, and AI inference token usage are billed directly to the
+                client&rsquo;s cloud subscription.
               </p>
             </div>
           </div>
@@ -148,7 +147,7 @@ export default function Pricing({ onSelectPurpose }) {
             onClick={() => onSelectPurpose(pricingPurpose.retainer)}
             className={`${tierCta} bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white`}
           >
-            Inquire for Retainer
+            Inquire for Support Retainer
           </a>
         </div>
       </div>
