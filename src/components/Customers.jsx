@@ -1,6 +1,12 @@
 import { roleData } from '../data/coworker'
 import { roadmapOutcomes } from '../data/site'
 
+// Hosted on Vercel Blob rather than committed to the repo — the previous copy
+// was a 16 MB file in public/. The %20s are required: the blob key contains
+// spaces, so an unencoded URL would 404.
+const BA_DEMO_VIDEO =
+  'https://ijgegdmg6x19waqf.public.blob.vercel-storage.com/Extended%20BA%20Digital%20Co-Worker.mp4'
+
 const ROLE_TABS = [
   {
     key: 'delivery',
@@ -142,13 +148,19 @@ export default function Customers({ activeRole, onSelectRole }) {
           <div className="lg:col-span-5 rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 p-2 shadow-2xl">
             <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center">
               {data.hasVideo ? (
+                /* controlsList + the context-menu handler remove the browser's
+                   own "Save video as…" affordances. They are a deterrent, not
+                   access control: the blob URL is public, so anyone reading the
+                   page source can still fetch the file directly. */
                 <video
                   controls
+                  controlsList="nodownload"
+                  onContextMenu={(event) => event.preventDefault()}
                   preload="none"
                   className="w-full h-full object-cover"
                   aria-label="Business Analyst Digital Co-Worker proof of concept demonstration"
                 >
-                  <source src="/enterprise-ba-coworker-demo.mp4" type="video/mp4" />
+                  <source src={BA_DEMO_VIDEO} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               ) : (
