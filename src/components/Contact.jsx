@@ -36,7 +36,7 @@ export default function Contact({ purpose }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...form,
-          company: honeypot.current?.value ?? '',
+          hp_token: honeypot.current?.value ?? '',
           elapsedMs: Date.now() - mountedAt.current
         })
       })
@@ -89,15 +89,19 @@ export default function Contact({ purpose }) {
             sending, so the bot sees success and moves on.
           */}
           <div aria-hidden="true" className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden">
-            <label htmlFor="company">Company (leave blank)</label>
+            <label htmlFor="hp_token">Leave this field empty</label>
             <input
               ref={honeypot}
               type="text"
-              id="company"
-              name="company"
+              id="hp_token"
+              name="hp_token"
               tabIndex={-1}
               autoComplete="off"
               defaultValue=""
+              data-lpignore="true"
+              data-1p-ignore=""
+              data-bwignore="true"
+              data-form-type="other"
             />
           </div>
 

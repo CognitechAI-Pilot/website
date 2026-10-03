@@ -60,11 +60,22 @@ api/
 
 | Control | Behaviour |
 | --- | --- |
-| Honeypot (`company` field) | Hidden from people; if filled, the API answers 200 without sending, so bots record success and move on |
+| Honeypot (`hp_token` field) | Hidden from people; if filled, the API answers 200 without sending, so bots record success and move on |
 | Minimum fill time | Submissions faster than 3s are rejected |
 | Field length caps | name 100, jobTitle 120, email 254, purpose 120, message 4000 |
 | Email format | Rejected before any upstream call |
 | Per-IP rate limit | 3 per 10 minutes, then HTTP 429 with `Retry-After` |
+
+**Do not rename the honeypot to anything a browser recognises.** It was called
+`company` until 2026-10-03, and a real enquiry was silently dropped: browsers
+and password managers ignore `autocomplete="off"` and autofilled the hidden
+field, so the API treated a genuine submission as a bot and discarded it. The
+field is now `hp_token`, with opt-out attributes for LastPass, 1Password,
+Bitwarden and Dashlane, and its label no longer names a real-world field.
+
+A honeypot trip is logged at `error` level precisely because it means a
+submission was thrown away — if one shows up in the Vercel error view and the
+sender was a real person, the hidden field is being filled again.
 
 The rate limit counter lives in the function instance's memory. Vercel can run
 several instances and cold starts reset them, so it throttles a single noisy
