@@ -9,7 +9,7 @@ export default function Roi() {
                     Return On Investment (ROI)
                 </h2>
                 <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                    Modeled on empirical Business Analysis Digital Co-Worker production workflows. Deploying digital co-workers decouples delivery output from linear headcount growth through high-leverage workforce augmentation.
+                    Modeled on empirical Business Analysis Co-Worker production workflows. Deploying co-workers decouples delivery output from linear headcount growth through high-leverage workforce augmentation.
                 </p>
             </div>
 
@@ -21,7 +21,7 @@ export default function Roi() {
                         +30%
                     </div>
                     <span className="text-xs font-bold text-white block mt-1">Capacity Boost per BA</span>
-                    <p className="text-[11px] text-slate-400 mt-1 leading-tight">Reclaims ~48 productive hours/month per human analyst</p>
+                    <p className="text-[11px] text-slate-400 mt-1 leading-tight">Reclaims ~48 productive hours/month per analyst</p>
                 </div>
 
                 <div className="glow-card p-6 rounded-2xl border border-slate-800 text-center relative overflow-hidden">
@@ -30,7 +30,7 @@ export default function Roi() {
                         350%+
                     </div>
                     <span className="text-xs font-bold text-white block mt-1">Pilot Net Return</span>
-                    <p className="text-[11px] text-slate-400 mt-1 leading-tight">Immediate self-funding return even at single-user pilot scale</p>
+                    <p className="text-[11px] text-slate-400 mt-1 leading-tight">Immediate self-funding return at single-user pilot scale</p>
                 </div>
 
                 <div className="glow-card p-6 rounded-2xl border border-blue-500/40 bg-blue-950/20 text-center relative overflow-hidden">
@@ -47,7 +47,7 @@ export default function Roi() {
                     <div className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300">
                         3,600%+
                     </div>
-                    <span className="text-xs font-bold text-white block mt-1">Up to 10-BA Squad Scale</span>
+                    <span className="text-xs font-bold text-white block mt-1">Up to 10-BA Scale</span>
                     <p className="text-[11px] text-slate-400 mt-1 leading-tight">Exponential scale as fixed support &amp; tenant tiers are shared</p>
                 </div>
             </div>

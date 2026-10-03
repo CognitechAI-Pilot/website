@@ -24,26 +24,24 @@ vercel dev       # app + /api/inquiry on http://localhost:3000
 
 ```
 index.html              Vite entry point, SEO + Open Graph tags
+vercel.json             SPA rewrite so /resources resolves client-side
 public/                 Static assets served from the site root
 src/
   main.jsx              React bootstrap (Font Awesome + Tailwind imports)
-  App.jsx               Page composition and cross-section state
-  index.css             Tailwind layers, glow-card/tab styles, motion prefs
+  App.jsx               Router, Navbar, cross-route hash scrolling
+  index.css             Tailwind layers, glow-card/tier-highlight, motion prefs
+  pages/
+    Home.jsx            Landing page composition and cross-section state
+    Resources.jsx       /resources — Digital Co-Worker Blueprint
   data/
     site.js             Nav, enquiry purposes, pricing CTA mapping
-    team.js             Team member bios and photos
-    coworker.js         Stage/role/blueprint/persona content
+    portfolio.js        Role cards, engagement phases, pricing tiers
+    blueprint.js        Six-plane reference architecture content
+    team.js             Team members and photos
   components/           One component per page section
 api/
   inquiry.js            Vercel function: POST /api/inquiry -> Mailtrap
 ```
-
-### About `src/data/coworker.js`
-
-The architecture blueprints, role case studies and persona panels are large
-blocks of static, author-authored markup. They are stored as HTML strings and
-rendered with `dangerouslySetInnerHTML`. No user input reaches them. Editing the
-copy means editing that file.
 
 ## Enquiry form
 
@@ -62,11 +60,22 @@ copy means editing that file.
 
 | Control | Behaviour |
 | --- | --- |
-| Honeypot (`company` field) | Hidden from people; if filled, the API answers 200 without sending, so bots record success and move on |
+| Honeypot (`hp_token` field) | Hidden from people; if filled, the API answers 200 without sending, so bots record success and move on |
 | Minimum fill time | Submissions faster than 3s are rejected |
 | Field length caps | name 100, jobTitle 120, email 254, purpose 120, message 4000 |
 | Email format | Rejected before any upstream call |
 | Per-IP rate limit | 3 per 10 minutes, then HTTP 429 with `Retry-After` |
+
+**Do not rename the honeypot to anything a browser recognises.** It was called
+`company` until 2026-10-03, and a real enquiry was silently dropped: browsers
+and password managers ignore `autocomplete="off"` and autofilled the hidden
+field, so the API treated a genuine submission as a bot and discarded it. The
+field is now `hp_token`, with opt-out attributes for LastPass, 1Password,
+Bitwarden and Dashlane, and its label no longer names a real-world field.
+
+A honeypot trip is logged at `error` level precisely because it means a
+submission was thrown away — if one shows up in the Vercel error view and the
+sender was a real person, the hidden field is being filled again.
 
 The rate limit counter lives in the function instance's memory. Vercel can run
 several instances and cold starts reset them, so it throttles a single noisy
@@ -79,6 +88,33 @@ step.
 The pricing CTAs preselect the enquiry purpose. The values live in
 `pricingPurpose` in `src/data/site.js` and must stay within `enquiryPurposes` in
 the same file — that is what keeps them from drifting apart.
+
+## Pages and routing
+
+Two routes, served by `react-router-dom` from `src/App.jsx`:
+
+- `/` — `src/pages/Home.jsx`
+- `/resources` — `src/pages/Resources.jsx`, holding the Digital Co-Worker Blueprint
+
+Both are client-side routes in a single-page build, so `vercel.json` rewrites
+everything except `/api/*` to `index.html`. Without that rewrite a direct hit on
+`/resources` would 404.
+
+`ScrollToHash` in `App.jsx` handles `#anchor` targets across a route change —
+the browser only scrolls to a hash on the initial load, so a link such as
+`/resources#blueprint` from the home page needs the scroll done by hand once the
+target has mounted.
+
+## Engagement phases and pricing
+
+Clicking an engagement phase highlights the matching pricing tier and scrolls to
+it. The selected tier is state in `Home.jsx`, read by both `Engagement.jsx` and
+`Pricing.jsx`; the highlight itself is the `.tier-highlight` class in
+`index.css`. The approved mockup did this with an inline
+`onclick="highlightPricingTier(n)"`.
+
+All three tiers use the same `glow-card` treatment. Tier 2 is deliberately not
+styled as a "featured" plan.
 
 ## Client anonymity
 

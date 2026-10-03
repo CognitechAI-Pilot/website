@@ -408,7 +408,7 @@ export default function ArchitectureBlueprint() {
                   <div className="lg:col-span-3 p-5 rounded-2xl bg-slate-950/90 border border-emerald-500/40 flex flex-col justify-between space-y-4">
                     <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-2.5">
                       <span className="text-[10px] font-mono font-bold text-emerald-400 uppercase">Security Broker</span>
-                      <span className={`${TAG_MANAGED} ${CHIP}`}>AIR-GAPPED HITL</span>
+                      <span className={`${TAG_MANAGED} ${CHIP}`}>HUMAN-GATED HITL</span>
                     </div>
 
                     <div className="space-y-2.5 text-xs">
@@ -476,7 +476,7 @@ export default function ArchitectureBlueprint() {
             icon="fa-network-wired"
             iconColor="text-amber-400"
             heading="Enterprise Data Repositories"
-            summary="Read-only knowledge ingestion across Jira, Confluence, SharePoint, and GitHub with air-gapped write protection."
+            summary="Read-only knowledge ingestion across Jira, Confluence, SharePoint, and GitHub with human-gated write protection."
           >
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
               {connectedSystems.map((system) => (
@@ -499,7 +499,7 @@ export default function ArchitectureBlueprint() {
             icon="fa-microchip"
             iconColor="text-amber-400"
             heading="Decoupled LLM Engines"
-            summary="Instant routing between 100% Onshore Sovereign models (zero offshore data) or Public Cloud frontier APIs."
+            summary="Instant routing between 100% Onshore Sovereign models (zero leakage) or Public Cloud frontier APIs."
           >
             <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
               <span className="text-slate-300 text-[10px] uppercase font-bold block">Interchangeable Engine Options:</span>

@@ -93,8 +93,13 @@ export default async function handler(request, response) {
 
   // Honeypot: a field hidden from people. Anything that fills it is a bot.
   // Answer 200 so the bot records success and does not retry or adapt.
-  if (String(body.company ?? '').trim()) {
-    console.warn('/api/inquiry honeypot triggered from', clientIp(request))
+  // The field is named hp_token, not something like "company": browsers and
+  // password managers ignore autocomplete="off" and will happily autofill a
+  // hidden field whose name they recognise. That is exactly what happened on
+  // 2026-10-03 — a real enquiry was silently dropped here. A trip is logged at
+  // error level because it means a submission was discarded.
+  if (String(body.hp_token ?? '').trim()) {
+    console.error('/api/inquiry honeypot triggered — submission discarded, from', clientIp(request))
     return response.status(200).json({ success: true })
   }
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { enquiryPurposes, contactEmail } from '../data/site'
 
-const EMPTY = { name: '', jobTitle: '', email: '', purpose: enquiryPurposes[0], message: '' }
+const EMPTY = { name: '', jobTitle: '', email: '', purpose: enquiryPurposes[0].value, message: '' }
 
 // Mirrors the caps enforced in api/inquiry.js.
 const MAX_LENGTHS = { name: 100, jobTitle: 120, email: 254, message: 4000 }
@@ -36,7 +36,7 @@ export default function Contact({ purpose }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...form,
-          company: honeypot.current?.value ?? '',
+          hp_token: honeypot.current?.value ?? '',
           elapsedMs: Date.now() - mountedAt.current
         })
       })
@@ -76,8 +76,8 @@ export default function Contact({ purpose }) {
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-white mt-3 mb-2">Consult Cognitech AI Engineers</h2>
           <p className="text-xs sm:text-sm text-slate-400">
-            Submit an enquiry to explore deploying custom Digital Co-Workers, sovereign onshore architecture, or
-            scheduling an executive briefing.
+            Submit an enquiry for an AI Health Check, a custom Co-Worker deployment, or to discuss onshore
+            architecture.
           </p>
         </div>
 
@@ -89,15 +89,19 @@ export default function Contact({ purpose }) {
             sending, so the bot sees success and moves on.
           */}
           <div aria-hidden="true" className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden">
-            <label htmlFor="company">Company (leave blank)</label>
+            <label htmlFor="hp_token">Leave this field empty</label>
             <input
               ref={honeypot}
               type="text"
-              id="company"
-              name="company"
+              id="hp_token"
+              name="hp_token"
               tabIndex={-1}
               autoComplete="off"
               defaultValue=""
+              data-lpignore="true"
+              data-1p-ignore=""
+              data-bwignore="true"
+              data-form-type="other"
             />
           </div>
 
@@ -121,7 +125,7 @@ export default function Contact({ purpose }) {
               <label className={label} htmlFor="purpose">Consultation Purpose *</label>
               <select id="purpose" name="purpose" value={form.purpose} onChange={handleChange} className={field}>
                 {enquiryPurposes.map((option) => (
-                  <option key={option} value={option}>{option}</option>
+                  <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </select>
             </div>
@@ -153,7 +157,7 @@ export default function Contact({ purpose }) {
         </form>
 
         <div className="mt-12 text-center text-xs text-slate-500">
-          <p>&copy; 2026 Cognitech Limited. Governed Digital Co-Workers for Enterprise Productivity.</p>
+          <p>&copy; 2026 Cognitech Limited. Governed Co-Workers for Enterprise Productivity.</p>
         </div>
       </div>
     </footer>
