@@ -38,7 +38,7 @@ export const governanceModules = [
 export const platformPillars = [
   { icon: 'fa-diagram-project', accent: 'text-blue-400', border: 'border-blue-500/30 hover:border-blue-400/60', title: 'Orchestration Layer', sub: 'Role Personalisation & 3-Tier Memory' },
   { icon: 'fa-microchip', accent: 'text-blue-400', border: 'border-blue-500/30 hover:border-blue-400/60', title: 'Agentic Execution Engine', sub: '1–10 Dedicated Squad Agents & AST Parsers' },
-  { icon: 'fa-user-shield', accent: 'text-emerald-400', border: 'border-emerald-500/30 hover:border-emerald-400/60', title: 'Security Broker', sub: 'Air-Gapped Human Approval (MCP)' },
+  { icon: 'fa-user-shield', accent: 'text-emerald-400', border: 'border-emerald-500/30 hover:border-emerald-400/60', title: 'Security Broker', sub: 'Human-Gated Approval (MCP)' },
   { icon: 'fa-database', accent: 'text-cyan-400', border: 'border-cyan-500/30 hover:border-cyan-400/60', title: 'Persistent State & Storage', sub: 'Interchangeable Managed Services' }
 ]
 

@@ -21,20 +21,19 @@ export default function Hero() {
         <div className="absolute inset-0 flex flex-col justify-end max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 text-center sm:text-left">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-blue-500/40 text-blue-400 text-[11px] sm:text-xs font-mono mb-4 w-fit mx-auto sm:mx-0">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>GOVERNED DIGITAL CO-WORKERS GROUNDED IN INSTITUTIONAL KNOWLEDGE</span>
+            <span>GOVERNED CO-WORKERS GROUNDED IN INSTITUTIONAL KNOWLEDGE</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight max-w-4xl leading-[1.15] mb-4">
-            Digital Co-Workers{' '}
+            Co-Workers{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400">
               Powering Enterprise Productivity
             </span>
           </h1>
 
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl leading-relaxed">
-            Engineering, integrating, and governing specialized Digital Co-Workers grounded in private
-            institutional context—powered by stack-agnostic engines and 100% onshore sovereign AI deployment
-            options.
+            Engineering, integrating, and governing specialized Co-Workers grounded in private institutional
+            context—powered by stack-agnostic engines and 100% onshore sovereign AI deployment options.
           </p>
         </div>
       </div>

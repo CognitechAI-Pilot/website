@@ -1,8 +1,23 @@
+import { useEffect, useRef } from 'react'
+import { pricingTiers } from '../data/portfolio'
 import { pricingPurpose } from '../data/site'
 
-export default function Pricing({ onSelectPurpose }) {
-  const tierCta =
-    'w-full py-3.5 mt-8 rounded-xl text-xs font-bold text-center transition-all block'
+/**
+ * The three commercial tiers, one per engagement phase. All three use the same
+ * glow-card treatment — the mockup gives tier 2 no special background, so it
+ * reads identically to tiers 1 and 3 until a phase card highlights it.
+ */
+export default function Pricing({ onSelectPurpose, highlightedTier }) {
+  const cardRefs = useRef({})
+
+  // Scroll the highlighted tier into view when an engagement phase selects it.
+  useEffect(() => {
+    if (!highlightedTier) return
+    const el = cardRefs.current[highlightedTier]
+    if (!el) return
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' })
+  }, [highlightedTier])
 
   return (
     <section id="pricing" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-800/60">
@@ -10,146 +25,53 @@ export default function Pricing({ onSelectPurpose }) {
         <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono font-bold uppercase tracking-widest">
           PRICING MODEL
         </span>
-        <h2 className="text-3xl sm:text-5xl font-black text-white mt-3 mb-4">Digital Co-Worker Pricing</h2>
+        <h2 className="text-3xl sm:text-5xl font-black text-white mt-3 mb-4">Co-Worker Pricing</h2>
         <p className="text-slate-400 text-xs sm:text-sm">
-          Transparent, modular engagement tiers designed to scale alongside your organization&rsquo;s AI maturity.
+          Transparent, modular engagement tiers aligned with the 3 phases of our delivery process.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Tier 1 */}
-        <div className="glow-card p-8 rounded-3xl border border-slate-800 flex flex-col justify-between hover:border-blue-500/40 transition-all">
-          <div>
-            <h3 className="text-xl font-bold text-white mb-2">AI Strategy Readiness &amp; Digital Co-Worker PoC</h3>
-            <p className="text-xs text-slate-400 leading-relaxed mb-6">
-              De-risk AI adoption with an upfront strategic readiness assessment and a targeted, high-impact Digital
-              Co-Worker prototype.
-            </p>
-
-            <div className="mb-6">
-              <span className="text-4xl font-black text-white">$15,000</span>
-              <span className="text-xs font-mono text-slate-500 block mt-1">Scoped per sprint / prototype</span>
-            </div>
-
-            <ul className="space-y-3 text-xs text-slate-300 border-t border-slate-800 pt-6">
-              <li className="flex items-center gap-2.5">
-                <i className="fa-solid fa-check text-blue-400"></i>
-                <span>AI Strategy Readiness Assessment (Phase 1)</span>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <i className="fa-solid fa-check text-blue-400"></i>
-                <span>Single Digital Co-Worker Proof of Concept (PoC)</span>
-              </li>
-            </ul>
-
-            <div className="mt-6 pt-4 border-t border-slate-800/80">
-              <p className="text-[11px] text-slate-500 italic leading-snug">
-                * Note: $15,000 Design &amp; PoC sprints assume customer platform interoperability and baseline
-                repository readiness. Enterprise-ready production deployments are custom scoped via Statement of
-                Work. Prices are in NZD and exclude GST.
-              </p>
-            </div>
-          </div>
-
-          <a
-            href="#contact"
-            onClick={() => onSelectPurpose(pricingPurpose.poc)}
-            className={`${tierCta} bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white`}
+        {pricingTiers.map((tier) => (
+          <div
+            key={tier.tier}
+            id={`pricing-tier-${tier.tier}`}
+            ref={(el) => { cardRefs.current[tier.tier] = el }}
+            className={`glow-card p-8 rounded-3xl border border-slate-800 flex flex-col justify-between transition-all ${
+              highlightedTier === tier.tier ? 'tier-highlight' : ''
+            }`}
           >
-            Start a PoC
-          </a>
-        </div>
-
-        {/* Tier 2 */}
-        <div className="glow-card-active p-8 rounded-3xl relative flex flex-col justify-between active-pulse">
-          <span className="absolute -top-3 right-8 bg-blue-600 text-white text-[10px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-            Sovereign &amp; Autonomous
-          </span>
-
-          <div>
-            <h3 className="text-xl font-bold text-white mb-2">Self-Improving Enterprise Digital Co-Worker</h3>
-            <p className="text-xs text-slate-300 leading-relaxed mb-6">
-              Enterprise-grade continuously learning Digital Co-Workers deployed directly into your secure cloud
-              infrastructure, designed to scale alongside your most critical workflows.
-            </p>
-
-            <ul className="space-y-3 text-xs text-slate-200 border-t border-slate-800 pt-6">
-              {[
-                'Digital Co-Worker operates within the client’s cloud tenant',
-                'Secure system guardrails and supervisory monitoring',
-                'Learns and persists enterprise context',
-                'Multi-agent collaboration',
-                'Zero-trust architecture with role-based access',
-                'Enterprise Connectors'
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5">
-                  <i className="fa-solid fa-check text-blue-400 mt-0.5"></i>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <a
-            href="#contact"
-            onClick={() => onSelectPurpose(pricingPurpose.sovereign)}
-            className={`${tierCta} bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/30`}
-          >
-            Request Architecture Review
-          </a>
-        </div>
-
-        {/* Tier 3 */}
-        <div className="glow-card p-8 rounded-3xl border border-slate-800 flex flex-col justify-between hover:border-blue-500/40 transition-all">
-          <div>
-            <h3 className="text-xl font-bold text-white mb-2">Digital Co-Worker Support and Governance</h3>
-            <p className="text-xs text-slate-400 leading-relaxed mb-6">
-              Continuous improvement, Digital Co-Worker fine tuning, monitoring and reporting.
-            </p>
-
-            <div className="mb-6">
-              {/* The {' '} around the divider are load-bearing: without them JSX
-                  strips the whitespace and "$2,500/mo|Enterprise:" becomes one
-                  unbreakable word, which forces the three-up grid open at 768px. */}
-              <span className="text-lg sm:text-xl font-black text-white block leading-snug">
-                SME: $500 &ndash; $2,500/mo{' '}
-                <span className="text-slate-600">|</span>{' '}
-                Enterprise: Custom Scope
+            <div>
+              <span className={`text-[10px] font-mono font-bold uppercase tracking-wider block mb-1 ${tier.phaseClass}`}>
+                {tier.phase}
               </span>
+              <h3 className="text-xl font-bold text-white mb-2">{tier.title}</h3>
+              <p className="text-xs text-slate-400 leading-relaxed mb-6">{tier.blurb}</p>
+
+              <div className="mb-6">
+                <span className={tier.priceClass}>{tier.price}</span>
+                <span className="text-xs font-mono text-slate-500 block mt-1">{tier.priceNote}</span>
+              </div>
+
+              <ul className="space-y-3 text-xs text-slate-300 border-t border-slate-800 pt-6">
+                {tier.features.map((feature) => (
+                  <li key={feature.text} className="flex items-start gap-2.5">
+                    <i className="fa-solid fa-check text-blue-400 mt-0.5"></i>
+                    <span className={feature.bold ? 'font-semibold text-white' : ''}>{feature.text}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <ul className="space-y-3 text-xs text-slate-300 border-t border-slate-800 pt-6">
-              {[
-                'Scaling by the number of active Digital Co-Workers',
-                'Base operational monitoring & incident triage',
-                'Flexible AI Inference: Bring-Your-Own-Key or Sovereign Models',
-                'Ongoing security & compliance boundary audits',
-                'Dedicated delivery capacity'
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5">
-                  <i className="fa-solid fa-check text-blue-400 mt-0.5"></i>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-6 pt-4 border-t border-slate-800/80">
-              <p className="text-[11px] text-slate-500 italic leading-snug">
-                * Operational managed services scale by the number of active agents and deployment complexity.
-                Cloud compute, direct tenant licensing, and AI inference token usage are billed directly to the
-                client&rsquo;s cloud subscription.
-              </p>
-            </div>
+            <a
+              href="#contact"
+              onClick={() => onSelectPurpose(pricingPurpose[tier.tier])}
+              className="w-full py-3.5 mt-8 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white text-xs font-bold text-center transition-all block"
+            >
+              {tier.cta}
+            </a>
           </div>
-
-          <a
-            href="#contact"
-            onClick={() => onSelectPurpose(pricingPurpose.retainer)}
-            className={`${tierCta} bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white`}
-          >
-            Inquire for Support Retainer
-          </a>
-        </div>
+        ))}
       </div>
     </section>
   )

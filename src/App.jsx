@@ -1,35 +1,46 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import DeliveryCoWorker from './components/DeliveryCoWorker'
-import Framework from './components/Framework'
-import Customers from './components/Customers'
-import Roi from './components/Roi'
-import Pricing from './components/Pricing'
-import Team from './components/Team'
-import Contact from './components/Contact'
+import Home from './pages/Home'
+import Resources from './pages/Resources'
+
+/**
+ * The browser only scrolls to a #hash when it is present on the initial load.
+ * Navigating from, say, the home page to /resources#blueprint is a client-side
+ * route change, so the scroll has to be done by hand once the target exists.
+ */
+function ScrollToHash() {
+  const { pathname, hash } = useLocation()
+
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo(0, 0)
+      return
+    }
+    // The target mounts with the route, so wait a frame before looking for it.
+    const frame = requestAnimationFrame(() => {
+      const el = document.getElementById(hash.slice(1))
+      if (!el) return
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' })
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [pathname, hash])
+
+  return null
+}
 
 export default function App() {
-  // Lifted so the delivery section's proof-point link can select a role tab,
-  // and the pricing CTAs can preselect the enquiry purpose.
-  const [activeRole, setActiveRole] = useState('delivery')
-  const [enquiryPurpose, setEnquiryPurpose] = useState(null)
-
   return (
-    <>
+    <BrowserRouter>
+      <ScrollToHash />
       <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <DeliveryCoWorker onViewProofPoint={setActiveRole} />
-        <Framework />
-        <Customers activeRole={activeRole} onSelectRole={setActiveRole} />
-        <Roi />
-        <Pricing onSelectPurpose={setEnquiryPurpose} />
-        <Team />
-      </main>
-      <Contact purpose={enquiryPurpose} />
-    </>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/resources" element={<Resources />} />
+        {/* Anything else falls back to the landing page. */}
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

@@ -24,26 +24,24 @@ vercel dev       # app + /api/inquiry on http://localhost:3000
 
 ```
 index.html              Vite entry point, SEO + Open Graph tags
+vercel.json             SPA rewrite so /resources resolves client-side
 public/                 Static assets served from the site root
 src/
   main.jsx              React bootstrap (Font Awesome + Tailwind imports)
-  App.jsx               Page composition and cross-section state
-  index.css             Tailwind layers, glow-card/tab styles, motion prefs
+  App.jsx               Router, Navbar, cross-route hash scrolling
+  index.css             Tailwind layers, glow-card/tier-highlight, motion prefs
+  pages/
+    Home.jsx            Landing page composition and cross-section state
+    Resources.jsx       /resources — Digital Co-Worker Blueprint
   data/
     site.js             Nav, enquiry purposes, pricing CTA mapping
-    team.js             Team member bios and photos
-    coworker.js         Stage/role/blueprint/persona content
+    portfolio.js        Role cards, engagement phases, pricing tiers
+    blueprint.js        Six-plane reference architecture content
+    team.js             Team members and photos
   components/           One component per page section
 api/
   inquiry.js            Vercel function: POST /api/inquiry -> Mailtrap
 ```
-
-### About `src/data/coworker.js`
-
-The architecture blueprints, role case studies and persona panels are large
-blocks of static, author-authored markup. They are stored as HTML strings and
-rendered with `dangerouslySetInnerHTML`. No user input reaches them. Editing the
-copy means editing that file.
 
 ## Enquiry form
 
@@ -79,6 +77,33 @@ step.
 The pricing CTAs preselect the enquiry purpose. The values live in
 `pricingPurpose` in `src/data/site.js` and must stay within `enquiryPurposes` in
 the same file — that is what keeps them from drifting apart.
+
+## Pages and routing
+
+Two routes, served by `react-router-dom` from `src/App.jsx`:
+
+- `/` — `src/pages/Home.jsx`
+- `/resources` — `src/pages/Resources.jsx`, holding the Digital Co-Worker Blueprint
+
+Both are client-side routes in a single-page build, so `vercel.json` rewrites
+everything except `/api/*` to `index.html`. Without that rewrite a direct hit on
+`/resources` would 404.
+
+`ScrollToHash` in `App.jsx` handles `#anchor` targets across a route change —
+the browser only scrolls to a hash on the initial load, so a link such as
+`/resources#blueprint` from the home page needs the scroll done by hand once the
+target has mounted.
+
+## Engagement phases and pricing
+
+Clicking an engagement phase highlights the matching pricing tier and scrolls to
+it. The selected tier is state in `Home.jsx`, read by both `Engagement.jsx` and
+`Pricing.jsx`; the highlight itself is the `.tier-highlight` class in
+`index.css`. The approved mockup did this with an inline
+`onclick="highlightPricingTier(n)"`.
+
+All three tiers use the same `glow-card` treatment. Tier 2 is deliberately not
+styled as a "featured" plan.
 
 ## Client anonymity
 

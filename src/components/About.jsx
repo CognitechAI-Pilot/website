@@ -19,7 +19,7 @@ export default function About() {
                     </p>
 
                     <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                        Our Digital Co-Workers unlock capacity by handling deep institutional discovery and routine administration, allowing your human workforce to reinvest their time into strategic discovery and high-value innovation.
+                        Our Co-Workers unlock capacity by handling deep institutional discovery and routine administration, allowing your human workforce to reinvest their time into strategic innovation and delivery velocity.
                     </p>
                 </div>
 
@@ -37,7 +37,7 @@ export default function About() {
                             <i className="fa-solid fa-circle-check text-blue-400 mt-1 flex-shrink-0"></i>
                             <div>
                                 <strong className="text-white block font-semibold mb-0.5">Rapid Deployment Templates:</strong>
-                                <span className="text-slate-300 text-xs leading-relaxed">Pre-configured role blueprints—like the Digital BA—enable launch in days rather than months.</span>
+                                <span className="text-slate-300 text-xs leading-relaxed">Pre-configured role blueprints—like the BA Co-Worker—enable launch in days rather than months.</span>
                             </div>
                         </div>
 

@@ -1,56 +1,64 @@
 export const contactEmail = 'dinesh@cognitech.co.nz'
 
+// Navigation, matching the approved index.html mockup. `children` makes a
+// dropdown; `to` sends the link to another route, `href` to an anchor on the
+// current page.
 export const navLinks = [
   { href: '#about', label: 'About Us' },
   {
-    label: 'Digital Co-Worker',
+    label: 'Co-Workers',
+    width: 'w-72',
     children: [
-      { href: '#delivery-coworker', label: 'Technology Delivery Lifecycle Co-Worker' },
-      { href: '#framework', label: 'AI Strategy & Creation Framework' },
-      { href: '#customers', label: 'Digital Co-Workers in Action' },
+      { href: '#role-box-delivery', label: 'Technology Business Analyst' },
+      { href: '#role-box-policy', label: 'Policy & Regulatory' },
+      { href: '#role-box-operations', label: 'Enterprise Operations' },
+      { href: '#role-box-executive', label: 'Executive & Personal Assistant' }
+    ]
+  },
+  {
+    label: 'Case Studies',
+    width: 'w-72',
+    children: [{ href: '#case-study', label: 'TECHNOLOGY BA – LOGISTIC & POSTAL' }]
+  },
+  {
+    label: 'Engagement Process',
+    width: 'w-80',
+    children: [
+      { href: '#engagement-p1', label: 'Phase 1: AI Health Check and Co-Worker PoV' },
+      { href: '#engagement-p2', label: 'Phase 2: Co-Worker Orchestration and Integration' },
+      { href: '#engagement-p3', label: 'Phase 3: Support & Governance' }
+    ]
+  },
+  {
+    label: 'Pricing',
+    width: 'w-64',
+    children: [
+      { href: '#pricing', label: 'Commercial Tiers' },
       { href: '#roi', label: 'Return On Investment (ROI)' }
     ]
   },
-  { href: '#pricing', label: 'Pricing' },
+  {
+    label: 'Resources',
+    width: 'w-72',
+    children: [{ to: '/resources#blueprint', label: 'Digital Co-Worker Blueprint' }]
+  },
   { href: '#team', label: 'Meet the Team' }
 ]
 
-// Values MUST match the <option> values in Contact.jsx — the pricing CTAs
-// preselect the enquiry purpose by value.
+// Values MUST match the <option> values rendered by Contact.jsx — the pricing
+// CTAs preselect the enquiry purpose by value.
 export const enquiryPurposes = [
-  'Technology BA Digital Co-Worker Pilot',
-  'Executive / Personal Assistant Co-Worker',
-  'Sovereign Onshore Architecture Consultation',
-  'AI Strategy Readiness & PoC',
-  'Digital Co-Worker Support Retainer',
-  'Policy or Operations Co-Worker Roadmap',
-  'General Executive Inquiry'
+  { value: 'AI Health Check and Co-Worker PoV', label: 'AI Health Check and Co-Worker PoV ($15k)' },
+  { value: 'Co-Worker Orchestration and Integration', label: 'Co-Worker Orchestration and Integration (SOW)' },
+  { value: 'Co-Worker Support and Governance', label: 'Co-Worker Support & Governance Retainer' },
+  { value: 'Technology BA Co-Worker', label: 'Technology BA Co-Worker Pilot' },
+  { value: 'General Executive Inquiry', label: 'General Executive Inquiry' }
 ]
 
-// Each pricing CTA preselects one of the purposes above. Keeping the values in
-// one place is what stops them drifting apart — in the static site two of the
-// three CTAs passed strings with no matching option, which blanked the select.
+// Each pricing CTA preselects one of the purposes above. Keeping them in one
+// place is what stops the two lists drifting apart.
 export const pricingPurpose = {
-  poc: 'AI Strategy Readiness & PoC',
-  sovereign: 'Sovereign Onshore Architecture Consultation',
-  retainer: 'Digital Co-Worker Support Retainer'
-}
-
-// Roadmap outcome cards, per role. Lifted from the v2 render logic.
-export const roadmapOutcomes = {
-  policy: [
-    { title: 'Policy Traceability', text: 'Targeted reduction in legislative and regulatory compliance review cycles.', icon: 'fa-magnifying-glass' },
-    { title: 'Sovereign Air-Gap', text: 'Onshore processing across local cloud providers guaranteeing total data sovereignty.', icon: 'fa-lock' },
-    { title: 'Automated Compliance Auditability', text: 'Execution trace logging for board and audit committee oversight.', icon: 'fa-file-contract' }
-  ],
-  operations: [
-    { title: 'Inquiry Automation', text: 'Automates routine vendor and back-office shared services queries.', icon: 'fa-comments' },
-    { title: 'Enterprise System Integration', text: 'Safely executes approved actions across core enterprise CRM, ERP, and HRIS platforms.', icon: 'fa-diagram-project' },
-    { title: 'Zero Data Leakage', text: 'Zero-trust IAM bounds ensure strict role-based data permissions.', icon: 'fa-shield-cat' }
-  ],
-  executive: [
-    { title: 'Contextual Cross-Squad Synthesis', text: 'Summarizes multi-squad velocity, blocker logs, and release readiness into board briefs.', icon: 'fa-chart-pie' },
-    { title: 'Zero Data Retention (ZDR)', text: 'Complete tenant isolation ensures confidential executive decisions never train external models.', icon: 'fa-user-shield' },
-    { title: 'Authenticated Workflow Approvals', text: 'Reviews and signs off Jira epics and procurement items with human-in-the-loop security.', icon: 'fa-signature' }
-  ]
+  1: 'AI Health Check and Co-Worker PoV',
+  2: 'Co-Worker Orchestration and Integration',
+  3: 'Co-Worker Support and Governance'
 }
