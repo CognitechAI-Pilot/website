@@ -11,7 +11,7 @@ export const portfolioRoles = [
     checkClass: 'text-blue-400',
     status: 'pov',
     title: 'Technology Business Analyst',
-    blurb: 'Accelerates software delivery cycles by eliminating manual requirement gathering and legacy system tracing.',
+    blurb: 'Accelerates software delivery cycles by eliminating the discovery tax and augmenting core requirements analysis.',
     capabilities: [
       { strong: 'Continuous AS-IS Discovery:', text: 'Extracts current-state logic directly from code repositories to eliminate manual tracing.' },
       { strong: 'Artifact Correlation:', text: 'Cross-references live code against historical project wikis to map hidden dependencies.' },
