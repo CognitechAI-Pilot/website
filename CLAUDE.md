@@ -50,6 +50,19 @@ replace produces `cognitech AI.co.nz` and breaks the contact mailbox.
   `BA_DEMO_VIDEO` in `CaseStudy.jsx`. The `%20` escapes are required, since the
   blob key contains spaces. A 16 MB copy used to be committed to `public/`.
 
+## The logo
+
+`public/cognitech-ai-logo.svg` is **traced from a raster original, not the
+designer's vector source.** The wordmark is faithful, but the icon is a
+flattened approximation: the original's 3D extrusion and bevel highlights were
+rebuilt as a single offset shadow layer, so it reads well at navbar size and
+less well blown up. If the real vector file ever turns up, replace this rather
+than building on it.
+
+It is referenced as a file (`<img src>`), not inlined. Its gradients carry ids,
+and inlining the same markup twice — desktop and mobile nav — would collide
+them.
+
 ## Conventions
 
 - Interactive elements are `<button>`, not clickable `<div>`s. Accordions carry
