@@ -50,6 +50,21 @@ replace produces `cognitech AI.co.nz` and breaks the contact mailbox.
   `BA_DEMO_VIDEO` in `CaseStudy.jsx`. The `%20` escapes are required, since the
   blob key contains spaces. A 16 MB copy used to be committed to `public/`.
 
+## The logo
+
+`public/cognitech-ai-logo.webp` is the designer's own artwork — a transparent
+raster at 401x176, three times its rendered navbar size so it stays sharp on
+retina. It replaced a version traced from a JPEG, which was a flattened
+approximation; do not reintroduce a traced one.
+
+Two things about the supplied source, in case it is re-exported. The "SVG"
+files the designer provides are PNGs wrapped in an `<svg>` tag — a single
+`<image>` element, no paths — so they carry a 33% base64 penalty and none of
+the scalability. Use the raster directly. And the artwork touches the right
+edge of its canvas, clipping the stem of the "I"; it is invisible at navbar
+size but worth padding on the next export, since the same asset will be reused
+for the Open Graph image and favicon.
+
 ## Conventions
 
 - Interactive elements are `<button>`, not clickable `<div>`s. Accordions carry
