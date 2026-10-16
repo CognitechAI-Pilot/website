@@ -63,14 +63,13 @@ export default function Navbar() {
     <nav ref={navRef} className="fixed top-0 left-0 w-full z-50 bg-[#121B2B]/95 backdrop-blur-md border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link to="/" onClick={closeAll} className="flex items-center gap-3 flex-shrink-0">
-          {/* Served as a file rather than inlined: the gradients carry ids, and
-              inlining the same markup twice (desktop + mobile) would collide
-              them. width/height match the viewBox ratio to avoid layout shift. */}
+          {/* The designer's artwork, 3x the rendered size so it stays sharp on
+              retina. width/height match the asset to avoid layout shift. */}
           <img
-            src="/cognitech-ai-logo.svg"
+            src="/cognitech-ai-logo.webp"
             alt="Cognitech AI"
-            width="110"
-            height="48"
+            width="401"
+            height="176"
             className="h-10 sm:h-14 w-auto"
           />
         </Link>

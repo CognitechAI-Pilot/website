@@ -52,16 +52,18 @@ replace produces `cognitech AI.co.nz` and breaks the contact mailbox.
 
 ## The logo
 
-`public/cognitech-ai-logo.svg` is **traced from a raster original, not the
-designer's vector source.** The wordmark is faithful, but the icon is a
-flattened approximation: the original's 3D extrusion and bevel highlights were
-rebuilt as a single offset shadow layer, so it reads well at navbar size and
-less well blown up. If the real vector file ever turns up, replace this rather
-than building on it.
+`public/cognitech-ai-logo.webp` is the designer's own artwork — a transparent
+raster at 401x176, three times its rendered navbar size so it stays sharp on
+retina. It replaced a version traced from a JPEG, which was a flattened
+approximation; do not reintroduce a traced one.
 
-It is referenced as a file (`<img src>`), not inlined. Its gradients carry ids,
-and inlining the same markup twice — desktop and mobile nav — would collide
-them.
+Two things about the supplied source, in case it is re-exported. The "SVG"
+files the designer provides are PNGs wrapped in an `<svg>` tag — a single
+`<image>` element, no paths — so they carry a 33% base64 penalty and none of
+the scalability. Use the raster directly. And the artwork touches the right
+edge of its canvas, clipping the stem of the "I"; it is invisible at navbar
+size but worth padding on the next export, since the same asset will be reused
+for the Open Graph image and favicon.
 
 ## Conventions
 
