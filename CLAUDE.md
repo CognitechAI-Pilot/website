@@ -57,13 +57,24 @@ raster at 401x176, three times its rendered navbar size so it stays sharp on
 retina. It replaced a version traced from a JPEG, which was a flattened
 approximation; do not reintroduce a traced one.
 
-Two things about the supplied source, in case it is re-exported. The "SVG"
+One thing about the supplied source, in case it is re-exported: the "SVG"
 files the designer provides are PNGs wrapped in an `<svg>` tag — a single
 `<image>` element, no paths — so they carry a 33% base64 penalty and none of
-the scalability. Use the raster directly. And the artwork touches the right
-edge of its canvas, clipping the stem of the "I"; it is invisible at navbar
-size but worth padding on the next export, since the same asset will be reused
-for the Open Graph image and favicon.
+the scalability. Use the raster directly.
+
+The artwork is cropped flush to the ink, with no margin on the right. That is
+tight but not damaging: the "I" of "AI" measures 34px against a 32px stem
+elsewhere in the wordmark, so the letter is intact. An earlier note here
+claimed it was clipped; that was wrong.
+
+## Social and icon assets
+
+`public/og-cover.jpg` (1200x630) is the Open Graph card; `favicon-32.png`,
+`favicon-192.png` and `apple-touch-icon.png` are the tab and home-screen icons.
+All are generated from the logo artwork. The apple-touch icon has an opaque
+navy plate on purpose — iOS composites transparent icons onto black.
+
+If the logo changes, these do not update themselves. Regenerate all four.
 
 ## Conventions
 
