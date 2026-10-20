@@ -76,6 +76,14 @@ navy plate on purpose — iOS composites transparent icons onto black.
 
 If the logo changes, these do not update themselves. Regenerate all four.
 
+## ROI figures
+
+The numbers in `src/data/roi.js` are published commercial claims transcribed
+from an approved mockup, not values to derive. They reconcile internally (net =
+gross - spend; ROI = net / spend; multiple = gross / spend), so an apparent
+discrepancy means the transcription is wrong, not the arithmetic. Change them
+only from an updated mockup.
+
 ## Conventions
 
 - Interactive elements are `<button>`, not clickable `<div>`s. Accordions carry
@@ -85,3 +93,7 @@ If the logo changes, these do not update themselves. Regenerate all four.
 - Team photos are square, 1024x1024.
 - Before pushing: run `npm run build`, then check the page in a browser for
   horizontal overflow at 320, 768 and 1440px.
+- When asserting against rendered text, compare against `textContent`, not
+  `innerText`. Many labels here carry Tailwind's `uppercase`, which
+  `innerText` applies and `textContent` does not, so a correct string fails a
+  case-sensitive check. This has produced false failures repeatedly.
