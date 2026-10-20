@@ -61,49 +61,47 @@ export const unitCostBreakdown = [
     width: '2%', barClass: 'bg-emerald-400' }
 ]
 
-// Part A — per-workflow unit economics.
+// Part A — per-workflow unit economics. Labels are deliberately terser than
+// the prose elsewhere: the table is nested inside the methodology drawer and
+// has less width to work with.
 export const unitWorkflowRows = [
-  { label: 'Value for BA Capacity Unlocked per Workflow', sub: '($3,500/mo ÷ 63 workflows)',
+  { label: 'Gross BA Capacity Unlocked', sub: '($3,500/mo \u00F7 63)',
     single: '$55.56', singleNote: '(100%)', squad: '$55.56', squadNote: '(100%)',
     labelClass: 'font-medium text-white', figureClass: 'font-bold text-emerald-400' },
   { label: 'Less: Shared Platform & Support', sub: '($575/mo fixed)',
     single: '-$9.13', singleNote: '(16.4%)', squad: '-$3.04', squadNote: '(5.5%)' },
-  { label: 'Less: Isolated Per-User Container', sub: '($200/BA/mo)',
+  { label: 'Less: Isolated User Container', sub: '($200/BA/mo)',
     single: '-$3.17', singleNote: '(5.7%)', squad: '-$3.17', squadNote: '(5.7%)' },
-  { label: 'Less: Usage-Based LLM Inference', sub: '($50/BA/mo)',
+  { label: 'Less: Usage-Based Inference', sub: '($50/BA/mo)',
     single: '-$0.80', singleNote: '(1.4%)', squad: '-$0.80', squadNote: '(1.4%)' },
-  { label: 'Total All-In AI Cost per Completed Workflow',
+  { label: 'Total All-In AI Cost / Deliverable',
     single: '$13.10', singleNote: '(23.6%)', squad: '$7.01', squadNote: '(12.6%)',
-    rowClass: 'bg-slate-900/60 font-semibold text-white', figureClass: 'text-amber-400' },
-  { label: 'Net Capacity Value Gained per Workflow',
-    single: '+$42.46', singleNote: '(76.4% Margin)', squad: '+$48.55', squadNote: '(87.4% Margin)',
+    rowClass: 'bg-slate-950/60 font-semibold text-white', figureClass: 'text-amber-400' },
+  { label: 'Net Capacity Value Gained',
+    single: '+$42.46', singleNote: '(76.4%)', squad: '+$48.55', squadNote: '(87.4%)',
     rowClass: 'bg-emerald-950/20 font-bold text-white', labelClass: 'text-emerald-300',
-    figureClass: 'text-emerald-400', noteClass: 'text-emerald-300/80', tall: true }
+    figureClass: 'text-emerald-400', noteClass: 'text-emerald-300/70', tall: true }
 ]
 
 // Part B — annual economics by squad size.
 export const squadEconomicsRows = [
-  { squad: '1 BA Pilot', fixedBase: '$6,900', containers: '$2,400', inference: '$600',
-    total: '$9,900', perMonth: '($825/mo)', gross: '$42,000', net: '+$32,100',
-    roi: '324%', multiple: '(4.2x)' },
-  { squad: '3 BA Squad', fixedBase: '$6,900', containers: '$7,200', inference: '$1,800',
-    total: '$15,900', perMonth: '($1,325/mo)', gross: '$126,000', net: '+$110,100',
-    roi: '692%', multiple: '(7.9x)', highlighted: true },
-  { squad: '6 BAs', fixedBase: '$6,900', containers: '$14,400', inference: '$3,600',
-    total: '$24,900', perMonth: '($2,075/mo)', gross: '$252,000', net: '+$227,100',
-    roi: '912%', multiple: '(10.1x)' },
-  { squad: '12 BAs', fixedBase: '$6,900', containers: '$28,800', inference: '$7,200',
-    total: '$42,900', perMonth: '($3,575/mo)', gross: '$504,000', net: '+$461,100',
-    roi: '1,075%', multiple: '(11.7x)' }
+  { squad: '1 BA Pilot', fixedBase: '$6,900', containers: '$2,400', tokens: '$600',
+    total: '$9,900', gross: '$42,000', net: '+$32,100', roi: '324% (4.2x)' },
+  { squad: '3 BA Squad', fixedBase: '$6,900', containers: '$7,200', tokens: '$1,800',
+    total: '$15,900', gross: '$126,000', net: '+$110,100', roi: '692% (7.9x)', highlighted: true },
+  { squad: '6 BAs', fixedBase: '$6,900', containers: '$14,400', tokens: '$3,600',
+    total: '$24,900', gross: '$252,000', net: '+$227,100', roi: '912% (10.1x)' },
+  { squad: '12 BAs', fixedBase: '$6,900', containers: '$28,800', tokens: '$7,200',
+    total: '$42,900', gross: '$504,000', net: '+$461,100', roi: '1,075% (11.7x)' }
 ]
 
 export const squadEconomicsHeads = [
-  { label: 'Squad Size', align: 'left', className: 'pr-2' },
-  { label: 'Fixed Base ($/Yr)' },
-  { label: 'Containers ($2.4k/BA)' },
-  { label: 'Inference ($600/BA)' },
+  { label: 'Squad Size', align: 'left', className: 'pr-1' },
+  { label: 'Fixed Base' },
+  { label: 'Containers' },
+  { label: 'Tokens' },
   { label: 'Total AI Spend', className: 'text-white' },
   { label: 'Gross Value' },
   { label: 'Net Value', className: 'text-emerald-400' },
-  { label: 'Net ROI / Multiple', className: 'pl-2 text-cyan-300' }
+  { label: 'Net ROI (Multiple)', className: 'pl-1 text-cyan-300' }
 ]

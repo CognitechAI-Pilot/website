@@ -53,7 +53,7 @@ export default function Roi() {
       </div>
 
       {/* Dual infographics */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         {/* Spend vs. value created */}
         <div className="glow-card p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between">
           <div>
@@ -169,121 +169,24 @@ export default function Roi() {
         </div>
       </div>
 
-      {/* Detailed workings */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
-        {/* Part A */}
-        <div className="lg:col-span-5 glow-card p-6 rounded-3xl border border-slate-800 flex flex-col justify-between">
-          <div>
-            <span className="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block mb-1">
-              PART A: UNIT WORKFLOW ECONOMICS
-            </span>
-            <h3 className="text-base font-bold text-white mb-1">Demonstrating Value vs. AI Spend</h3>
-            <p className="text-[11px] text-slate-400 mb-4">
-              1 BA running 63 workflows/mo to 3-BA Squad running 189 workflows/mo
-            </p>
-
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse text-[11px]">
-                <thead>
-                  <tr className="border-b border-slate-800 text-slate-400 font-mono text-[10px] uppercase">
-                    <th scope="col" className="py-2.5 pr-2">Cost / Value Component (Per 1 BA Workflow)</th>
-                    <th scope="col" className="py-2.5 px-2 text-right">Single BA (63/mo)</th>
-                    <th scope="col" className="py-2.5 pl-2 text-right text-cyan-300">3-BA Squad (189/mo)</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-800/70 text-slate-300">
-                  {unitWorkflowRows.map((row) => {
-                    const pad = row.tall ? 'py-3' : 'py-2.5'
-                    const note = row.noteClass ?? 'text-slate-400'
-                    return (
-                      <tr key={row.label} className={row.rowClass ?? ''}>
-                        <th scope="row" className={`${pad} pr-2 text-left font-normal ${row.labelClass ?? ''}`}>
-                          {row.label}
-                          {row.sub && <span className="block text-[10px] text-slate-400 font-mono">{row.sub}</span>}
-                        </th>
-                        <td className={`${pad} px-2 text-right font-mono ${row.figureClass ?? ''}`}>
-                          {row.single}
-                          <span className={`text-[10px] ${note} block`}>{row.singleNote}</span>
-                        </td>
-                        <td className={`${pad} pl-2 text-right font-mono ${row.figureClass ?? ''}`}>
-                          {row.squad}
-                          <span className={`text-[10px] ${note} block`}>{row.squadNote}</span>
-                        </td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
+      {/* Squad budget arbitrage, promoted out of the Part B card to a banner */}
+      <div className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-blue-950/40 via-slate-950 to-indigo-950/40 border border-blue-500/30 flex items-start gap-3.5 shadow-lg">
+        <div className="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+          <i className="fa-solid fa-circle-info"></i>
         </div>
-
-        {/* Part B */}
-        <div className="lg:col-span-7 glow-card p-6 rounded-3xl border border-slate-800 flex flex-col justify-between">
-          <div>
-            <span className="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-wider block mb-1">
-              PART B: SCALING ROI ACROSS SQUADS
-            </span>
-            <h3 className="text-base font-bold text-white mb-1">Annual Squad Economics &amp; Capacity Arbitrage</h3>
-            <p className="text-[11px] text-slate-400 mb-4">
-              Baseline: Human BA = $140,000/yr; 30% productivity gain unlocks +0.3 FTE ($42,000/yr) per BA.
-            </p>
-
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse text-[11px]">
-                <thead>
-                  <tr className="border-b border-slate-800 text-slate-400 font-mono text-[10px] uppercase">
-                    {squadEconomicsHeads.map((head) => (
-                      <th
-                        key={head.label}
-                        scope="col"
-                        className={`py-2.5 ${head.className ?? 'px-2'} ${head.align === 'left' ? '' : 'text-right'}`}
-                      >
-                        {head.label}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-800/70 text-slate-300 font-mono">
-                  {squadEconomicsRows.map((row) => (
-                    <tr key={row.squad} className={row.highlighted ? 'bg-blue-950/20' : ''}>
-                      <th scope="row" className={`py-3 pr-2 text-left font-sans font-bold ${row.highlighted ? 'text-blue-300' : 'text-white'}`}>
-                        {row.squad}
-                      </th>
-                      <td className="py-3 px-2 text-right">{row.fixedBase}</td>
-                      <td className="py-3 px-2 text-right">{row.containers}</td>
-                      <td className="py-3 px-2 text-right">{row.inference}</td>
-                      <td className="py-3 px-2 text-right font-bold text-white">
-                        {row.total}
-                        <span className="text-[10px] text-slate-400 block">{row.perMonth}</span>
-                      </td>
-                      <td className="py-3 px-2 text-right">{row.gross}</td>
-                      <td className="py-3 px-2 text-right font-bold text-emerald-400">{row.net}</td>
-                      <td className="py-3 pl-2 text-right font-bold text-cyan-300">
-                        {row.roi}
-                        <span className="text-[10px] text-slate-400 block">{row.multiple}</span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="mt-4 p-3.5 rounded-xl bg-blue-950/30 border border-blue-500/30 text-[11px] text-slate-300 leading-relaxed">
-            <i className="fa-solid fa-circle-info text-blue-400 mr-1.5"></i>
-            <strong className="text-white">Squad Budget Arbitrage:</strong> Equipping an existing 3-BA squad with
-            Digital Co-Workers unlocks <strong className="text-emerald-400">+0.9 FTE of extra delivery capacity</strong>{' '}
-            (3 &times; +0.3 FTE) while increasing the $420k squad budget by just{' '}
-            <strong className="text-cyan-300">+3.79%</strong> (+$15,900/yr)&mdash;compared to a{' '}
-            <strong className="text-amber-400">+33.3% budget expansion</strong> (+$140,000/yr) to hire a 4th human BA
-            for similar capacity.
-          </div>
-        </div>
+        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <strong className="text-white font-semibold">Squad Budget Arbitrage:</strong> Equipping an existing 3-BA
+          squad with Digital Co-Workers unlocks{' '}
+          <strong className="text-emerald-400 font-bold">+0.9 FTE of extra delivery capacity</strong> (3 &times; +0.3
+          FTE) while increasing the $420k squad budget by just{' '}
+          <strong className="text-cyan-300 font-bold">+3.79%</strong> (+$15,900/yr)&mdash;compared to a{' '}
+          <strong className="text-amber-400 font-bold">+33.3% budget expansion</strong> (+$140,000/yr) to hire a 4th
+          human BA for similar capacity.
+        </p>
       </div>
 
-      {/* Methodology drawer */}
-      <div className="rounded-2xl border border-slate-800/80 bg-slate-950/70 overflow-hidden">
+      {/* Methodology, assumptions and the detailed workings */}
+      <div className="rounded-2xl border border-slate-800/80 bg-slate-950/70 overflow-hidden shadow-xl">
         <button
           type="button"
           onClick={() => setMethodologyOpen((open) => !open)}
@@ -292,8 +195,8 @@ export default function Roi() {
           className="w-full px-6 py-4 flex items-center justify-between gap-3 text-left hover:bg-slate-900/60 transition-colors group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
         >
           <span className="flex items-center gap-2.5 text-xs font-mono font-bold text-slate-300 group-hover:text-white">
-            <i className="fa-solid fa-circle-info text-blue-400"></i>
-            <span>View Economic Modeling Methodology, Assumptions &amp; FinOps Disclaimer</span>
+            <i className="fa-solid fa-sliders text-blue-400"></i>
+            <span>View Economic Modeling Methodology, Assumptions &amp; Detailed Financial Workings</span>
           </span>
           <span className="text-xs font-mono text-blue-400 flex items-center gap-1.5 flex-shrink-0">
             <span>{methodologyOpen ? 'Collapse' : 'Expand'}</span>
@@ -303,71 +206,179 @@ export default function Roi() {
 
         {methodologyOpen && (
           <div id="roi-methodology" className="fade-in border-t border-slate-800/60">
-            <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-[11px] text-slate-400 leading-relaxed">
-              <div className="space-y-2">
-                <strong className="font-mono uppercase tracking-wider block text-[10px] text-blue-400">
-                  1. Workforce &amp; Productivity Baseline
-                </strong>
-                <p>
-                  <strong className="text-slate-200">Human Analyst Baseline:</strong> Modeled on a standard New Zealand
-                  Senior Technology Business Analyst fully loaded annual cost of{' '}
-                  <strong className="text-slate-200">$140,000 NZD/year</strong> ($11,667/month).
-                </p>
-                <p>
-                  <strong className="text-slate-200">Workflow Volume &amp; Capacity Gain:</strong> Assumes an empirical
-                  baseline of 3 deep discovery workflows per day across 21 working days (
-                  <strong className="text-slate-200">63 completed workflows/month</strong> or 756/year per BA).
-                  Offloading legacy repository AST tracing, impact assessments, and ticket scaffolding unlocks an
-                  estimated <strong className="text-slate-200">+30% productive capacity (+0.3 FTE or ~48 hours/month)</strong>,
-                  valued at $42,000 NZD/year ($3,500/month) per analyst or{' '}
-                  <strong className="text-slate-200">$55.56 NZD</strong> in gross capacity value per completed workflow.
-                </p>
+            <div className="p-6 space-y-8 text-[11px] text-slate-400 leading-relaxed">
+              {/* Written assumptions */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-6 border-b border-slate-800/80">
+                <div className="space-y-2">
+                  <strong className="font-mono uppercase tracking-wider block text-[10px] text-blue-400">
+                    1. Workforce &amp; Productivity Baseline
+                  </strong>
+                  <p>
+                    <strong className="text-slate-200">Human Analyst Baseline:</strong> Modeled on a standard New
+                    Zealand Senior Technology Business Analyst fully loaded annual cost of{' '}
+                    <strong className="text-slate-200">$140,000 NZD/year</strong> ($11,667/month).
+                  </p>
+                  <p>
+                    <strong className="text-slate-200">Workflow Volume &amp; Capacity Gain:</strong> Assumes an
+                    empirical baseline of 3 deep discovery workflows per day across 21 working days (
+                    <strong className="text-slate-200">63 completed workflows/month</strong> or 756/year per BA).
+                    Offloading legacy repository AST tracing, impact assessments, and ticket scaffolding unlocks an
+                    estimated{' '}
+                    <strong className="text-slate-200">+30% productive capacity (+0.3 FTE or ~48 hours/month)</strong>,
+                    valued at $42,000 NZD/year ($3,500/month) per analyst or{' '}
+                    <strong className="text-slate-200">$55.56 NZD</strong> in gross capacity value per completed
+                    workflow.
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <strong className="font-mono uppercase tracking-wider block text-[10px] text-cyan-400">
+                    2. Platform, Container &amp; Token Assumptions
+                  </strong>
+                  <p>
+                    <strong className="text-slate-200">Fixed Shared Squad Base ($575/mo | $6,900/yr):</strong>{' '}
+                    Comprises a $500/month base Agent Support &amp; Governance retainer plus $75/month for shared
+                    foundational database and search indexing infrastructure across the squad.
+                  </p>
+                  <p>
+                    <strong className="text-slate-200">Dedicated Runtime ($200/BA/mo | $2,400/BA/yr):</strong> Reflects
+                    dedicated, single-tenant cloud container infrastructure (e.g., Azure Container Apps) spun up per
+                    active user to maintain strict memory, execution, and tenant isolation.
+                  </p>
+                  <p>
+                    <strong className="text-slate-200">Usage-Based LLM Inference ($50/BA/mo | $600/BA/yr):</strong>{' '}
+                    Modeled on multi-turn agentic execution (~120,000 input tokens and ~8,000 output tokens per deep
+                    workflow, or <strong className="text-slate-200">~$0.80 NZD per workflow</strong>) routed via
+                    enterprise-grade regional endpoints (e.g., Claude Sonnet on AWS Bedrock) with zero model training
+                    retention.
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <strong className="font-mono uppercase tracking-wider block text-[10px] text-emerald-400">
+                    3. FinOps Calibration &amp; Commercial Disclaimer
+                  </strong>
+                  <p>
+                    All figures, return multiples, and unit economics presented are illustrative estimates based on
+                    internal pilot benchmarks in New Zealand Dollars (NZD) exclusive of GST. Actual token consumption,
+                    infrastructure utilization, and productivity gains will vary depending on repository size, legacy
+                    documentation density, external MCP integration complexity, and user adoption.
+                  </p>
+                  <p>
+                    During <strong className="text-slate-200">Phase 2 (Orchestration &amp; Integration SOW)</strong>,
+                    Cognitech conducts a live <strong className="text-slate-200">FinOps Calibration</strong> inside the
+                    client&rsquo;s environment to establish empirical token baselines and configure hard-capped monthly
+                    spend guardrails prior to ongoing production deployment.
+                  </p>
+                </div>
               </div>
 
-              <div className="space-y-2">
-                <strong className="font-mono uppercase tracking-wider block text-[10px] text-cyan-400">
-                  2. Platform, Container &amp; Token Assumptions
-                </strong>
-                <p>
-                  <strong className="text-slate-200">Fixed Shared Squad Base ($575/mo | $6,900/yr):</strong> Comprises a
-                  $500/month base Agent Support &amp; Governance retainer plus $75/month for shared foundational
-                  database and search indexing infrastructure across the squad.
-                </p>
-                <p>
-                  <strong className="text-slate-200">Isolated Per-User Runtime ($200/BA/mo | $2,400/BA/yr):</strong>{' '}
-                  Reflects dedicated, single-tenant cloud container infrastructure (e.g., Azure Container Apps) spun up
-                  per active user to maintain strict memory and execution isolation.
-                </p>
-                <p>
-                  <strong className="text-slate-200">Usage-Based LLM Inference ($50/BA/mo | $600/BA/yr):</strong>{' '}
-                  Modeled on multi-turn agentic execution (~120,000 input tokens and ~8,000 output tokens per deep
-                  workflow, or <strong className="text-slate-200">~$0.80 NZD per workflow</strong>) routed via
-                  enterprise-grade regional endpoints (e.g., Claude Sonnet on AWS Bedrock) with zero model training
-                  retention.
-                </p>
-              </div>
+              {/* Detailed workings */}
+              <div>
+                <span className="text-[10px] font-mono font-bold text-slate-300 uppercase tracking-widest block mb-4">
+                  <i className="fa-solid fa-table-list text-blue-400 mr-1.5"></i> Auditable Financial Workings (Parts A
+                  &amp; B)
+                </span>
 
-              <div className="space-y-2">
-                <strong className="font-mono uppercase tracking-wider block text-[10px] text-emerald-400">
-                  3. FinOps Calibration &amp; Commercial Disclaimer
-                </strong>
-                <p>
-                  All figures, return multiples, and unit economics presented are illustrative estimates based on
-                  internal pilot benchmarks in New Zealand Dollars (NZD) exclusive of GST. Actual token consumption,
-                  infrastructure utilization, and productivity gains will vary depending on repository size, legacy
-                  documentation density, external MCP integration complexity, and user adoption.
-                </p>
-                <p>
-                  During <strong className="text-slate-200">Phase 2 (Orchestration &amp; Integration SOW)</strong>,
-                  Cognitech conducts a live <strong className="text-slate-200">FinOps Calibration</strong> inside the
-                  client&rsquo;s environment to establish empirical token baselines and configure hard-capped monthly
-                  spend guardrails prior to ongoing production deployment.
-                </p>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                  {/* Part A */}
+                  <div className="lg:col-span-5 p-5 rounded-2xl bg-slate-900/90 border border-slate-800">
+                    <span className="text-[9px] font-mono text-cyan-400 font-bold uppercase tracking-wider block mb-1">
+                      PART A: UNIT WORKFLOW ECONOMICS
+                    </span>
+                    <h4 className="text-sm font-bold text-white mb-0.5">Value vs. AI Spend per Completed Workflow</h4>
+                    <p className="text-[10px] text-slate-400 mb-3">
+                      1 BA (63 workflows/mo) vs. 3-BA Squad (189 workflows/mo)
+                    </p>
+
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left border-collapse text-[10px]">
+                        <thead>
+                          <tr className="border-b border-slate-800 text-slate-400 font-mono text-[9px] uppercase">
+                            <th scope="col" className="py-2 pr-1">Component</th>
+                            <th scope="col" className="py-2 px-1 text-right">Single BA</th>
+                            <th scope="col" className="py-2 pl-1 text-right text-cyan-300">3-BA Squad</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-800/70 text-slate-300">
+                          {unitWorkflowRows.map((row) => {
+                            const pad = row.tall ? 'py-2.5' : 'py-2'
+                            const note = row.noteClass ?? 'text-slate-500'
+                            return (
+                              <tr key={row.label} className={row.rowClass ?? ''}>
+                                <th scope="row" className={`${pad} pr-1 text-left font-normal ${row.labelClass ?? ''}`}>
+                                  {row.label}
+                                  {row.sub && (
+                                    <span className="block text-[9px] text-slate-500 font-mono">{row.sub}</span>
+                                  )}
+                                </th>
+                                <td className={`${pad} px-1 text-right font-mono ${row.figureClass ?? ''}`}>
+                                  {row.single}
+                                  <span className={`text-[9px] ${note} block`}>{row.singleNote}</span>
+                                </td>
+                                <td className={`${pad} pl-1 text-right font-mono ${row.figureClass ?? ''}`}>
+                                  {row.squad}
+                                  <span className={`text-[9px] ${note} block`}>{row.squadNote}</span>
+                                </td>
+                              </tr>
+                            )
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Part B */}
+                  <div className="lg:col-span-7 p-5 rounded-2xl bg-slate-900/90 border border-slate-800">
+                    <span className="text-[9px] font-mono text-emerald-400 font-bold uppercase tracking-wider block mb-1">
+                      PART B: SCALING ROI ACROSS SQUADS
+                    </span>
+                    <h4 className="text-sm font-bold text-white mb-0.5">Annual Squad Economics &amp; Capacity Arbitrage</h4>
+                    <p className="text-[10px] text-slate-400 mb-3">
+                      Baseline: Human BA = $140k/yr; 30% gain unlocks +0.3 FTE ($42k/yr) per BA.
+                    </p>
+
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left border-collapse text-[10px]">
+                        <thead>
+                          <tr className="border-b border-slate-800 text-slate-400 font-mono text-[9px] uppercase">
+                            {squadEconomicsHeads.map((head) => (
+                              <th
+                                key={head.label}
+                                scope="col"
+                                className={`py-2 ${head.className ?? 'px-1'} ${head.align === 'left' ? '' : 'text-right'}`}
+                              >
+                                {head.label}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-800/70 text-slate-300 font-mono">
+                          {squadEconomicsRows.map((row) => (
+                            <tr key={row.squad} className={row.highlighted ? 'bg-blue-950/20' : ''}>
+                              <th scope="row" className={`py-2 pr-1 text-left font-sans font-bold ${row.highlighted ? 'text-blue-300' : 'text-white'}`}>
+                                {row.squad}
+                              </th>
+                              <td className="py-2 px-1 text-right">{row.fixedBase}</td>
+                              <td className="py-2 px-1 text-right">{row.containers}</td>
+                              <td className="py-2 px-1 text-right">{row.tokens}</td>
+                              <td className="py-2 px-1 text-right font-bold text-white">{row.total}</td>
+                              <td className="py-2 px-1 text-right">{row.gross}</td>
+                              <td className="py-2 px-1 text-right font-bold text-emerald-400">{row.net}</td>
+                              <td className="py-2 pl-1 text-right font-bold text-cyan-300 whitespace-nowrap">{row.roi}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         )}
       </div>
+
     </section>
   )
 }
