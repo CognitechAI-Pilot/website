@@ -76,6 +76,14 @@ navy plate on purpose — iOS composites transparent icons onto black.
 
 If the logo changes, these do not update themselves. Regenerate all four.
 
+## ROI figures
+
+The numbers in `src/data/roi.js` are published commercial claims transcribed
+from an approved mockup, not values to derive. They reconcile internally (net =
+gross - spend; ROI = net / spend; multiple = gross / spend), so an apparent
+discrepancy means the transcription is wrong, not the arithmetic. Change them
+only from an updated mockup.
+
 ## Conventions
 
 - Interactive elements are `<button>`, not clickable `<div>`s. Accordions carry
