@@ -147,7 +147,7 @@ export const pricingTiers = [
     title: 'Co-Worker Support and Governance',
     blurb: 'Continuous engineering maintenance, fine-tuning, supervisory monitoring, and compliance oversight.',
     price: '$500–$2,500', priceClass: 'text-4xl font-black text-white',
-    priceNote: 'Per month based on squad user scope',
+    priceNote: 'Per month based on blueprint & integration scope',
     features: [
       { text: 'Base operational monitoring & incident triage' },
       { text: 'Continuous model tuning & prompt optimization' },
