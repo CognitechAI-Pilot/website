@@ -44,7 +44,7 @@ replace produces `cognitech AI.co.nz` and breaks the contact mailbox.
 - **Font Awesome comes from npm** (`@fortawesome/fontawesome-free`, imported in
   `main.jsx`), not a CDN.
 - **`vercel.json` must keep its rewrite**, with the `/api/:path*` line first.
-  Without it a direct hit on `/resources` 404s; with it reordered, the
+  Without it a direct hit on any client-side path 404s; with it reordered, the
   serverless function gets swallowed by the SPA fallback.
 - **The case study video lives on Vercel Blob**, not in the repo —
   `BA_DEMO_VIDEO` in `CaseStudy.jsx`. The `%20` escapes are required, since the
@@ -84,12 +84,24 @@ gross - spend; ROI = net / spend; multiple = gross / spend), so an apparent
 discrepancy means the transcription is wrong, not the arithmetic. Change them
 only from an updated mockup.
 
+## Working from a supplied HTML mockup
+
+The mockups pull Tailwind from `cdn.tailwindcss.com`, which this sandbox blocks,
+so opening one in a browser here renders it unstyled. Treat a mockup as the
+source of truth for copy and class names, and never for measured layout — a
+screenshot or a width taken from one is meaningless. Verify layout against the
+built site instead.
+
 ## Conventions
 
 - Interactive elements are `<button>`, not clickable `<div>`s. Accordions carry
   `aria-expanded` and `aria-controls`. Collapsed panels unmount rather than
   being clipped to `max-height: 0`, so screen readers do not read hidden
   content. Programmatic scrolling checks `prefers-reduced-motion`.
+- An anchor that is not a `<section>` or `<footer>` needs its own `scroll-mt-24`.
+  `index.css` sets scroll-margin on `section[id]` and `footer[id]` only, and the
+  navbar is a fixed 80px, so a `div[id]` target lands underneath it without one.
+  `#enterprise-gap` and `#architecture-blueprint` both rely on this.
 - Team photos are square, 1024x1024.
 - Before pushing: run `npm run build`, then check the page in a browser for
   horizontal overflow at 320, 768 and 1440px.

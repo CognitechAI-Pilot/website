@@ -1,3 +1,6 @@
+import EnterpriseGap from './EnterpriseGap'
+import CoWorkerArchitecture from './CoWorkerArchitecture'
+
 export default function About() {
   return (
     <section id="about" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-800/60">
@@ -75,6 +78,10 @@ export default function About() {
                     </div>
                 </div>
             </div>
+
+            <EnterpriseGap />
+
+            <CoWorkerArchitecture />
         </section>
   )
 }

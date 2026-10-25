@@ -4,7 +4,15 @@ export const contactEmail = 'dinesh@cognitech.co.nz'
 // dropdown; `to` sends the link to another route, `href` to an anchor on the
 // current page.
 export const navLinks = [
-  { href: '#about', label: 'About Us' },
+  {
+    label: 'About Us',
+    width: 'w-72',
+    children: [
+      { href: '#about', label: 'Our Philosophy' },
+      { href: '#enterprise-gap', label: 'The Enterprise AI Gap' },
+      { href: '#architecture-blueprint', label: 'Co-Worker Architecture' }
+    ]
+  },
   {
     label: 'Co-Workers',
     width: 'w-72',
@@ -36,11 +44,6 @@ export const navLinks = [
       { href: '#pricing', label: 'Commercial Tiers' },
       { href: '#roi', label: 'Return On Investment (ROI)' }
     ]
-  },
-  {
-    label: 'Resources',
-    width: 'w-72',
-    children: [{ to: '/resources#blueprint', label: 'Digital Co-Worker Blueprint' }]
   },
   { href: '#team', label: 'Meet the Team' }
 ]

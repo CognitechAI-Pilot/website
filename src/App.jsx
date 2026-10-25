@@ -2,12 +2,12 @@ import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
-import Resources from './pages/Resources'
 
 /**
  * The browser only scrolls to a #hash when it is present on the initial load.
- * Navigating from, say, the home page to /resources#blueprint is a client-side
- * route change, so the scroll has to be done by hand once the target exists.
+ * A click on an anchor the browser is already showing, or a hash arriving with a
+ * client-side route change, does not scroll on its own, so it is done by hand
+ * once the target exists.
  */
 function ScrollToHash() {
   const { pathname, hash } = useLocation()
@@ -37,7 +37,6 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/resources" element={<Resources />} />
         {/* Anything else falls back to the landing page. */}
         <Route path="*" element={<Home />} />
       </Routes>

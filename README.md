@@ -24,7 +24,7 @@ vercel dev       # app + /api/inquiry on http://localhost:3000
 
 ```
 index.html              Vite entry point, SEO + Open Graph tags
-vercel.json             SPA rewrite so /resources resolves client-side
+vercel.json             SPA rewrite so client-side routes resolve
 public/                 Static assets served from the site root
 src/
   main.jsx              React bootstrap (Font Awesome + Tailwind imports)
@@ -32,11 +32,11 @@ src/
   index.css             Tailwind layers, glow-card/tier-highlight, motion prefs
   pages/
     Home.jsx            Landing page composition and cross-section state
-    Resources.jsx       /resources — Digital Co-Worker Blueprint
   data/
     site.js             Nav, enquiry purposes, pricing CTA mapping
     portfolio.js        Role cards, engagement phases, pricing tiers
-    blueprint.js        Six-plane reference architecture content
+    architecture.js     Enterprise AI Gap columns, Co-Worker architecture nodes
+    roi.js              ROI KPIs, squad calculator, charts and audit tables
     team.js             Team members and photos
   components/           One component per page section
 api/
@@ -91,19 +91,16 @@ the same file — that is what keeps them from drifting apart.
 
 ## Pages and routing
 
-Two routes, served by `react-router-dom` from `src/App.jsx`:
+One route, served by `react-router-dom` from `src/App.jsx`: `/` —
+`src/pages/Home.jsx`. Anything else falls back to it.
 
-- `/` — `src/pages/Home.jsx`
-- `/resources` — `src/pages/Resources.jsx`, holding the Digital Co-Worker Blueprint
+It is a client-side route in a single-page build, so `vercel.json` rewrites
+everything except `/api/*` to `index.html`. Keep the `/api/:path*` line first:
+reordered, the serverless function is swallowed by the SPA fallback.
 
-Both are client-side routes in a single-page build, so `vercel.json` rewrites
-everything except `/api/*` to `index.html`. Without that rewrite a direct hit on
-`/resources` would 404.
-
-`ScrollToHash` in `App.jsx` handles `#anchor` targets across a route change —
-the browser only scrolls to a hash on the initial load, so a link such as
-`/resources#blueprint` from the home page needs the scroll done by hand once the
-target has mounted.
+`ScrollToHash` in `App.jsx` handles `#anchor` targets. The browser only scrolls
+to a hash on the initial load, so a hash arriving any other way needs the scroll
+done by hand once the target has mounted.
 
 ## Engagement phases and pricing
 

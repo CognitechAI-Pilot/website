@@ -152,7 +152,8 @@ export const pricingTiers = [
       { text: 'Base operational monitoring & incident triage' },
       { text: 'Continuous model tuning & prompt optimization' },
       { text: 'Security & compliance boundary audit logging' },
-      { text: 'Dedicated delivery capacity & capability handover' }
+      { text: 'Blueprint governance ($500–$2,500/mo by role & MCP scope)' },
+      { text: 'Per-Seat Co-Worker Runtime ($200/mo) + Token Allowance ($50/mo)' }
     ],
     cta: 'Inquire for Retainer'
   }
