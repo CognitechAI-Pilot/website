@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { navLinks } from '../data/site'
+import Icon from './Icon'
 
 /**
  * Anchor links in the nav are written for the home page. When the nav is shown
@@ -87,7 +88,7 @@ export default function Navbar() {
                   className="hover:text-blue-400 transition-colors flex items-center gap-1.5 py-2 uppercase focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
                 >
                   <span>{link.label}</span>
-                  <i className={`fa-solid fa-chevron-down text-[10px] transition-transform ${openDropdown === link.label ? 'rotate-180' : ''}`}></i>
+                  <Icon name="chevron-down" className={`text-[10px] transition-transform ${openDropdown === link.label ? 'rotate-180' : ''}`} />
                 </button>
 
                 {openDropdown === link.label && (
@@ -121,7 +122,7 @@ export default function Navbar() {
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             className="xl:hidden w-10 h-10 rounded-xl border border-slate-700 text-slate-300 hover:text-white hover:border-slate-600 transition-colors flex items-center justify-center"
           >
-            <i className={`fa-solid ${mobileOpen ? 'fa-xmark' : 'fa-bars'} text-base`}></i>
+            <Icon name={mobileOpen ? 'xmark' : 'bars'} className="text-base" />
           </button>
         </div>
       </div>
@@ -140,7 +141,7 @@ export default function Navbar() {
                     className="w-full flex items-center justify-between px-3 py-3 rounded-xl text-xs font-semibold uppercase tracking-wider text-slate-300 hover:bg-slate-900 hover:text-white transition-colors"
                   >
                     <span>{link.label}</span>
-                    <i className={`fa-solid fa-chevron-down text-[10px] transition-transform ${openDropdown === link.label ? 'rotate-180' : ''}`}></i>
+                    <Icon name="chevron-down" className={`text-[10px] transition-transform ${openDropdown === link.label ? 'rotate-180' : ''}`} />
                   </button>
 
                   {openDropdown === link.label && (

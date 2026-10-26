@@ -1,3 +1,7 @@
+import EnterpriseGap from './EnterpriseGap'
+import CoWorkerArchitecture from './CoWorkerArchitecture'
+import Icon from './Icon'
+
 export default function About() {
   return (
     <section id="about" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-800/60">
@@ -27,14 +31,14 @@ export default function About() {
                 <div className="lg:col-span-6 glow-card p-6 sm:p-7 rounded-2xl border border-slate-800/80 bg-slate-950/80 space-y-4">
                     <div className="flex items-center gap-3 border-b border-slate-800 pb-3">
                         <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-sm">
-                            <i className="fa-solid fa-bullseye"></i>
+                            <Icon name="bullseye" />
                         </div>
                         <h3 className="text-base font-bold text-white">Value of Our Solutions</h3>
                     </div>
 
                     <div className="space-y-3.5 text-xs sm:text-sm">
                         <div className="flex items-start gap-3">
-                            <i className="fa-solid fa-circle-check text-blue-400 mt-1 flex-shrink-0"></i>
+                            <Icon name="circle-check" className="text-blue-400 mt-1 flex-shrink-0" />
                             <div>
                                 <strong className="text-white block font-semibold mb-0.5">Rapid Deployment Templates:</strong>
                                 <span className="text-slate-300 text-xs leading-relaxed">Pre-configured role blueprints—like the BA Co-Worker—enable launch in days rather than months.</span>
@@ -42,7 +46,7 @@ export default function About() {
                         </div>
 
                         <div className="flex items-start gap-3">
-                            <i className="fa-solid fa-circle-check text-blue-400 mt-1 flex-shrink-0"></i>
+                            <Icon name="circle-check" className="text-blue-400 mt-1 flex-shrink-0" />
                             <div>
                                 <strong className="text-white block font-semibold mb-0.5">Predictable Open-Model Economics:</strong>
                                 <span className="text-slate-300 text-xs leading-relaxed">Adapting and hosting proven open-source models onshore eliminates volatile cloud token markups as usage scales.</span>
@@ -50,7 +54,7 @@ export default function About() {
                         </div>
 
                         <div className="flex items-start gap-3">
-                            <i className="fa-solid fa-circle-check text-blue-400 mt-1 flex-shrink-0"></i>
+                            <Icon name="circle-check" className="text-blue-400 mt-1 flex-shrink-0" />
                             <div>
                                 <strong className="text-white block font-semibold mb-0.5">100% Onshore Data Sovereignty:</strong>
                                 <span className="text-slate-300 text-xs leading-relaxed">Locally hosted infrastructure guarantees strict data residency, privacy, and compliance with zero public model training.</span>
@@ -58,7 +62,7 @@ export default function About() {
                         </div>
 
                         <div className="flex items-start gap-3">
-                            <i className="fa-solid fa-circle-check text-blue-400 mt-1 flex-shrink-0"></i>
+                            <Icon name="circle-check" className="text-blue-400 mt-1 flex-shrink-0" />
                             <div>
                                 <strong className="text-white block font-semibold mb-0.5">Audit-Ready Governance:</strong>
                                 <span className="text-slate-300 text-xs leading-relaxed">Full execution trace logging and human-in-the-loop controls provide boards with total risk visibility.</span>
@@ -66,7 +70,7 @@ export default function About() {
                         </div>
 
                         <div className="flex items-start gap-3">
-                            <i className="fa-solid fa-circle-check text-blue-400 mt-1 flex-shrink-0"></i>
+                            <Icon name="circle-check" className="text-blue-400 mt-1 flex-shrink-0" />
                             <div>
                                 <strong className="text-white block font-semibold mb-0.5">Capacity-Driven ROI:</strong>
                                 <span className="text-slate-300 text-xs leading-relaxed">Commercials tied directly to tangible delivery hours reclaimed and capacity multiplier value.</span>
@@ -75,6 +79,10 @@ export default function About() {
                     </div>
                 </div>
             </div>
+
+            <EnterpriseGap />
+
+            <CoWorkerArchitecture />
         </section>
   )
 }

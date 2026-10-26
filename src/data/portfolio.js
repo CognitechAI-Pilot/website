@@ -147,12 +147,13 @@ export const pricingTiers = [
     title: 'Co-Worker Support and Governance',
     blurb: 'Continuous engineering maintenance, fine-tuning, supervisory monitoring, and compliance oversight.',
     price: '$500–$2,500', priceClass: 'text-4xl font-black text-white',
-    priceNote: 'Per month based on squad user scope',
+    priceNote: 'Per month based on blueprint & integration scope',
     features: [
       { text: 'Base operational monitoring & incident triage' },
       { text: 'Continuous model tuning & prompt optimization' },
       { text: 'Security & compliance boundary audit logging' },
-      { text: 'Dedicated delivery capacity & capability handover' }
+      { text: 'Blueprint governance ($500–$2,500/mo by role & MCP scope)' },
+      { text: 'Per-Seat Co-Worker Runtime ($200/mo) + Token Allowance ($50/mo)' }
     ],
     cta: 'Inquire for Retainer'
   }

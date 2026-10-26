@@ -1,4 +1,5 @@
 import { teamMembers } from '../data/team'
+import Icon from './Icon'
 
 export default function Team() {
   return (
@@ -13,9 +14,9 @@ export default function Team() {
       <div className="max-w-4xl mx-auto glow-card rounded-3xl p-8 sm:p-10 border border-slate-800">
         <div className="text-center border-b border-slate-800 pb-6 mb-8">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono font-bold uppercase">
-            <i className="fa-solid fa-location-dot"></i> Enterprise AI Design and Orchestration
+            <Icon name="location-dot" /> Enterprise AI Design and Orchestration
           </span>
-          <span className="text-xs text-slate-500 font-mono block mt-1">NEW ZEALAND CORE ARCHITECTURE TEAM</span>
+          <span className="text-xs text-slate-400 font-mono block mt-1">NEW ZEALAND CORE ARCHITECTURE TEAM</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

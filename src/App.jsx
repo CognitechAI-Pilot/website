@@ -1,13 +1,15 @@
 import { useEffect } from 'react'
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
-import Resources from './pages/Resources'
+import useCardSpotlight from './hooks/useCardSpotlight'
 
 /**
  * The browser only scrolls to a #hash when it is present on the initial load.
- * Navigating from, say, the home page to /resources#blueprint is a client-side
- * route change, so the scroll has to be done by hand once the target exists.
+ * A click on an anchor the browser is already showing, or a hash arriving with
+ * a client-side route change, does not scroll on its own, so it is done by hand
+ * once the target exists.
  */
 function ScrollToHash() {
   const { pathname, hash } = useLocation()
@@ -30,17 +32,27 @@ function ScrollToHash() {
   return null
 }
 
+/**
+ * Everything inside the router. The router itself is supplied by the entry
+ * point — BrowserRouter in the browser, StaticRouter when prerendering — so
+ * the same tree renders in both.
+ */
 export default function App() {
+  useCardSpotlight()
+
   return (
-    <BrowserRouter>
+    <>
       <ScrollToHash />
+      {/* Cookie-free page analytics. Collects no personal data and sets no
+          cookies, so it needs no consent banner; it only reports once the
+          deployment has Web Analytics switched on in the Vercel dashboard. */}
+      <Analytics />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/resources" element={<Resources />} />
         {/* Anything else falls back to the landing page. */}
         <Route path="*" element={<Home />} />
       </Routes>
-    </BrowserRouter>
+    </>
   )
 }

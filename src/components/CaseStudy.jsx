@@ -1,3 +1,4 @@
+import Icon from './Icon'
 // Hosted on Vercel Blob rather than committed to the repo. The %20s are
 // required: the blob key contains spaces, so an unencoded URL would 404.
 const BA_DEMO_VIDEO =
@@ -50,7 +51,7 @@ export default function CaseStudy() {
           <div className="lg:col-span-7 space-y-4">
             <div className="p-4 rounded-xl bg-slate-950 border border-slate-800/80 space-y-2">
               <strong className="text-amber-400 font-bold text-xs uppercase tracking-wider block">
-                <i className="fa-solid fa-triangle-exclamation mr-1.5"></i> The Operational Challenge
+                <Icon name="triangle-exclamation" className="mr-1.5" /> The Operational Challenge
               </strong>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Navigating dense, multi-layered legacy operational documents and mapping complex requirements created
@@ -62,7 +63,7 @@ export default function CaseStudy() {
 
             <div className="p-4 rounded-xl bg-blue-950/20 border border-blue-900/40 space-y-2">
               <strong className="text-blue-300 font-bold text-xs uppercase tracking-wider block">
-                <i className="fa-solid fa-robot mr-1.5"></i> The Co-Worker Solution
+                <Icon name="robot" className="mr-1.5" /> The Co-Worker Solution
               </strong>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Cognitech AI deployed a specialized{' '}
@@ -96,7 +97,7 @@ export default function CaseStudy() {
         <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800/80">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
             <span className="text-xs font-mono font-bold text-blue-400 uppercase tracking-widest">
-              <i className="fa-solid fa-chart-line mr-1.5"></i> Performance Benchmark &amp; Security Metrics
+              <Icon name="chart-line" className="mr-1.5" /> Performance Benchmark &amp; Security Metrics
             </span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

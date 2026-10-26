@@ -1,12 +1,16 @@
-// Return On Investment section content, lifted from the approved index1.1
-// mockup. Figures are transcribed verbatim — they are commercial claims, so
-// they should only ever change from an updated mockup, never by inference.
+// Return On Investment content, lifted from the approved index V2.6 mockup.
+//
+// Two different kinds of number live here. The commercial CONSTANTS below are
+// transcribed claims — they change only from an updated mockup. Everything the
+// calculator shows is DERIVED from them by computeRoi() using the mockup's own
+// formula, so the figures move with the visitor's inputs instead of being
+// transcribed one by one.
 
 export const roiKpis = [
   {
-    label: 'Human BA Output', value: '+30%', gradient: 'from-blue-400 to-cyan-300',
-    title: 'Capacity Boost per BA',
-    note: 'Unlocks +0.3 FTE ($42,000/yr gross capacity value) per analyst'
+    label: 'Unit Token Arbitrage', value: '$0.80', gradient: 'from-blue-400 to-cyan-300',
+    title: 'Tokens vs. $55.56 Value',
+    note: 'Unlocks +0.3 FTE ($42,000/yr gross capacity) per analyst across 63 workflows/mo'
   },
   {
     label: 'Single BA Pilot', value: '324%', gradient: 'from-emerald-400 to-teal-300',
@@ -26,82 +30,91 @@ export const roiKpis = [
   }
 ]
 
-// Left chart. `spend` and `value` are bar widths as percentages, taken from the
-// mockup's inline styles rather than derived, so the two charts stay visually
-// consistent with the approved design.
-export const spendVsValue = [
-  { label: '1 BA Pilot', summary: '$42.0k Value vs. $9.9k Spend (+$32.1k Net | 324% ROI)',
-    spend: '6%', spendTitle: '$9.9k Annual AI Spend',
-    value: '24%', valueTitle: '$42.0k Gross Capacity Value',
-    valueGradient: 'from-emerald-500 to-teal-400' },
-  { label: '3-BA Squad', summary: '$126.0k Value vs. $15.9k Spend (+$110.1k Net | 692% ROI)',
-    spend: '9%', spendTitle: '$15.9k Annual AI Spend',
-    value: '48%', valueTitle: '$126.0k Gross Capacity Value',
-    valueGradient: 'from-emerald-500 to-teal-400' },
-  { label: '6-BA Multi-Squad', summary: '$252.0k Value vs. $24.9k Spend (+$227.1k Net | 912% ROI)',
-    spend: '13%', spendTitle: '$24.9k Annual AI Spend',
-    value: '74%', valueTitle: '$252.0k Gross Capacity Value',
-    valueGradient: 'from-emerald-500 to-cyan-400' },
-  { label: '12-BA Enterprise Scale', summary: '$504.0k Value vs. $42.9k Spend (+$461.1k Net | 1,075% ROI)',
-    spend: '18%', spendTitle: '$42.9k Annual AI Spend',
-    value: '100%', valueTitle: '$504.0k Gross Capacity Value',
-    valueGradient: 'from-emerald-400 via-teal-400 to-cyan-300' }
-]
+// ---- Commercial constants (transcribed) -----------------------------------
+export const FIXED_BASE_YEAR = 6900        // $575/mo shared blueprint base
+export const RUNTIME_PER_BA_YEAR = 2400    // $200/BA/mo Co-Worker runtime
+export const TOKENS_PER_BA_YEAR = 600      // $50/BA/mo inference allowance
+export const WORKFLOWS_PER_BA_YEAR = 756   // 63/month across 12 months
+export const CAPACITY_GAIN = 0.3           // +30% productive capacity per BA
+export const HOURS_RECLAIMED_PER_BA_MONTH = 48
 
-// Right chart — the cost components that make up the all-in figure.
+// Presets, and the bounds the mockup's script enforces on the free inputs.
+export const squadPresets = [1, 3, 6, 12]
+export const DEFAULT_BA_COUNT = 3
+export const DEFAULT_BA_SALARY = 140000
+export const BA_COUNT_RANGE = { min: 1, max: 12 }
+export const BA_SALARY_RANGE = { min: 60000, max: 400000 }
+// What the number inputs offer before clamping, per the mockup's markup.
+export const SALARY_INPUT = { min: 80000, max: 300000, step: 5000 }
+
+const clamp = (value, { min, max }) => Math.max(min, Math.min(max, value))
+const formatNZD = (n) => `$${Math.round(n).toLocaleString('en-NZ')}`
+
+/**
+ * The mockup's calculateCustomRoi(), ported verbatim. Returns every string the
+ * calculator renders, so the component stays presentation-only.
+ */
+export function computeRoi(rawCount, rawSalary) {
+  const baCount = clamp(parseInt(rawCount, 10) || BA_COUNT_RANGE.min, BA_COUNT_RANGE)
+  const baSalary = clamp(parseInt(rawSalary, 10) || DEFAULT_BA_SALARY, BA_SALARY_RANGE)
+
+  const runtimeYr = baCount * RUNTIME_PER_BA_YEAR
+  const tokensYr = baCount * TOKENS_PER_BA_YEAR
+  const totalSpendYr = FIXED_BASE_YEAR + runtimeYr + tokensYr
+  const workflowsPerYr = baCount * WORKFLOWS_PER_BA_YEAR
+  const costPerWorkflow = totalSpendYr / workflowsPerYr
+
+  const grossValuePerBa = baSalary * CAPACITY_GAIN
+  const grossValueYr = baCount * grossValuePerBa
+  const netValueYr = grossValueYr - totalSpendYr
+  const ratio = grossValueYr / totalSpendYr
+
+  return {
+    baCount,
+    baSalary,
+    spend: formatNZD(totalSpendYr),
+    spendNote: `${formatNZD(totalSpendYr / 12)}/mo total ($${costPerWorkflow.toFixed(2)}/workflow)`,
+    value: formatNZD(grossValueYr),
+    fte: `+${(baCount * CAPACITY_GAIN).toFixed(1)} FTE (~${Math.round(baCount * HOURS_RECLAIMED_PER_BA_MONTH)} hrs/mo reclaimed)`,
+    net: `+${formatNZD(netValueYr)}`,
+    roiBadge: `${Math.round((netValueYr / totalSpendYr) * 100).toLocaleString('en-NZ')}% Net ROI (${ratio.toFixed(1)}x Return)`,
+    spendDetail: `($6.9k Base + $${(runtimeYr / 1000).toFixed(1)}k Runtime + $${(tokensYr / 1000).toFixed(1)}k Tokens)`,
+    valueDetail: `(${formatNZD(grossValuePerBa)}/yr per BA)`,
+    spendBar: `${Math.min(100, Math.max(5, (totalSpendYr / grossValueYr) * 100)).toFixed(1)}%`,
+    payback: `~${((totalSpendYr / grossValueYr) * 52).toFixed(1)} Weeks`,
+    dollarMultiple: `Every $1 spent unlocks $${ratio.toFixed(2)} in BA capacity`
+  }
+}
+
+// Cost components making up the all-in per-workflow figure.
 export const unitCostBreakdown = [
   { marker: '⊢', label: 'Shared Platform & Support ($575/mo fixed)',
     amount: '$3.04 (3-BA) | $9.13 (1-BA)', amountClass: 'text-cyan-300',
     width: '5.5%', barClass: 'bg-cyan-400' },
-  { marker: '⊢', label: 'Isolated Per-User Container ($200/BA/mo)',
-    amount: '$3.17 (5.7% of Value)', amountClass: 'text-blue-400',
+  { marker: '⊢', label: 'Dedicated Co-Worker Runtime ($200/BA/mo)',
+    amount: '$3.17 (5.7% of Value)', amountClass: 'text-blue-300',
     width: '5.7%', barClass: 'bg-blue-500' },
   { marker: '↰', label: 'Usage-Based LLM Inference ($50/BA/mo)',
-    amount: '$0.80 ← Only 1.4% of value unlocked!', amountClass: 'text-emerald-400 font-bold',
+    amount: '$0.80 ← Only 1.4% of value unlocked!', amountClass: 'text-emerald-300 font-bold',
     width: '2%', barClass: 'bg-emerald-400' }
 ]
 
-// Part A — per-workflow unit economics. Labels are deliberately terser than
-// the prose elsewhere: the table is nested inside the methodology drawer and
-// has less width to work with.
+// The auditable per-workflow schedule beside that chart.
 export const unitWorkflowRows = [
-  { label: 'Gross BA Capacity Unlocked', sub: '($3,500/mo \u00F7 63)',
+  { label: 'Gross BA Capacity Unlocked', sub: '($3,500/mo ÷ 63)',
     single: '$55.56', singleNote: '(100%)', squad: '$55.56', squadNote: '(100%)',
-    labelClass: 'font-medium text-white', figureClass: 'font-bold text-emerald-400' },
+    labelClass: 'font-medium text-white', figureClass: 'font-bold text-emerald-300' },
   { label: 'Less: Shared Platform & Support', sub: '($575/mo fixed)',
     single: '-$9.13', singleNote: '(16.4%)', squad: '-$3.04', squadNote: '(5.5%)' },
-  { label: 'Less: Isolated User Container', sub: '($200/BA/mo)',
+  { label: 'Less: Dedicated Co-Worker Runtime', sub: '($200/BA/mo)',
     single: '-$3.17', singleNote: '(5.7%)', squad: '-$3.17', squadNote: '(5.7%)' },
   { label: 'Less: Usage-Based Inference', sub: '($50/BA/mo)',
     single: '-$0.80', singleNote: '(1.4%)', squad: '-$0.80', squadNote: '(1.4%)' },
   { label: 'Total All-In AI Cost / Deliverable',
     single: '$13.10', singleNote: '(23.6%)', squad: '$7.01', squadNote: '(12.6%)',
-    rowClass: 'bg-slate-950/60 font-semibold text-white', figureClass: 'text-amber-400' },
+    rowClass: 'bg-slate-950/60 font-semibold text-white', figureClass: 'text-amber-300' },
   { label: 'Net Capacity Value Gained',
     single: '+$42.46', singleNote: '(76.4%)', squad: '+$48.55', squadNote: '(87.4%)',
     rowClass: 'bg-emerald-950/20 font-bold text-white', labelClass: 'text-emerald-300',
-    figureClass: 'text-emerald-400', noteClass: 'text-emerald-300/70', tall: true }
-]
-
-// Part B — annual economics by squad size.
-export const squadEconomicsRows = [
-  { squad: '1 BA Pilot', fixedBase: '$6,900', containers: '$2,400', tokens: '$600',
-    total: '$9,900', gross: '$42,000', net: '+$32,100', roi: '324% (4.2x)' },
-  { squad: '3 BA Squad', fixedBase: '$6,900', containers: '$7,200', tokens: '$1,800',
-    total: '$15,900', gross: '$126,000', net: '+$110,100', roi: '692% (7.9x)', highlighted: true },
-  { squad: '6 BAs', fixedBase: '$6,900', containers: '$14,400', tokens: '$3,600',
-    total: '$24,900', gross: '$252,000', net: '+$227,100', roi: '912% (10.1x)' },
-  { squad: '12 BAs', fixedBase: '$6,900', containers: '$28,800', tokens: '$7,200',
-    total: '$42,900', gross: '$504,000', net: '+$461,100', roi: '1,075% (11.7x)' }
-]
-
-export const squadEconomicsHeads = [
-  { label: 'Squad Size', align: 'left', className: 'pr-1' },
-  { label: 'Fixed Base' },
-  { label: 'Containers' },
-  { label: 'Tokens' },
-  { label: 'Total AI Spend', className: 'text-white' },
-  { label: 'Gross Value' },
-  { label: 'Net Value', className: 'text-emerald-400' },
-  { label: 'Net ROI (Multiple)', className: 'pl-1 text-cyan-300' }
+    figureClass: 'text-emerald-300', noteClass: 'text-emerald-200', tall: true }
 ]

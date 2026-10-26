@@ -26,9 +26,67 @@
     <meta name="twitter:image" content="https://www.cognitech.co.nz/og-cover.jpg" />
     <meta name="twitter:image:alt" content="Cognitech AI" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Urbanist:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.cognitech.co.nz/#organization",
+          "name": "Cognitech Limited",
+          "url": "https://www.cognitech.co.nz/",
+          "email": "dinesh@cognitech.co.nz",
+          "description": "New Zealand enterprise AI engineering firm specializing in governed, role-based Digital Co-Workers with hierarchical institutional memory (Org > Dept > Role), decoupled LLM routing, and onshore sovereign cloud deployment.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Wellington",
+            "addressCountry": "NZ"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "New Zealand"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://www.cognitech.co.nz/#service",
+          "name": "Enterprise Digital Co-Worker Runtime & Governance",
+          "provider": {
+            "@id": "https://www.cognitech.co.nz/#organization"
+          },
+          "serviceType": "Enterprise AI Orchestration & Governed Digital Co-Workers",
+          "areaServed": "New Zealand",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Cognitech Delivery Phases",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "name": "Phase 1: AI Health Check and Co-Worker PoV",
+                "price": "15000",
+                "priceCurrency": "NZD",
+                "description": "4-week readiness audit, repository data maturity check, FinOps unit economics baseline, and sandbox Co-Worker prototype."
+              },
+              {
+                "@type": "Offer",
+                "name": "Phase 2: Co-Worker Orchestration and Integration (SOW)",
+                "priceCurrency": "NZD",
+                "description": "Production deployment into client In-Tenant sovereign cloud or Cognitech Managed Cloud with MCP integrations and mandatory HITL approval gates."
+              },
+              {
+                "@type": "Offer",
+                "name": "Phase 3: Blueprint Governance Retainer & Co-Worker Runtime License",
+                "price": "500",
+                "priceCurrency": "NZD",
+                "description": "Ongoing blueprint governance ($500-$2,500/mo) plus $200/seat/mo Dedicated Co-Worker Runtime License and $50/seat/mo FinOps token allowance."
+              }
+            ]
+          }
+        }
+      ]
+    }
+    </script>
+
 </head>
 <body class="antialiased selection:bg-blue-500 selection:text-white">
     <div id="root"></div>

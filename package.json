@@ -6,16 +6,18 @@
   "description": "Cognitech Limited marketing website",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node prerender.js",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/urbanist": "^5.3.0",
+    "@vercel/analytics": "^2.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.18.4"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^6.7.2",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",

@@ -1,0 +1,11 @@
+# Cognitech AI — https://www.cognitech.co.nz/
+#
+# Everything is crawlable, deliberately. That includes AI answer engines:
+# the landing page is prerendered precisely so retrieval crawlers can read it,
+# and adding a disallow for GPTBot, ClaudeBot, PerplexityBot or similar would
+# undo that. Do not add one without a decision to become invisible to them.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.cognitech.co.nz/sitemap.xml
