@@ -5,7 +5,6 @@ import {
   DEFAULT_BA_SALARY,
   SALARY_INPUT,
   computeRoi,
-  hireVsEquip,
   roiKpis,
   squadPresets,
   unitCostBreakdown,
@@ -34,9 +33,7 @@ export default function Roi() {
         <h2 className="text-3xl sm:text-5xl font-black text-white mt-3 mb-4">Return On Investment (ROI)</h2>
         <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
           Modeled on empirical Business Analysis Co-Worker production workflows (63 deep workflows/month per BA).
-          Deploying co-workers decouples delivery output from linear headcount growth&mdash;unlocking{' '}
-          <strong className="text-white">$55.56 of BA capacity per workflow</strong> for just{' '}
-          <strong className="text-emerald-300">$0.80 in LLM tokens</strong>.
+          Deploying co-workers decouples delivery output from linear headcount growth.
         </p>
       </div>
 
@@ -63,196 +60,140 @@ export default function Roi() {
         ))}
       </div>
 
-      {/* Custom workforce modeller beside the hire-vs-equip comparison */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8 items-stretch">
-        <div className="lg:col-span-7 glow-card p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between">
+      {/* Full-width capacity modeller */}
+      <div className="glow-card p-6 sm:p-8 rounded-3xl border border-slate-800 mb-8">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 pb-5 border-b border-slate-800">
           <div>
-            <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-3 mb-5 pb-4 border-b border-slate-800">
-              <div>
-                <span className="text-[10px] font-mono text-emerald-300 font-bold uppercase tracking-wider block">
-                  CUSTOM WORKFORCE MODELER
-                </span>
-                <h3 className="text-lg sm:text-xl font-bold text-white">Interactive Value vs. AI Spend Calculator</h3>
-              </div>
-
-              <div role="group" aria-label="Preset Squad Sizes" className="inline-flex p-1 rounded-xl bg-slate-950 border border-slate-800 gap-1 self-start">
-                {squadPresets.map((size) => (
-                  <button
-                    key={size}
-                    type="button"
-                    onClick={() => setBaCount(String(size))}
-                    aria-pressed={calc.baCount === size}
-                    className={`px-3 py-1.5 rounded-lg text-[11px] font-mono font-bold whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
-                      calc.baCount === size ? 'squad-pill-active' : 'text-slate-300 hover:text-white'
-                    }`}
-                  >
-                    {size === 1 ? '1 BA' : `${size} BAs`}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Free inputs — the presets just write into the headcount field */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 p-3.5 rounded-2xl bg-slate-950/90 border border-slate-800">
-              <div>
-                <label htmlFor="custom-ba-count" className="block text-[10px] font-mono uppercase text-slate-300 font-bold mb-1">
-                  {`Custom BA Headcount (${BA_COUNT_RANGE.min}–${BA_COUNT_RANGE.max} Seats)`}
-                </label>
-                <div className="flex items-center gap-2">
-                  <input
-                    id="custom-ba-count"
-                    type="number"
-                    inputMode="numeric"
-                    min={BA_COUNT_RANGE.min}
-                    max={BA_COUNT_RANGE.max}
-                    value={baCount}
-                    onChange={(event) => setBaCount(event.target.value)}
-                    onBlur={() => setBaCount(String(calc.baCount))}
-                    className={`w-24 ${INPUT}`}
-                  />
-                  <span className="text-[11px] font-mono text-slate-300">Active Analysts</span>
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="custom-ba-salary" className="block text-[10px] font-mono uppercase text-slate-300 font-bold mb-1">
-                  Loaded Annual BA Cost ($ NZD)
-                </label>
-                <div className="flex items-center gap-2">
-                  <input
-                    id="custom-ba-salary"
-                    type="number"
-                    inputMode="numeric"
-                    min={SALARY_INPUT.min}
-                    max={SALARY_INPUT.max}
-                    step={SALARY_INPUT.step}
-                    value={baSalary}
-                    onChange={(event) => setBaSalary(event.target.value)}
-                    onBlur={() => setBaSalary(String(calc.baSalary))}
-                    className={`w-32 ${INPUT}`}
-                  />
-                  <span className="text-[11px] font-mono text-slate-300">NZD / year</span>
-                </div>
-              </div>
-            </div>
-
-            {/* The three figures the inputs drive */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-3 xl:gap-4 mb-6">
-              <div className="p-4 lg:p-3 xl:p-4 rounded-2xl bg-slate-950/90 border border-slate-800/90">
-                <span className="text-[10px] font-mono text-slate-300 uppercase block mb-1">All-In Annual AI Spend</span>
-                <div className="text-2xl lg:text-[clamp(1.125rem,1.6vw,1.5rem)] font-black text-white font-mono" aria-live="polite">
-                  {calc.spend}<span className="text-xs text-slate-300 font-normal">/yr</span>
-                </div>
-                <span className="text-[11px] font-mono text-slate-300 block mt-1">{calc.spendNote}</span>
-              </div>
-
-              <div className="p-4 lg:p-3 xl:p-4 rounded-2xl bg-slate-950/90 border border-slate-800/90">
-                <span className="text-[10px] font-mono text-cyan-300 uppercase block mb-1">Gross Capacity Unlocked</span>
-                <div className="text-2xl lg:text-[clamp(1.125rem,1.6vw,1.5rem)] font-black text-cyan-300 font-mono">
-                  {calc.value}<span className="text-xs text-slate-300 font-normal">/yr</span>
-                </div>
-                <span className="text-[11px] font-mono text-slate-200 block mt-1">{calc.fte}</span>
-              </div>
-
-              <div className="p-4 lg:p-3 xl:p-4 rounded-2xl bg-emerald-950/25 border border-emerald-500/40">
-                <span className="text-[10px] font-mono text-emerald-300 uppercase font-bold block mb-1">Net Value Created</span>
-                <div className="text-2xl lg:text-[clamp(1.125rem,1.6vw,1.5rem)] font-black text-emerald-400 font-mono">
-                  {calc.net}<span className="text-xs text-emerald-200 font-normal">/yr</span>
-                </div>
-                <span className="text-[11px] font-mono text-emerald-300 font-bold block mt-1">{calc.roiBadge}</span>
-              </div>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-slate-950/70 border border-slate-800/80 space-y-4">
-              <div className="space-y-1.5">
-                <div className="flex items-start justify-between gap-3 text-xs font-mono">
-                  <span className="text-slate-200">
-                    Annual AI Investment <span className="text-slate-300 text-[11px]">{calc.spendDetail}</span>
-                  </span>
-                  <span className="text-white font-bold">{calc.spend}</span>
-                </div>
-                <div className="w-full bg-slate-900 rounded-full h-3 overflow-hidden border border-slate-800">
-                  <div className="bg-slate-400 h-full rounded-full transition-all duration-500" style={{ width: calc.spendBar }}></div>
-                </div>
-              </div>
-
-              <div className="space-y-1.5">
-                <div className="flex items-start justify-between gap-3 text-xs font-mono">
-                  <span className="text-emerald-300 font-semibold">
-                    Gross Human BA Capacity Unlocked <span className="text-slate-300 text-[11px]">{calc.valueDetail}</span>
-                  </span>
-                  <span className="text-emerald-400 font-bold">{calc.value}</span>
-                </div>
-                <div className="w-full bg-slate-900 rounded-full h-4 overflow-hidden border border-emerald-500/30">
-                  <div className="bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-300 h-full rounded-full transition-all duration-500" style={{ width: '100%' }}></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="pt-4 mt-5 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
-            <span className="text-slate-300">
-              <Icon name="bolt" className="text-amber-400 mr-1.5" />Payback Period:{' '}
-              <strong className="text-white">{calc.payback}</strong>
+            <span className="text-[10px] font-mono text-emerald-300 font-bold uppercase tracking-wider block">
+              CUSTOM WORKFORCE CAPACITY MODELER
             </span>
-            <span className="text-cyan-300 font-bold">{calc.dollarMultiple}</span>
+            <h3 className="text-lg sm:text-2xl font-bold text-white">Interactive Value vs. AI Spend Calculator</h3>
           </div>
-        </div>
 
-        {/* Hire a 4th BA vs. equip the squad you have */}
-        <div className="lg:col-span-5 glow-card p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between">
-          <div>
-            <div className="flex items-start justify-between gap-2 mb-4 pb-4 border-b border-slate-800">
-              <div>
-                <span className="text-[10px] font-mono text-cyan-300 font-bold uppercase tracking-wider block">
-                  HEADCOUNT ARBITRAGE (3-BA SQUAD)
-                </span>
-                <h3 className="text-lg sm:text-xl font-bold text-white">Hire a 4th BA vs. Equip Your Squad</h3>
-              </div>
-              <span className="px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/30 text-[10px] font-mono font-bold text-blue-200 flex-shrink-0 whitespace-nowrap">
-                8.8x CHEAPER
-              </span>
-            </div>
-
-            <p className="text-xs text-slate-300 leading-relaxed mb-5">
-              Need ~1.0 FTE of extra business analysis capacity? Compare the cost of hiring a 4th human Senior BA
-              against equipping an existing 3-BA squad with Digital Co-Workers:
-            </p>
-
-            <div className="space-y-4">
-              {hireVsEquip.map((option) => (
-                <div key={option.label} className={`p-4 rounded-2xl relative ${option.cardClass}`}>
-                  <div className="flex items-start justify-between gap-3 mb-1.5">
-                    <span className={`text-xs font-bold flex items-center gap-1.5 ${option.labelClass}`}>
-                      {option.icon && <Icon name={option.icon} className="text-emerald-400 flex-shrink-0" />}
-                      <span>{option.label}</span>
-                    </span>
-                    <span className={`text-sm font-mono font-black flex-shrink-0 whitespace-nowrap ${option.costClass}`}>
-                      {option.cost}
-                    </span>
-                  </div>
-                  <div className="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden mb-2">
-                    <div className={`${option.barClass} h-full rounded-full`} style={{ width: option.bar }}></div>
-                  </div>
-                  <div className={`flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-[11px] font-mono ${option.footClass}`}>
-                    <span>Capacity Added: <strong className={option.capacityClass}>{option.capacity}</strong></span>
-                    <span>Squad Budget Impact: <strong className={option.impactClass}>{option.impact}</strong></span>
-                  </div>
-                </div>
+          <div className="flex flex-wrap items-center gap-4">
+            <div role="group" aria-label="Preset Squad Sizes" className="inline-flex p-1 rounded-xl bg-slate-950 border border-slate-800 gap-1">
+              {squadPresets.map((size) => (
+                <button
+                  key={size}
+                  type="button"
+                  onClick={() => setBaCount(String(size))}
+                  aria-pressed={calc.baCount === size}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                    calc.baCount === size ? 'squad-pill-active' : 'text-slate-300 hover:text-white'
+                  }`}
+                >
+                  {size === 1 ? '1 BA' : `${size} BAs`}
+                </button>
               ))}
             </div>
           </div>
+        </div>
 
-          <div className="mt-6 p-3.5 rounded-xl bg-slate-950/90 border border-slate-800/90 flex items-center justify-between gap-3">
-            <div className="text-[11px] text-slate-200 leading-snug">
-              <strong className="text-white block font-mono">Unit Deliverable Cost (3-BA Squad):</strong>
-              <span>
-                Each completed workflow unlocks <strong className="text-emerald-300">$55.56</strong> of BA time for just{' '}
-                <strong className="text-cyan-300">$7.01</strong> all-in (<strong className="text-white">$0.80</strong>{' '}
-                in LLM tokens).
-              </span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch mb-6">
+          {/* The free inputs; the presets just write into the headcount field */}
+          <div className="lg:col-span-4 p-4 rounded-2xl bg-slate-950/90 border border-slate-800 flex flex-col justify-center space-y-4">
+            <div>
+              <label htmlFor="custom-ba-count" className="block text-[10px] font-mono uppercase text-slate-300 font-bold mb-1.5">
+                {`Custom BA Headcount (${BA_COUNT_RANGE.min}\u2013${BA_COUNT_RANGE.max} Seats)`}
+              </label>
+              <div className="flex items-center gap-2.5">
+                <input
+                  id="custom-ba-count"
+                  type="number"
+                  inputMode="numeric"
+                  min={BA_COUNT_RANGE.min}
+                  max={BA_COUNT_RANGE.max}
+                  value={baCount}
+                  onChange={(event) => setBaCount(event.target.value)}
+                  onBlur={() => setBaCount(String(calc.baCount))}
+                  className={`w-24 ${INPUT}`}
+                />
+                <span className="text-xs font-mono text-slate-300">Active Analysts</span>
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-slate-800/80">
+              <label htmlFor="custom-ba-salary" className="block text-[10px] font-mono uppercase text-slate-300 font-bold mb-1.5">
+                Loaded Annual BA Cost ($ NZD)
+              </label>
+              <div className="flex items-center gap-2.5">
+                <input
+                  id="custom-ba-salary"
+                  type="number"
+                  inputMode="numeric"
+                  min={SALARY_INPUT.min}
+                  max={SALARY_INPUT.max}
+                  step={SALARY_INPUT.step}
+                  value={baSalary}
+                  onChange={(event) => setBaSalary(event.target.value)}
+                  onBlur={() => setBaSalary(String(calc.baSalary))}
+                  className={`w-32 ${INPUT}`}
+                />
+                <span className="text-xs font-mono text-slate-300">NZD / year</span>
+              </div>
             </div>
           </div>
+
+          {/* The three figures the inputs drive */}
+          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="p-5 rounded-2xl bg-slate-950/90 border border-slate-800/90 flex flex-col justify-center">
+              <span className="text-[10px] font-mono text-slate-300 uppercase block mb-1">All-In Annual AI Spend</span>
+              <div className="text-2xl sm:text-3xl lg:text-[clamp(1.125rem,1.9vw,1.875rem)] font-black text-white font-mono" aria-live="polite">
+                {calc.spend}<span className="text-xs text-slate-300 font-normal">/yr</span>
+              </div>
+              <span className="text-[11px] font-mono text-slate-300 block mt-1.5">{calc.spendNote}</span>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-950/90 border border-slate-800/90 flex flex-col justify-center">
+              <span className="text-[10px] font-mono text-cyan-300 uppercase block mb-1">Gross Capacity Unlocked</span>
+              <div className="text-2xl sm:text-3xl lg:text-[clamp(1.125rem,1.9vw,1.875rem)] font-black text-cyan-300 font-mono">
+                {calc.value}<span className="text-xs text-slate-300 font-normal">/yr</span>
+              </div>
+              <span className="text-[11px] font-mono text-slate-200 block mt-1.5">{calc.fte}</span>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-emerald-950/25 border border-emerald-500/40 flex flex-col justify-center">
+              <span className="text-[10px] font-mono text-emerald-300 uppercase font-bold block mb-1">Net Capacity Value Created</span>
+              <div className="text-2xl sm:text-3xl lg:text-[clamp(1.125rem,1.9vw,1.875rem)] font-black text-emerald-400 font-mono">
+                {calc.net}<span className="text-xs text-emerald-200 font-normal">/yr</span>
+              </div>
+              <span className="text-[11px] font-mono text-emerald-300 font-bold block mt-1.5">{calc.roiBadge}</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-5 rounded-2xl bg-slate-950/70 border border-slate-800/80 space-y-4">
+          <div className="space-y-1.5">
+            <div className="flex items-start justify-between gap-3 text-xs font-mono">
+              <span className="text-slate-200">
+                Annual AI Investment <span className="text-slate-300 text-[11px]">{calc.spendDetail}</span>
+              </span>
+              <span className="text-white font-bold">{calc.spend}</span>
+            </div>
+            <div className="w-full bg-slate-900 rounded-full h-3 overflow-hidden border border-slate-800">
+              <div className="bg-slate-400 h-full rounded-full transition-all duration-500" style={{ width: calc.spendBar }}></div>
+            </div>
+          </div>
+
+          <div className="space-y-1.5">
+            <div className="flex items-start justify-between gap-3 text-xs font-mono">
+              <span className="text-emerald-300 font-semibold">
+                Gross Human BA Capacity Unlocked <span className="text-slate-300 text-[11px]">{calc.valueDetail}</span>
+              </span>
+              <span className="text-emerald-400 font-bold">{calc.value}</span>
+            </div>
+            <div className="w-full bg-slate-900 rounded-full h-4 overflow-hidden border border-emerald-500/30">
+              <div className="bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-300 h-full rounded-full transition-all duration-500" style={{ width: '100%' }}></div>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-4 mt-5 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+          <span className="text-slate-300">
+            <Icon name="bolt" className="text-amber-400 mr-1.5" />Payback Period:{' '}
+            <strong className="text-white">{calc.payback}</strong>
+          </span>
+          <span className="text-cyan-300 font-bold">{calc.dollarMultiple}</span>
         </div>
       </div>
 

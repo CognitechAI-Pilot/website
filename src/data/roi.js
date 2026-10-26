@@ -86,32 +86,6 @@ export function computeRoi(rawCount, rawSalary) {
   }
 }
 
-// Head-to-head hiring comparison beside the calculator. Fixed at the 3-BA
-// squad, which is what its copy describes.
-export const hireVsEquip = [
-  {
-    label: 'Option A: Hire 1 Additional Senior BA',
-    cost: '+$140,000 / yr', costClass: 'text-rose-400',
-    cardClass: 'bg-slate-950/90 border border-slate-800/90',
-    labelClass: 'text-slate-200',
-    bar: '100%', barClass: 'bg-rose-500/80',
-    footClass: 'text-slate-300',
-    capacity: '+1.0 FTE', capacityClass: 'text-slate-100',
-    impact: '+33.3%', impactClass: 'text-rose-300'
-  },
-  {
-    label: 'Option B: Equip 3 BAs with Co-Workers',
-    cost: '+$15,900 / yr', costClass: 'text-emerald-400',
-    cardClass: 'bg-gradient-to-r from-blue-950/50 to-emerald-950/30 border-2 border-emerald-500/50 shadow-lg',
-    labelClass: 'text-white',
-    icon: 'fa-circle-check',
-    bar: '11.4%', barClass: 'bg-gradient-to-r from-emerald-400 to-cyan-300',
-    footClass: 'text-slate-200',
-    capacity: '+0.9 FTE ($126k)', capacityClass: 'text-emerald-300',
-    impact: 'Just +3.79%', impactClass: 'text-cyan-300'
-  }
-]
-
 // Cost components making up the all-in per-workflow figure.
 export const unitCostBreakdown = [
   { marker: '⊢', label: 'Shared Platform & Support ($575/mo fixed)',
