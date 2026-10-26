@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import useCardSpotlight from './hooks/useCardSpotlight'
@@ -42,6 +43,10 @@ export default function App() {
   return (
     <>
       <ScrollToHash />
+      {/* Cookie-free page analytics. Collects no personal data and sets no
+          cookies, so it needs no consent banner; it only reports once the
+          deployment has Web Analytics switched on in the Vercel dashboard. */}
+      <Analytics />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
