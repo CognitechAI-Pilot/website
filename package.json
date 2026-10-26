@@ -6,7 +6,7 @@
   "description": "Cognitech Limited marketing website",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node prerender.js",
     "preview": "vite preview"
   },
   "dependencies": {

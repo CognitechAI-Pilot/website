@@ -78,11 +78,35 @@ If the logo changes, these do not update themselves. Regenerate all four.
 
 ## ROI figures
 
-The numbers in `src/data/roi.js` are published commercial claims transcribed
-from an approved mockup, not values to derive. They reconcile internally (net =
-gross - spend; ROI = net / spend; multiple = gross / spend), so an apparent
-discrepancy means the transcription is wrong, not the arithmetic. Change them
-only from an updated mockup.
+`src/data/roi.js` holds two different kinds of number, and they have opposite
+rules.
+
+The **commercial constants** (`FIXED_BASE_YEAR`, `RUNTIME_PER_BA_YEAR`,
+`TOKENS_PER_BA_YEAR`, `WORKFLOWS_PER_BA_YEAR`, `CAPACITY_GAIN`) and the fixed
+KPI and table strings are published claims transcribed from an approved mockup.
+Change them only from an updated mockup, never by inference.
+
+Everything the calculator shows is **derived** from those constants by
+`computeRoi()`, which is a verbatim port of the mockup's `calculateCustomRoi()`.
+Do not hardcode a figure the formula produces — the V2.6 mockup's own markup
+still said "~6.5 Weeks" payback where its formula yields 6.6, and that stale
+literal must not be copied back in.
+
+## Prerendering
+
+`npm run build` is three steps: client build, SSR build, then `prerender.js`,
+which renders the landing page into `dist/index.html`. Without it the site
+ships as an empty `<div id="root">` and every crawler that does not run
+JavaScript — including most AI answer engines — sees a blank page.
+
+`main.jsx` therefore calls `hydrateRoot`, not `createRoot`. Anything that
+renders differently on the server than in the browser (reading `window` during
+render, `Date.now()`, `Math.random()`) breaks hydration. Side effects belong in
+`useEffect`, which does not run during prerender.
+
+The router lives in the entry points, not in `App.jsx`: `BrowserRouter` in
+`main.jsx`, `StaticRouter` in `entry-server.jsx`. `StaticRouter` comes from
+`react-router-dom` itself on v7 — the `react-router-dom/server` subpath is gone.
 
 ## Working from a supplied HTML mockup
 
@@ -102,6 +126,10 @@ built site instead.
   `index.css` sets scroll-margin on `section[id]` and `footer[id]` only, and the
   navbar is a fixed 80px, so a `div[id]` target lands underneath it without one.
   `#enterprise-gap` and `#architecture-blueprint` both rely on this.
+- `.glow-card` paints its cursor spotlight in a `::before` and lifts its direct
+  children with `.glow-card > * { z-index: 1 }`. Content wrapped in an extra
+  element is fine; content that is a bare text node in the card is not — it
+  renders behind the spotlight layer.
 - Team photos are square, 1024x1024.
 - Before pushing: run `npm run build`, then check the page in a browser for
   horizontal overflow at 320, 768 and 1440px.

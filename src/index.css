@@ -5,8 +5,13 @@
 @layer base {
   body {
     font-family: 'Inter', sans-serif;
-    background-color: #121B2B;
-    color: #94A3B8;
+    background-color: #0B111E;
+    color: #CBD5E1;
+    background-image:
+      radial-gradient(at 15% 10%, rgba(37, 99, 235, 0.12) 0px, transparent 45%),
+      radial-gradient(at 85% 35%, rgba(6, 182, 212, 0.08) 0px, transparent 45%),
+      radial-gradient(at 50% 75%, rgba(99, 102, 241, 0.08) 0px, transparent 50%);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -22,13 +27,44 @@
 
 @layer components {
   .glow-card {
-    background: linear-gradient(135deg, rgba(22, 33, 53, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    background: linear-gradient(145deg, rgba(22, 33, 53, 0.78) 0%, rgba(11, 18, 33, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 12px 32px -8px rgba(0, 0, 0, 0.5);
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow: hidden;
+  }
+
+  .glow-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      550px circle at var(--mouse-x, 50%) var(--mouse-y, -200px),
+      rgba(59, 130, 246, 0.13),
+      transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .glow-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Lift the card's own content above the spotlight layer. */
+  .glow-card > * {
+    position: relative;
+    z-index: 1;
   }
 
   .glow-card:hover {
-    border-color: rgba(59, 130, 246, 0.4);
+    border-color: rgba(59, 130, 246, 0.45);
+    transform: translateY(-2px);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 20px 40px -12px rgba(2, 6, 23, 0.75), 0 0 25px rgba(37, 99, 235, 0.12);
   }
 
   .glow-card-active {
@@ -47,7 +83,7 @@
   /* Applied to the pricing card an engagement phase points at. Matches the
      approved mockup's .tier-highlight exactly. */
   .tier-highlight {
-    border-color: #2563eb !important;
+    border-color: #3b82f6 !important;
     box-shadow: 0 0 30px rgba(37, 99, 235, 0.45) !important;
     transform: translateY(-2px);
   }
@@ -63,8 +99,8 @@
 
   /* The portfolio role that has a shipped case study. */
   .customer-tab-active {
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.5) 0%, rgba(15, 23, 42, 0.9) 100%);
-    border-color: #2563eb !important;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.55) 0%, rgba(15, 23, 42, 0.95) 100%);
+    border-color: #3b82f6 !important;
     box-shadow: 0 0 25px rgba(37, 99, 235, 0.3);
   }
 
@@ -119,5 +155,7 @@
   html { scroll-behavior: auto; }
   .fade-in, .active-pulse, .flow-line, .flow-line-slow { animation: none; }
   .glow-card { transition: none; }
+  .glow-card:hover { transform: none; }
+  .glow-card::before { display: none; }
   .tier-highlight { transform: none; }
 }

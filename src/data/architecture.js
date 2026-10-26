@@ -176,3 +176,50 @@ export const archSilos = [
     badge: 'Universal MCP / API Bus', badgeClass: 'text-emerald-400'
   }
 ]
+
+// The sovereignty / security posture drawer that sits under the architecture
+// diagram. These are compliance claims — transcribe them, never paraphrase.
+export const securityPosture = [
+  {
+    icon: 'fa-server', iconClass: 'text-emerald-400',
+    title: 'Data Residency & Hosting',
+    bodyParts: [
+      'Deploy inside your own ',
+      { strong: 'Azure New Zealand North' },
+      ' or ',
+      { strong: 'AWS AP-Southeast (Auckland/Sydney)' },
+      ' VNet (In-Tenant BYOC), or within Cognitech\u2019s isolated regional containers. Institutional memory files (',
+      { code: 'Org > Dept > Role' },
+      ') remain 100% under client ownership.'
+    ]
+  },
+  {
+    icon: 'fa-ban', iconClass: 'text-blue-400',
+    title: 'Zero Model Training',
+    bodyParts: [
+      'All LLM inference is routed exclusively via enterprise regional APIs (AWS Bedrock / Azure OpenAI) or dedicated local open-weights models under strict zero-data-retention (ZDR) policies. Client code, prompts, and wikis are ',
+      { strong: 'never' },
+      ' used to train foundation models.'
+    ]
+  },
+  {
+    icon: 'fa-lock', iconClass: 'text-cyan-400',
+    title: 'Zero-Trust & HITL Gates',
+    bodyParts: [
+      'Source code repositories are indexed strictly ',
+      { strong: 'read-only' },
+      ' via AST chunking. All external mutations (Jira stories, Confluence updates) are staged inside Microsoft Teams approval cards requiring explicit human sign-off.'
+    ]
+  },
+  {
+    icon: 'fa-file-shield', iconClass: 'text-purple-400',
+    title: 'GCDO AI Policy & Privacy Act',
+    bodyParts: [
+      'Designed around the ',
+      { strong: 'GCDO (Government Chief Digital Officer) Public Service AI Framework' },
+      ' and Responsible AI guidance, alongside ',
+      { strong: 'NZ Privacy Act 2020' },
+      ' Information Privacy Principles. Hardened distroless containers and full sub-processor schedules are provided during Phase 1 PoV.'
+    ]
+  }
+]

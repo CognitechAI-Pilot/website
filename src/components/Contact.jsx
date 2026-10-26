@@ -151,9 +151,20 @@ export default function Contact({ purpose }) {
             <span>{submitting ? 'Sending…' : 'Submit Enquiry to Cognitech AI'}</span>
           </button>
 
-          <p className="text-center text-[11px] text-slate-500">
-            Enquiries are delivered to the Cognitech AI team under strict enterprise confidentiality.
-          </p>
+          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px] text-slate-300 leading-relaxed">
+            <strong className="text-white font-semibold">Privacy Notice (NZ Privacy Act 2020 &mdash; IPP 3):</strong>{' '}
+            Information submitted via this form is collected by{' '}
+            <strong className="text-white">Cognitech Limited</strong> (New Zealand) solely to respond to your enquiry
+            and scope requested services. Your details are transmitted over an encrypted connection to Cognitech&rsquo;s
+            own application endpoint and delivered by email to{' '}
+            <span className="text-blue-300">{contactEmail}</span>, are never sold or shared with third-party
+            marketers, and are never used for AI model training. Under the NZ Privacy Act 2020, you have the right to
+            request access to, correction of, or deletion of your personal information at any time by emailing{' '}
+            <a href={`mailto:${contactEmail}`} className="text-blue-300 underline hover:text-blue-200">
+              {contactEmail}
+            </a>
+            .
+          </div>
         </form>
 
         <div className="mt-12 text-center text-xs text-slate-500">

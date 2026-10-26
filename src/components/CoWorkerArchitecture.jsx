@@ -1,4 +1,5 @@
 import { archCapabilities, archSilos, archTopNodes } from '../data/architecture'
+import SecurityPosture from './SecurityPosture'
 
 const NODE = 'rounded-2xl bg-[#0D1322] border border-slate-800 p-5 text-center shadow-lg transition-all'
 
@@ -125,6 +126,8 @@ export default function CoWorkerArchitecture() {
           </div>
         </div>
       </div>
+
+      <SecurityPosture />
     </div>
   )
 }
