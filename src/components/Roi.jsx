@@ -11,6 +11,7 @@ import {
   unitCostBreakdown,
   unitWorkflowRows
 } from '../data/roi'
+import Icon from './Icon'
 
 const TRACK = 'w-full bg-slate-900/90 rounded-full overflow-hidden border border-slate-800/80'
 const INPUT = 'bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs font-mono font-bold text-white focus:outline-none focus:border-blue-500'
@@ -191,7 +192,7 @@ export default function Roi() {
 
           <div className="pt-4 mt-5 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
             <span className="text-slate-300">
-              <i className="fa-solid fa-bolt text-amber-400 mr-1.5" aria-hidden="true"></i>Payback Period:{' '}
+              <Icon name="bolt" className="text-amber-400 mr-1.5" />Payback Period:{' '}
               <strong className="text-white">{calc.payback}</strong>
             </span>
             <span className="text-cyan-300 font-bold">{calc.dollarMultiple}</span>
@@ -223,7 +224,7 @@ export default function Roi() {
                 <div key={option.label} className={`p-4 rounded-2xl relative ${option.cardClass}`}>
                   <div className="flex items-start justify-between gap-3 mb-1.5">
                     <span className={`text-xs font-bold flex items-center gap-1.5 ${option.labelClass}`}>
-                      {option.icon && <i className={`fa-solid ${option.icon} text-emerald-400 flex-shrink-0`} aria-hidden="true"></i>}
+                      {option.icon && <Icon name={option.icon} className="text-emerald-400 flex-shrink-0" />}
                       <span>{option.label}</span>
                     </span>
                     <span className={`text-sm font-mono font-black flex-shrink-0 whitespace-nowrap ${option.costClass}`}>
@@ -265,7 +266,7 @@ export default function Roi() {
           className="w-full px-6 py-4 flex items-center justify-between gap-3 text-left hover:bg-slate-900/60 transition-colors group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
         >
           <span className="flex items-center gap-2.5 text-xs font-mono font-bold text-slate-200 group-hover:text-white">
-            <i className="fa-solid fa-scale-balanced text-cyan-400 flex-shrink-0" aria-hidden="true"></i>
+            <Icon name="scale-balanced" className="text-cyan-400 flex-shrink-0" />
             <span>
               Basis of Estimate: Illustrative pilot benchmarks ($140,000 NZD Senior BA baseline; +30% capacity gain)
               &mdash; empirically calibrated to your repositories during Phase 1 &amp; Phase 2.
@@ -273,7 +274,7 @@ export default function Roi() {
           </span>
           <span className="text-xs font-mono text-blue-300 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0">
             <span>{methodologyOpen ? 'Collapse Workings' : 'Expand Workings'}</span>
-            <i className={`fa-solid fa-chevron-down text-[10px] transition-transform duration-300 ${methodologyOpen ? 'rotate-180' : ''}`} aria-hidden="true"></i>
+            <Icon name="chevron-down" className={`text-[10px] transition-transform duration-300 ${methodologyOpen ? 'rotate-180' : ''}`} />
           </span>
         </button>
 
@@ -352,7 +353,7 @@ export default function Roi() {
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3">
                       <div className="flex items-center gap-2.5">
-                        <i className="fa-solid fa-layer-group text-cyan-400 text-sm" aria-hidden="true"></i>
+                        <Icon name="layer-group" className="text-cyan-400 text-sm" />
                         <h3 className="text-base font-bold text-white">Unit Deliverable Arbitrage (Per Completed Workflow)</h3>
                       </div>
                       <span className="px-2.5 py-0.5 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-[10px] font-mono font-bold text-cyan-300 uppercase tracking-wider whitespace-nowrap">

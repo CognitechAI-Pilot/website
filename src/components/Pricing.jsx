@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { pricingTiers } from '../data/portfolio'
 import { pricingPurpose } from '../data/site'
+import Icon from './Icon'
 
 /**
  * The three commercial tiers, one per engagement phase. All three use the same
@@ -56,7 +57,7 @@ export default function Pricing({ onSelectPurpose, highlightedTier }) {
               <ul className="space-y-3 text-xs text-slate-300 border-t border-slate-800 pt-6">
                 {tier.features.map((feature) => (
                   <li key={feature.text} className="flex items-start gap-2.5">
-                    <i className="fa-solid fa-check text-blue-400 mt-0.5"></i>
+                    <Icon name="check" className="text-blue-400 mt-0.5" />
                     <span className={feature.bold ? 'font-semibold text-white' : ''}>{feature.text}</span>
                   </li>
                 ))}

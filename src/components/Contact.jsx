@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { enquiryPurposes, contactEmail } from '../data/site'
+import Icon from './Icon'
 
 const EMPTY = { name: '', jobTitle: '', email: '', purpose: enquiryPurposes[0].value, message: '' }
 
@@ -147,7 +148,7 @@ export default function Contact({ purpose }) {
             disabled={submitting}
             className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-all shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            <i className={`fa-solid ${submitting ? 'fa-circle-notch fa-spin' : 'fa-paper-plane'}`}></i>
+            <Icon name={submitting ? 'circle-notch' : 'paper-plane'} className={submitting ? 'animate-spin' : ''} />
             <span>{submitting ? 'Sending…' : 'Submit Enquiry to Cognitech AI'}</span>
           </button>
 

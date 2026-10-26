@@ -1,4 +1,5 @@
 import { engagementPhases } from '../data/portfolio'
+import Icon from './Icon'
 
 /**
  * The three delivery phases. Clicking a phase scrolls to the matching pricing
@@ -45,7 +46,7 @@ export default function Engagement({ onSelectTier }) {
             <div className="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between">
               <span className={`text-[11px] font-mono flex items-center gap-1.5 transition-colors ${phase.linkClass}`}>
                 <span>{phase.link}</span>
-                <i className="fa-solid fa-arrow-right text-[10px]"></i>
+                <Icon name="arrow-right" className="text-[10px]" />
               </span>
             </div>
           </button>

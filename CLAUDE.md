@@ -41,8 +41,6 @@ replace produces `cognitech AI.co.nz` and breaks the contact mailbox.
 
 - **Tailwind stays on v3** (`^3.4.17`). v4 removes `bg-opacity-*` and
   `flex-shrink-0`, which appear 17 times across the components.
-- **Font Awesome comes from npm** (`@fortawesome/fontawesome-free`, imported in
-  `main.jsx`), not a CDN.
 - **Fonts are self-hosted** via `@fontsource-variable/inter` and
   `@fontsource-variable/urbanist`, imported in `main.jsx`. Never reintroduce the
   `fonts.googleapis.com` link: it was the last third-party request on the page,
@@ -55,6 +53,27 @@ replace produces `cognitech AI.co.nz` and breaks the contact mailbox.
 - **The case study video lives on Vercel Blob**, not in the repo —
   `BA_DEMO_VIDEO` in `CaseStudy.jsx`. The `%20` escapes are required, since the
   blob key contains spaces. A 16 MB copy used to be committed to `public/`.
+
+## Icons
+
+There is no icon font. `src/components/Icon.jsx` renders inline SVG from the
+path data in `src/data/icons.js`, and `@fortawesome/fontawesome-free` is no
+longer a dependency — it cost a 154kB woff2 of roughly 1,400 glyphs plus a
+68kB stylesheet to draw 38 icons.
+
+`<Icon name="check" className="text-blue-400 text-sm" />` is a drop-in for the
+old `<i className="fa-solid fa-check …">`: height is 1em, width follows the
+viewBox, the fill is `currentColor`, and the baseline sits at -0.125em, so
+every existing text-size and colour class keeps working. `name` takes either
+`check` or `fa-check`, which is why the data files can keep storing `fa-`
+prefixed names.
+
+Icons are decorative and `aria-hidden` — never put meaning in one that the
+surrounding copy does not already carry. To add an icon, copy the viewBox and
+the single `d` attribute out of Font Awesome Free's solid SVG set into
+`icons.js`; an unknown name renders nothing and warns in dev rather than
+throwing. The icons are CC BY 4.0 and the attribution notice at the top of
+`icons.js` is what satisfies the licence, so keep it there.
 
 ## The logo
 

@@ -1,5 +1,6 @@
 import { archCapabilities, archSilos, archTopNodes } from '../data/architecture'
 import SecurityPosture from './SecurityPosture'
+import Icon from './Icon'
 
 const NODE = 'rounded-2xl bg-[#0D1322] border border-slate-800 p-5 text-center shadow-lg transition-all'
 
@@ -38,7 +39,7 @@ export default function CoWorkerArchitecture() {
             {archTopNodes.map((node) => (
               <div key={node.title} className={`${NODE} ${node.hoverClass}`}>
                 <div className={`w-9 h-9 rounded-xl border flex items-center justify-center mx-auto mb-2.5 ${node.iconClass}`}>
-                  <i className={`fa-solid ${node.icon} text-sm`}></i>
+                  <Icon name={node.icon} className="text-sm" />
                 </div>
                 <span className="text-xs font-mono font-bold text-white uppercase tracking-wider block">
                   {node.title}
@@ -82,7 +83,7 @@ export default function CoWorkerArchitecture() {
                   key={cap.title}
                   className={`px-4 py-3 rounded-xl bg-[#080D1A] border border-slate-800 flex items-center gap-3 transition-colors ${cap.hoverClass}`}
                 >
-                  <i className={`fa-solid ${cap.icon} ${cap.iconClass} text-xs flex-shrink-0`}></i>
+                  <Icon name={cap.icon} className={`${cap.iconClass} text-xs flex-shrink-0`} />
                   <div>
                     <span className="text-white font-bold block text-[11px] uppercase tracking-wider">{cap.title}</span>
                     <span className="text-[10px] text-slate-400">{cap.subtitle}</span>
@@ -113,7 +114,7 @@ export default function CoWorkerArchitecture() {
                 key={silo.title}
                 className="rounded-2xl bg-[#0D1322] border border-slate-800 p-5 text-center hover:border-emerald-500/40 transition-all"
               >
-                <i className={`fa-solid ${silo.icon} text-slate-300 text-base mb-2.5 block`}></i>
+                <Icon name={silo.icon} className="text-slate-300 text-base mb-2.5 block" />
                 <h5 className="text-sm font-bold text-white mb-1">{silo.title}</h5>
                 <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
                   {silo.systems}

@@ -1,4 +1,5 @@
 import { gapColumns, workflowContrast } from '../data/architecture'
+import Icon from './Icon'
 
 /**
  * A bullet's emphasised lead-in, which in one case carries an inline <code>
@@ -52,7 +53,7 @@ export default function EnterpriseGap() {
               <ul className="space-y-3.5 text-xs text-slate-200">
                 {column.points.map((point) => (
                   <li key={point.title ?? point.titleParts[0]} className="flex items-start gap-2.5">
-                    <i className={`fa-solid ${column.icon} ${column.iconClass} mt-1 flex-shrink-0`}></i>
+                    <Icon name={column.icon} className={`${column.iconClass} mt-1 flex-shrink-0`} />
                     <div>
                       <strong className="text-white block">
                         {point.titleParts ? <RichText parts={point.titleParts} /> : point.title}
@@ -67,7 +68,7 @@ export default function EnterpriseGap() {
             </div>
 
             <div className={`mt-6 pt-3 border-t text-[11px] font-mono flex items-start gap-1.5 ${column.footClass}`}>
-              <i className={`fa-solid ${column.footIcon} text-[10px] mt-0.5 flex-shrink-0`}></i>
+              <Icon name={column.footIcon} className="text-[10px] mt-0.5 flex-shrink-0" />
               <span>{column.foot}</span>
             </div>
           </div>
@@ -81,7 +82,7 @@ export default function EnterpriseGap() {
               key={side.title}
               className={`flex items-start gap-3 ${i === 1 ? 'lg:border-l lg:border-slate-800 lg:pl-6' : ''}`}
             >
-              <i className={`fa-solid ${side.icon} ${side.iconClass} text-sm mt-1 flex-shrink-0`}></i>
+              <Icon name={side.icon} className={`${side.iconClass} text-sm mt-1 flex-shrink-0`} />
               <div className="text-xs font-mono leading-relaxed">
                 <strong className="text-white">{side.title}</strong>
                 <span className={side.bodyClass}>{side.body}</span>

@@ -1,4 +1,5 @@
 import { portfolioRoles } from '../data/portfolio'
+import Icon from './Icon'
 
 /**
  * The four-up Co-Worker role grid. Only the Technology BA role has a shipped
@@ -30,7 +31,7 @@ export default function Portfolio() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className={`w-10 h-10 rounded-xl border flex items-center justify-center ${role.iconClass}`}>
-                  <i className={`fa-solid ${role.icon} text-base`}></i>
+                  <Icon name={role.icon} className="text-base" />
                 </div>
                 {role.status === 'pov' ? (
                   <span className="text-[9px] font-mono text-emerald-400 uppercase font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/30 flex items-center gap-1">
@@ -39,7 +40,7 @@ export default function Portfolio() {
                   </span>
                 ) : (
                   <span className="text-[9px] font-mono text-amber-400 uppercase font-bold bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/30 flex items-center gap-1">
-                    <i className="fa-solid fa-compass text-[8px]"></i>
+                    <Icon name="compass" className="text-[8px]" />
                     <span>ROADMAP</span>
                   </span>
                 )}
@@ -57,7 +58,7 @@ export default function Portfolio() {
                 <ul className="space-y-2 text-slate-300 text-[11px]">
                   {role.capabilities.map((cap) => (
                     <li key={cap.strong} className="flex items-start gap-1.5">
-                      <i className={`fa-solid fa-check text-[10px] mt-0.5 ${role.checkClass}`}></i>
+                      <Icon name="check" className={`text-[10px] mt-0.5 ${role.checkClass}`} />
                       <span>
                         <strong className="text-white">{cap.strong}</strong> {cap.text}
                       </span>
@@ -92,7 +93,7 @@ export default function Portfolio() {
                   className="text-[11px] font-bold text-blue-400 flex items-center justify-between hover:text-blue-300 transition-colors"
                 >
                   <span>View Case Study</span>
-                  <i className="fa-solid fa-arrow-down text-[10px]"></i>
+                  <Icon name="arrow-down" className="text-[10px]" />
                 </a>
               </div>
             )}

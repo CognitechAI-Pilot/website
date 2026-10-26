@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { securityPosture } from '../data/architecture'
+import Icon from './Icon'
 
 /**
  * Renders a claim built from parts, so the emphasis and the inline <code> span
@@ -31,7 +32,7 @@ export default function SecurityPosture() {
         className="w-full px-6 py-4 flex items-center justify-between gap-3 text-left hover:bg-slate-900/60 transition-colors group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
       >
         <span className="flex items-center gap-2.5 text-xs font-mono font-bold text-slate-200 group-hover:text-white">
-          <i className="fa-solid fa-shield-halved text-emerald-400 flex-shrink-0" aria-hidden="true"></i>
+          <Icon name="shield-halved" className="text-emerald-400 flex-shrink-0" />
           <span>
             Sovereignty, Security &amp; Compliance Posture (Data Residency, Zero-Training &amp; GCDO Responsible AI
             Alignment)
@@ -39,7 +40,7 @@ export default function SecurityPosture() {
         </span>
         <span className="text-xs font-mono text-emerald-300 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0">
           <span>{open ? 'Collapse' : 'Expand'}</span>
-          <i className={`fa-solid fa-chevron-down text-[10px] transition-transform duration-300 ${open ? 'rotate-180' : ''}`} aria-hidden="true"></i>
+          <Icon name="chevron-down" className={`text-[10px] transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
         </span>
       </button>
 
@@ -49,7 +50,7 @@ export default function SecurityPosture() {
             {securityPosture.map((pillar) => (
               <div key={pillar.title} className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800">
                 <div className="flex items-center gap-2.5 mb-2">
-                  <i className={`fa-solid ${pillar.icon} ${pillar.iconClass} text-sm flex-shrink-0`} aria-hidden="true"></i>
+                  <Icon name={pillar.icon} className={`${pillar.iconClass} text-sm flex-shrink-0`} />
                   <h4 className="text-sm font-bold text-white">{pillar.title}</h4>
                 </div>
                 <p>

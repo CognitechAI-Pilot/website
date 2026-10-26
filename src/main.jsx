@@ -7,7 +7,6 @@ import { BrowserRouter } from 'react-router-dom'
 // so a latin visitor downloads one file per family.
 import '@fontsource-variable/inter'
 import '@fontsource-variable/urbanist'
-import '@fortawesome/fontawesome-free/css/all.min.css'
 import './index.css'
 import App from './App.jsx'
 
