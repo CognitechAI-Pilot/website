@@ -50,7 +50,7 @@ export default function Pricing({ onSelectPurpose, highlightedTier }) {
 
               <div className="mb-6">
                 <span className={tier.priceClass}>{tier.price}</span>
-                <span className="text-xs font-mono text-slate-500 block mt-1">{tier.priceNote}</span>
+                <span className="text-xs font-mono text-slate-400 block mt-1">{tier.priceNote}</span>
               </div>
 
               <ul className="space-y-3 text-xs text-slate-300 border-t border-slate-800 pt-6">

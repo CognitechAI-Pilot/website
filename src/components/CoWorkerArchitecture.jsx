@@ -85,7 +85,7 @@ export default function CoWorkerArchitecture() {
                   <i className={`fa-solid ${cap.icon} ${cap.iconClass} text-xs flex-shrink-0`}></i>
                   <div>
                     <span className="text-white font-bold block text-[11px] uppercase tracking-wider">{cap.title}</span>
-                    <span className="text-[10px] text-slate-500">{cap.subtitle}</span>
+                    <span className="text-[10px] text-slate-400">{cap.subtitle}</span>
                   </div>
                 </div>
               ))}

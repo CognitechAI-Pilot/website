@@ -15,7 +15,7 @@ export default function Team() {
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono font-bold uppercase">
             <i className="fa-solid fa-location-dot"></i> Enterprise AI Design and Orchestration
           </span>
-          <span className="text-xs text-slate-500 font-mono block mt-1">NEW ZEALAND CORE ARCHITECTURE TEAM</span>
+          <span className="text-xs text-slate-400 font-mono block mt-1">NEW ZEALAND CORE ARCHITECTURE TEAM</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

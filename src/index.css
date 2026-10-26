@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter Variable', 'Inter', system-ui, sans-serif;
     background-color: #0B111E;
     color: #CBD5E1;
     background-image:
@@ -15,7 +15,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Urbanist', sans-serif;
+    font-family: 'Urbanist Variable', 'Urbanist', system-ui, sans-serif;
   }
 
   /* Anchor targets sit below the fixed 80px navbar. */

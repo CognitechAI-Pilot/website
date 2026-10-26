@@ -43,6 +43,12 @@ replace produces `cognitech AI.co.nz` and breaks the contact mailbox.
   `flex-shrink-0`, which appear 17 times across the components.
 - **Font Awesome comes from npm** (`@fortawesome/fontawesome-free`, imported in
   `main.jsx`), not a CDN.
+- **Fonts are self-hosted** via `@fontsource-variable/inter` and
+  `@fontsource-variable/urbanist`, imported in `main.jsx`. Never reintroduce the
+  `fonts.googleapis.com` link: it was the last third-party request on the page,
+  and it blocked rendering. The variable families register as
+  **`Inter Variable`** and **`Urbanist Variable`** — writing plain `Inter` or
+  `Urbanist` in a font stack silently falls back to the system font.
 - **`vercel.json` must keep its rewrite**, with the `/api/:path*` line first.
   Without it a direct hit on any client-side path 404s; with it reordered, the
   serverless function gets swallowed by the SPA fallback.
@@ -143,7 +149,12 @@ built site instead.
   children with `.glow-card > * { z-index: 1 }`. Content wrapped in an extra
   element is fine; content that is a bare text node in the card is not — it
   renders behind the spotlight layer.
-- Team photos are square, 1024x1024.
+- Team photos: `public/<name>.jpg` is the square full-size original;
+  `<name>-160.webp` is what `team.js` actually serves, because the avatar
+  renders at 80px and 160 covers a 2x screen. The four originals were 487KB of
+  downloads for four 80px circles. Regenerate the derivative whenever a photo
+  changes, and point `team.js` at the `.webp`, never the `.jpg`.
+  (The originals are mostly 1024x1024; `chamodya.jpg` is 1600x1600.)
 - Before pushing: run `npm run build`, then check the page in a browser for
   horizontal overflow at 320, 768 and 1440px.
 - When asserting against rendered text, compare against `textContent`, not
