@@ -25,10 +25,11 @@ export default function EnterpriseGap() {
         <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[11px] font-mono font-bold uppercase tracking-widest">
           THE ENTERPRISE AI GAP
         </span>
-        <h3 className="text-2xl sm:text-4xl font-black text-white mt-3 mb-3">
-          How a Governed Digital Co-Worker Runtime resolves the core limitations of commodity chat seats and
-          developer CLI plugins
-        </h3>
+        <h3 className="text-2xl sm:text-4xl font-black text-white mt-3 mb-3">Co-Worker Advantage</h3>
+        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          The governed digital co-worker resolves the core limitations of commodity AI chat seats and developer CLI
+          plugins.
+        </p>
       </div>
 
       <div className="glow-card rounded-3xl border border-slate-800/90 bg-slate-950/90 overflow-hidden mb-16 shadow-2xl">
