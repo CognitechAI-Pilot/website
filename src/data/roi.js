@@ -42,7 +42,7 @@ export const HOURS_RECLAIMED_PER_BA_MONTH = 48
 export const squadPresets = [1, 3, 6, 12]
 export const DEFAULT_BA_COUNT = 3
 export const DEFAULT_BA_SALARY = 140000
-export const BA_COUNT_RANGE = { min: 1, max: 50 }
+export const BA_COUNT_RANGE = { min: 1, max: 12 }
 export const BA_SALARY_RANGE = { min: 60000, max: 400000 }
 // What the number inputs offer before clamping, per the mockup's markup.
 export const SALARY_INPUT = { min: 80000, max: 300000, step: 5000 }

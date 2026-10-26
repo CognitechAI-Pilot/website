@@ -134,9 +134,12 @@ Do not hardcode a figure the formula produces — the mockups' own markup still
 says "~6.5 Weeks" payback where their formula yields 6.6, and that stale
 literal must not be copied back in.
 
-`BA_COUNT_RANGE` is 1-50, matching the label and the mockup's own clamp. The
-V2.11 markup also carries `max="12"` on the headcount input, contradicting
-both; it is not copied.
+`BA_COUNT_RANGE` is 1-12, confirmed as the intended cap. The mockups are
+inconsistent here — the V2.11 label reads "1-50 Seats" and its script clamps
+to 50, while only the input's `max="12"` is right — so the label text
+deliberately diverges from the mockup. The range is defined once and drives
+the clamp, the input's `max` and the label together; change it there, never in
+three places.
 
 ## Prerendering
 
