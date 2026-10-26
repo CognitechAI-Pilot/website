@@ -157,6 +157,22 @@ The router lives in the entry points, not in `App.jsx`: `BrowserRouter` in
 `main.jsx`, `StaticRouter` in `entry-server.jsx`. `StaticRouter` comes from
 `react-router-dom` itself on v7 — the `react-router-dom/server` subpath is gone.
 
+## robots.txt and sitemap.xml
+
+Both live in `public/`. They survive the SPA rewrite because Vercel checks the
+filesystem before applying `rewrites` — the same reason `/assets/*` and the
+images resolve.
+
+`sitemap.xml` must list the same host as the canonical in `index.html`
+(`https://www.cognitech.co.nz/`). A sitemap may only declare URLs on the host
+serving it, and naming one host while the canonical names another tells
+crawlers two different things. Add an entry whenever a route is added to
+`App.jsx`; there is one route today.
+
+`robots.txt` allows everything on purpose, AI answer engines included. The
+landing page is prerendered so retrieval crawlers can read it — adding a
+disallow for GPTBot, ClaudeBot or PerplexityBot would undo that work.
+
 ## Working from a supplied HTML mockup
 
 The mockups pull Tailwind from `cdn.tailwindcss.com`, which this sandbox blocks,
