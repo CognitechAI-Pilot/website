@@ -121,13 +121,6 @@ all deliberately client-neutral — filenames and data keys ship in public URLs
 and the JS bundle, so a client name in either would defeat the anonymisation.
 Keep it that way when editing.
 
-## Outstanding before launch
-
-- **Hero image.** `src/components/Hero.jsx` still hot-links a stock photo from
-  Unsplash. Replace it with a self-hosted, licensed image in `public/`.
-- **Open Graph image.** `index.html` references `/og-cover.jpg`, which does not
-  exist yet. Add a 1200×630 image, or link previews will fall back to a bare link.
-
 ## Case study video
 
 The demo in the flagship case study streams from Vercel Blob; the URL is

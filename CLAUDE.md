@@ -67,6 +67,19 @@ tight but not damaging: the "I" of "AI" measures 34px against a 32px stem
 elsewhere in the wordmark, so the letter is intact. An earlier note here
 claimed it was clipped; that was wrong.
 
+## The hero photograph
+
+`public/hero-collaboration.webp` (2000x1334) with `-1600` and `-1024` variants,
+served through a `srcset` so phones do not pull the full-size file. It is
+self-hosted on purpose: it used to be hot-linked from `images.unsplash.com`,
+which put a third-party US CDN call on the page selling onshore data
+sovereignty and left the hero to break whenever that URL moved. Never point it
+back at a remote URL.
+
+Re-encode all three widths together if the photo changes, and keep the hero's
+gradient overlays on `#0B111E` — they fade into the page background, so a
+different value leaves a visible seam at the section edge.
+
 ## Social and icon assets
 
 `public/og-cover.jpg` (1200x630) is the Open Graph card; `favicon-32.png`,
