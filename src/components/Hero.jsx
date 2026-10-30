@@ -41,7 +41,7 @@ export default function Hero() {
 
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl leading-relaxed">
             Engineering, integrating, and governing specialized Co-Workers grounded in private institutional
-            context—powered by stack-agnostic engines and 100% onshore sovereign AI deployment options.
+            context, powered by stack-agnostic engines and 100% onshore sovereign AI deployment options.
           </p>
         </div>
       </div>

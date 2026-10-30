@@ -19,7 +19,7 @@ export default function About() {
                     </h2>
 
                     <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-medium">
-                        We don't design for isolated tasks—we design for <span className="text-blue-400 font-bold">functional team roles</span>.
+                        We don't design for isolated tasks. We design for <span className="text-blue-400 font-bold">functional team roles</span>.
                     </p>
 
                     <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
@@ -41,7 +41,7 @@ export default function About() {
                             <Icon name="circle-check" className="text-blue-400 mt-1 flex-shrink-0" />
                             <div>
                                 <strong className="text-white block font-semibold mb-0.5">Rapid Deployment Templates:</strong>
-                                <span className="text-slate-300 text-xs leading-relaxed">Pre-configured role blueprints—like the BA Co-Worker—enable launch in days rather than months.</span>
+                                <span className="text-slate-300 text-xs leading-relaxed">Pre-configured role blueprints, like the BA Co-Worker, enable launch in days rather than months.</span>
                             </div>
                         </div>
 
