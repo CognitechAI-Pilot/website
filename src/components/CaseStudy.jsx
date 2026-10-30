@@ -68,7 +68,7 @@ export default function CaseStudy() {
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Cognitech AI deployed a specialized{' '}
                 <strong className="text-white">Technology Business Analyst Co-Worker</strong> to ingest, structure, and
-                query expansive knowledge repositories in real-time—accelerating user story creation while keeping human
+                query expansive knowledge repositories in real-time, accelerating user story creation while keeping human
                 analysts in complete control.
               </p>
             </div>
