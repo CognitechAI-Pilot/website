@@ -253,7 +253,7 @@ export default function Roi() {
                     <strong className="text-white">Fixed Blueprint Base ($575/mo | $6,900/yr):</strong> Models our
                     standard Managed Cloud support &amp; governance retainer ($500/mo per Standardized Role Blueprint)
                     plus the $75/mo shared vector/search base. Organizations deploying multiple distinct Role
-                    Blueprints, custom enterprise MCP connectors, or Sovereign In-Tenant (BYOC) environments scale
+                    Blueprints, custom enterprise MCP connectors, or Client In-Tenant (BYOC) environments scale
                     across our $500&ndash;$2,500/mo Phase 3 retainer tiers.
                   </p>
                   <p>

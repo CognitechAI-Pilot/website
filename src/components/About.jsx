@@ -49,15 +49,15 @@ export default function About() {
                             <Icon name="circle-check" className="text-blue-400 mt-1 flex-shrink-0" />
                             <div>
                                 <strong className="text-white block font-semibold mb-0.5">Predictable Open-Model Economics:</strong>
-                                <span className="text-slate-300 text-xs leading-relaxed">Adapting and hosting proven open-source models onshore eliminates volatile cloud token markups as usage scales.</span>
+                                <span className="text-slate-300 text-xs leading-relaxed">Adapting and hosting proven open-source models in-region eliminates volatile cloud token markups as usage scales.</span>
                             </div>
                         </div>
 
                         <div className="flex items-start gap-3">
                             <Icon name="circle-check" className="text-blue-400 mt-1 flex-shrink-0" />
                             <div>
-                                <strong className="text-white block font-semibold mb-0.5">100% Onshore Data Sovereignty:</strong>
-                                <span className="text-slate-300 text-xs leading-relaxed">Locally hosted infrastructure guarantees strict data residency, privacy, and compliance with zero public model training.</span>
+                                <strong className="text-white block font-semibold mb-0.5">In-Tenant Control &amp; Regional Data Residency:</strong>
+                                <span className="text-slate-300 text-xs leading-relaxed">Ensures regional data residency with zero public model training.</span>
                             </div>
                         </div>
 

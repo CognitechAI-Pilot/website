@@ -10,8 +10,20 @@ change history: that lives in the git log and the PR descriptions.
 
 ## Git
 
-Develop on `claude/website-react-conversion-ntbo9e`. `main` changes only through
-a merged PR, never a direct push.
+Develop on `claude/preview-v2-3`, whose Vercel preview at
+`website-git-claude-preview-v2-3-cognitech.vercel.app` is the URL shared with
+the team for review. `main` changes only through a merged PR, never a direct
+push.
+
+`claude/website-react-conversion-ntbo9e` is the original conversion branch and
+is long stale — it sits many releases behind `main`. Do not push to it. A fresh
+container may still check it out by default, so confirm the branch and rebase
+from `origin/main` before starting work.
+
+Because each PR is squash-merged, the preview branch keeps its pre-squash
+commits. Bring `main` back in with an ordinary merge before new work rather
+than force-pushing: force-push is blocked here, and a merge of an identical
+tree changes no files.
 
 ## Things that have already broken production
 

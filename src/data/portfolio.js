@@ -135,7 +135,7 @@ export const pricingTiers = [
     price: 'Statement of Work (SOW)', priceClass: 'text-2xl sm:text-3xl font-black text-white block leading-tight',
     priceNote: 'Price on Application (POA) / Custom Scope',
     features: [
-      { text: '100% Onshore Sovereign or Enterprise Cloud Tenant' },
+      { text: 'Client In-Tenant (BYOC) or Regional Managed Cloud (NZ/AU)' },
       { text: 'Cross-Session Memory & GraphRAG Integration' },
       { text: 'Model Context Protocol (MCP) Sandboxed Actions' },
       { text: 'Zero-Trust IAM Bounds & Mandatory Approval Gates' }

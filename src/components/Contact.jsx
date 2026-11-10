@@ -43,7 +43,7 @@ export default function Contact({ purpose }) {
       })
 
       if (response.ok) {
-        setStatus({ ok: true, message: 'Thank you — your enquiry has been sent. We usually reply within one business day.' })
+        setStatus({ ok: true, message: 'Thank you. Your enquiry has been sent. We usually reply within one business day.' })
         setForm({ ...EMPTY, purpose: form.purpose })
       } else if (response.status === 429) {
         setStatus({ ok: false, message: 'Too many enquiries from this connection. Please try again shortly.' })
@@ -77,7 +77,7 @@ export default function Contact({ purpose }) {
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-white mt-3 mb-2">Consult Cognitech AI Engineers</h2>
           <p className="text-xs sm:text-sm text-slate-400">
-            Submit an enquiry for an AI Health Check, a custom Co-Worker deployment, or to discuss onshore
+            Submit an enquiry for an AI Health Check, a custom Co-Worker deployment, or to discuss in-tenant
             architecture.
           </p>
         </div>
@@ -134,7 +134,7 @@ export default function Contact({ purpose }) {
 
           <div>
             <label className={label} htmlFor="message">Project Context &amp; Objectives *</label>
-            <textarea id="message" name="message" rows="4" required maxLength={MAX_LENGTHS.message} placeholder="Outline your current squad structure, key workflow bottlenecks, or sovereignty requirements..." value={form.message} onChange={handleChange} className={field}></textarea>
+            <textarea id="message" name="message" rows="4" required maxLength={MAX_LENGTHS.message} placeholder="Outline your current squad structure, key workflow bottlenecks, or data residency requirements..." value={form.message} onChange={handleChange} className={field}></textarea>
           </div>
 
           {status && (
@@ -153,7 +153,7 @@ export default function Contact({ purpose }) {
           </button>
 
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px] text-slate-300 leading-relaxed">
-            <strong className="text-white font-semibold">Privacy Notice (NZ Privacy Act 2020 &mdash; IPP 3):</strong>{' '}
+            <strong className="text-white font-semibold">Privacy Notice (NZ Privacy Act 2020, IPP 3):</strong>{' '}
             Information submitted via this form is collected by{' '}
             <strong className="text-white">Cognitech Limited</strong> (New Zealand) solely to respond to your enquiry
             and scope requested services. Your details are transmitted over an encrypted connection to Cognitech&rsquo;s
