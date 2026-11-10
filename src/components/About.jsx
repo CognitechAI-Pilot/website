@@ -49,7 +49,7 @@ export default function About() {
                             <Icon name="circle-check" className="text-blue-400 mt-1 flex-shrink-0" />
                             <div>
                                 <strong className="text-white block font-semibold mb-0.5">Predictable Open-Model Economics:</strong>
-                                <span className="text-slate-300 text-xs leading-relaxed">Adapting and hosting proven open-source models onshore eliminates volatile cloud token markups as usage scales.</span>
+                                <span className="text-slate-300 text-xs leading-relaxed">Adapting and hosting proven open-source models in-region eliminates volatile cloud token markups as usage scales.</span>
                             </div>
                         </div>
 

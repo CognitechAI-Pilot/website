@@ -77,7 +77,7 @@ export default function Contact({ purpose }) {
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-white mt-3 mb-2">Consult Cognitech AI Engineers</h2>
           <p className="text-xs sm:text-sm text-slate-400">
-            Submit an enquiry for an AI Health Check, a custom Co-Worker deployment, or to discuss onshore
+            Submit an enquiry for an AI Health Check, a custom Co-Worker deployment, or to discuss in-tenant
             architecture.
           </p>
         </div>
@@ -134,7 +134,7 @@ export default function Contact({ purpose }) {
 
           <div>
             <label className={label} htmlFor="message">Project Context &amp; Objectives *</label>
-            <textarea id="message" name="message" rows="4" required maxLength={MAX_LENGTHS.message} placeholder="Outline your current squad structure, key workflow bottlenecks, or sovereignty requirements..." value={form.message} onChange={handleChange} className={field}></textarea>
+            <textarea id="message" name="message" rows="4" required maxLength={MAX_LENGTHS.message} placeholder="Outline your current squad structure, key workflow bottlenecks, or data residency requirements..." value={form.message} onChange={handleChange} className={field}></textarea>
           </div>
 
           {status && (

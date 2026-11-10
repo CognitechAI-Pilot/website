@@ -7,7 +7,7 @@ export default function Team() {
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="text-3xl sm:text-5xl font-black text-white mb-4">Meet the Team</h2>
         <p className="text-slate-400 text-xs sm:text-sm">
-          Local strategic leadership driving onshore architecture, solution design, and AI governance.
+          Local strategic leadership driving enterprise architecture, solution design, and AI governance.
         </p>
       </div>
 
