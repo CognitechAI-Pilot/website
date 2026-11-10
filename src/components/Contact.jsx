@@ -43,7 +43,7 @@ export default function Contact({ purpose }) {
       })
 
       if (response.ok) {
-        setStatus({ ok: true, message: 'Thank you — your enquiry has been sent. We usually reply within one business day.' })
+        setStatus({ ok: true, message: 'Thank you. Your enquiry has been sent. We usually reply within one business day.' })
         setForm({ ...EMPTY, purpose: form.purpose })
       } else if (response.status === 429) {
         setStatus({ ok: false, message: 'Too many enquiries from this connection. Please try again shortly.' })
@@ -153,7 +153,7 @@ export default function Contact({ purpose }) {
           </button>
 
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px] text-slate-300 leading-relaxed">
-            <strong className="text-white font-semibold">Privacy Notice (NZ Privacy Act 2020 &mdash; IPP 3):</strong>{' '}
+            <strong className="text-white font-semibold">Privacy Notice (NZ Privacy Act 2020, IPP 3):</strong>{' '}
             Information submitted via this form is collected by{' '}
             <strong className="text-white">Cognitech Limited</strong> (New Zealand) solely to respond to your enquiry
             and scope requested services. Your details are transmitted over an encrypted connection to Cognitech&rsquo;s

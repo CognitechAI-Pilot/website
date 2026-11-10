@@ -34,8 +34,8 @@ export default function SecurityPosture() {
         <span className="flex items-center gap-2.5 text-xs font-mono font-bold text-slate-200 group-hover:text-white">
           <Icon name="shield-halved" className="text-emerald-400 flex-shrink-0" />
           <span>
-            Sovereignty, Security &amp; Compliance Posture (Data Residency, Zero-Training &amp; GCDO Responsible AI
-            Alignment)
+            Data Residency, Security &amp; Compliance Posture (In-Tenant Control, Zero-Training &amp; GCDO Responsible
+            AI Alignment)
           </span>
         </span>
         <span className="text-xs font-mono text-emerald-300 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0">

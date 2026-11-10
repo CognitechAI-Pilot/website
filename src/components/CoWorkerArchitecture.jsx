@@ -19,13 +19,13 @@ export default function CoWorkerArchitecture() {
     <div id="architecture-blueprint" className="scroll-mt-24 pt-6">
       <div className="text-center max-w-3xl mx-auto mb-10">
         <span className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-[11px] font-mono font-bold uppercase tracking-widest">
-          SOVEREIGN CO-WORKER ARCHITECTURE
+          IN-TENANT CO-WORKER ARCHITECTURE
         </span>
         <h3 className="text-2xl sm:text-4xl font-black text-white mt-3 mb-3">
           How the Cognitech Co-Worker Runtime Works
         </h3>
         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-          Deployed in Cognitech Managed Cloud or directly inside your own sovereign cloud tenant. Our sealed runtime
+          Deployed in Cognitech Managed Cloud or directly inside your own enterprise cloud tenant (NZ/AU). Our sealed runtime
           harness decouples your institutional IP and workflow logic from underlying LLM providers and external SaaS
           silos.
         </p>
@@ -122,7 +122,7 @@ export default function CoWorkerArchitecture() {
                   DECOUPLED LLM ENGINE
                 </span>
                 <span className="text-[11px] font-mono text-slate-300 block mt-1.5 leading-relaxed">
-                  Claude Bedrock &middot; Azure OpenAI &middot; Sovereign Local Models
+                  Claude Bedrock &middot; Azure OpenAI &middot; Local Open-Weights Models
                 </span>
                 <div className="mt-3 pt-2.5 border-t border-slate-800/80 text-[10px] font-mono text-purple-300 flex items-center justify-center gap-1.5">
                   {/* The mockup asks for fa-shield-check, which is Pro-only. */}
